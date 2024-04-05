@@ -10,9 +10,9 @@ products: SG_EXPERIENCEMANAGER/6.4
 discoiquuid: ff3d38e0-71c9-4b41-85f9-fa896393aac5
 exl-id: b55c7a34-d57b-4d45-bd83-29890f1524de
 source-git-commit: 7bf3bf55abe5a015df9b9e99fe838388a4fe6360
-workflow-type: tm+mt
+workflow-type: ht
 source-wordcount: '1101'
-ht-degree: 91%
+ht-degree: 100%
 
 ---
 
@@ -25,7 +25,7 @@ ht-degree: 91%
 | Produtos | Adobe Experience Manager (AEM) Dispatcher |
 | Versão | 4.3.7 |
 | Tipo | Versão secundária |
-| Data | quinta-feira, 27 de março de 2024 |
+| Data | 27 de março de 2024 |
 | URL de download | <ul><li>[Apache 2.4](release-notes.md#apache)</li><li>[Microsoft Internet Information Services (IIS)](release-notes.md#iis)</li></ul> |
 | Compatibilidade | AEM 6.1 ou superior |
 
@@ -45,10 +45,10 @@ Para obter instruções detalhadas, consulte [Instalação do Dispatcher](dispat
 
 **Melhorias**:
 
-* DISP-1009 - definindo o comprimento do cabeçalho novamente
-* DISP-1013 - adição de suporte ao openssl 3.0 para linux
-* DISP-1014 - Processamento response.location levando a redirecionamento inválido
-* DISP-1017 - alteração da definição de DTD
+* DISP-1009: configuração do comprimento do cabeçalho novamente
+* DISP-1013: adiciona suporte ao openssl 3.0 para linux
+* DISP-1014: processamento de response.location levando a um redirecionamento inválido
+* DISP-1017: alteração da definição de DTD
 
 ### Versão 4.3.6 (25 de julho de 2023) {#jyly}
 
@@ -190,10 +190,10 @@ Para obter instruções detalhadas, consulte [Instalação do Dispatcher](dispat
 | Linux | x86_64 (64-bit) | 1.0 | [dispatcher-apache2.4-linux-x86_64-ssl1.0-4.3.7.tar.gz](https://download.macromedia.com/dispatcher/download/dispatcher-apache2.4-linux-x86_64-ssl1.0-4.3.7.tar.gz) |
 | Linux | x86_64 (64-bit) | 1.1 | [dispatcher-apache2.4-linux-x86_64-ssl1.1-4.3.7.tar.gz](https://download.macromedia.com/dispatcher/download/dispatcher-apache2.4-linux-x86_64-ssl1.1-4.3.7.tar.gz) |
 | Linux | x86_64 (64-bit) | 3.0 | [dispatcher-apache2.4-linux-x86_64-ssl3.0-4.3.7.tar.gz](https://download.macromedia.com/dispatcher/download/dispatcher-apache2.4-linux-x86_64-ssl3.0-4.3.7.tar.gz) |
-| Linux | arch64 (64 bits) | Nenhum | [dispatcher-apache2.4-linux-arch64-4.3.7.tar.gz](https://download.macromedia.com/dispatcher/download/dispatcher-apache2.4-linux-aarch64-4.3.7.tar.gz) |
-| Linux | arch64 (64 bits) | 1.0 | [dispatcher-apache2.4-linux-arch64-ssl1.0-4.3.7.tar.gz](https://download.macromedia.com/dispatcher/download/dispatcher-apache2.4-linux-aarch64-ssl1.0-4.3.7.tar.gz) |
-| Linux | arch64 (64 bits) | 1.1 | [dispatcher-apache2.4-linux-arch64-ssl1.1-4.3.7.tar.gz](https://download.macromedia.com/dispatcher/download/dispatcher-apache2.4-linux-aarch64-ssl1.1-4.3.7.tar.gz) |
-| Linux | arch64 (64 bits) | 3.0 | [dispatcher-apache2.4-linux-arch64-ssl3.0-4.3.7.tar.gz](https://download.macromedia.com/dispatcher/download/dispatcher-apache2.4-linux-aarch64-ssl3.0-4.3.7.tar.gz) |
+| Linux | arch64 (64 bits) | Nenhum | [dispatcher-apache2.4-linux-aarch64-4.3.7.tar.gz](https://download.macromedia.com/dispatcher/download/dispatcher-apache2.4-linux-aarch64-4.3.7.tar.gz) |
+| Linux | arch64 (64 bits) | 1.0 | [dispatcher-apache2.4-linux-aarch64-ssl1.0-4.3.7.tar.gz](https://download.macromedia.com/dispatcher/download/dispatcher-apache2.4-linux-aarch64-ssl1.0-4.3.7.tar.gz) |
+| Linux | arch64 (64 bits) | 1.1 | [dispatcher-apache2.4-linux-aarch64-ssl1.1-4.3.7.tar.gz](https://download.macromedia.com/dispatcher/download/dispatcher-apache2.4-linux-aarch64-ssl1.1-4.3.7.tar.gz) |
+| Linux | arch64 (64 bits) | 3.0 | [dispatcher-apache2.4-linux-aarch64-ssl3.0-4.3.7.tar.gz](https://download.macromedia.com/dispatcher/download/dispatcher-apache2.4-linux-aarch64-ssl3.0-4.3.7.tar.gz) |
 | macOS | arm64 (64 bits) | Nenhum | [dispatcher-apache2.4-darwin-arm64-4.3.7.tar.gz](https://download.macromedia.com/dispatcher/download/dispatcher-apache2.4-darwin-arm64-4.3.7.tar.gz) |
 | macOS | x86_64 (64-bit) | Nenhum | [dispatcher-apache2.4-darwin-x86_64-4.3.7.tar.gz](https://download.macromedia.com/dispatcher/download/dispatcher-apache2.4-darwin-x86_64-4.3.7.tar.gz) |
 
