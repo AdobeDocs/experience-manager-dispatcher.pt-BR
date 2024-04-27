@@ -1,13 +1,11 @@
 ---
 title: Principais problemas do Dispatcher
-seo-title: Top issues for AEM Dispatcher
-description: Principais problemas do AEM Dispatcher
-seo-description: Top issues for Adobe AEM Dispatcher
+description: Principais problemas do Adobe Experience Manager Dispatcher.
 exl-id: 4dcc7318-aba5-4b17-8cf4-190ffefbba75
-source-git-commit: f83b02d74a22e055b486305dfe5420e152efb452
+source-git-commit: 2d90738d01fef6e37a2c25784ed4d1338c037c23
 workflow-type: tm+mt
-source-wordcount: '1578'
-ht-degree: 100%
+source-wordcount: '1542'
+ht-degree: 87%
 
 ---
 
@@ -19,7 +17,7 @@ ht-degree: 100%
 
 ### O que é o Dispatcher?
 
-O Dispatcher é uma ferramenta de armazenamento em cache e/ou balanceamento de carga do Adobe Experience Manager que ajuda a possibilitar um ambiente de criação da web rápido e dinâmico. Para armazenamento em cache, o Dispatcher funciona como parte de um servidor HTTP, como o Apache. Ele tem o objetivo de armazenar (em cache) o máximo possível do conteúdo estático do site e diminuir ao máximo a frequência de uso do mecanismo de layout do site. Como um balanceador de carga, o Dispatcher distribui as solicitações de usuário (carga) entre as diferentes instâncias do AEM (renderizações).
+O Dispatcher é uma ferramenta de armazenamento em cache e/ou balanceamento de carga do Adobe Experience Manager que ajuda a possibilitar um ambiente de criação da web rápido e dinâmico. Para armazenamento em cache, o Dispatcher funciona como parte de um servidor HTTP, como o Apache. Ele tem o objetivo de armazenar (ou &quot;armazenar em cache&quot;) o máximo possível do conteúdo estático do site e acessar o layout do mecanismo do site com a menor frequência possível. Como um balanceador de carga, o Dispatcher distribui as solicitações de usuário (carga) entre as diferentes instâncias do AEM (renderizações).
 
 Para armazenamento em cache, o módulo Dispatcher usa a capacidade do servidor Web de fornecer conteúdo estático. O Dispatcher coloca os documentos em cache na raiz do documento do servidor web.
 
@@ -82,9 +80,9 @@ Para alguns aplicativos, pode ser possível usar conexões aderentes e armazenam
 
 ### Um Dispatcher e uma instância de publicação do AEM podem residir no mesmo computador?
 
-Sim, se o computador for suficientemente eficiente. No entanto, é recomendável configurar o Dispatcher e a instância de publicação do AEM em computadores diferentes.
+Sim, se o computador for suficientemente eficiente. No entanto, você deve configurar o Dispatcher e a instância de publicação do AEM em computadores diferentes.
 
-Normalmente, a instância de publicação reside dentro do firewall, e o Dispatcher reside no DMZ. Se decidir manter a instância de publicação e o Dispatcher no mesmo computador, verifique se as configurações de firewall proíbem o acesso direto à instância de publicação por meio de redes externas.
+Normalmente, a instância de publicação reside dentro do firewall e o Dispatcher reside no DMZ. Se decidir manter a instância de publicação e o Dispatcher no mesmo computador, verifique se as configurações de firewall proíbem o acesso direto à instância de publicação por meio de redes externas.
 
 ### Posso armazenar em cache somente arquivos com extensões específicas?
 
@@ -105,8 +103,8 @@ Content-Length: 0
 
 O Dispatcher exclui os arquivos e pastas em cache que têm nomes que correspondem ao valor do cabeçalho CQ-Handle. Por exemplo, um CQ-Handle de `/content/geomtrixx-outdoors/en` corresponde aos seguintes itens:
 
-Todos os arquivos (de qualquer extensão de arquivo) com o nome de “en” no diretório geometrixx-outdoors. 
-Qualquer diretório com o nome de `_jcr_content` que esteja abaixo do diretório “en” (que, se existir, contém renderizações em cache de subnós da página).
+Todos os arquivos (de qualquer extensão de arquivo) nomeados com en no diretório geometrixx-outdoors.
+Qualquer diretório chamado `_jcr_content` abaixo do diretório en (que, se existir, contém renderizações em cache de subnós da página).
 O diretório `en` só será excluído se a `CQ-Action` for `Delete` ou `Deactivate`.
 
 Para obter mais detalhes sobre este tópico, consulte [Invalidação manual do cache do Dispatcher](page-invalidate.md).
@@ -117,7 +115,7 @@ Consulte a página [Armazenamento em cache de conteúdo seguro](permissions-cach
 
 ### Como proteger as comunicações entre as instâncias do Dispatcher e do CQ?
 
-Consulte as páginas [Lista de verificação de segurança do Dispatcher](security-checklist.md) e [Lista de verificação de segurança do AEM](https://experienceleague.adobe.com/docs/experience-manager-64/administering/security/security-checklist.html?lang=pt-BR).
+Consulte as páginas [Lista de verificação de segurança do Dispatcher](security-checklist.md) e [Lista de verificação de segurança do AEM](https://experienceleague.adobe.com/en/docs/experience-manager-64/administering/security/security-checklist).
 
 ### Problema do Dispatcher `jcr:content` alterado para `jcr%3acontent`
 
@@ -131,7 +129,7 @@ Leia mais: [https://sling.apache.org/documentation/the-sling-engine/mappings-for
 
 ### Como configurar agentes de limpeza do Dispatcher em uma instância de publicação?
 
-Consulte a página [Replicação](https://experienceleague.adobe.com/docs/experience-manager-65/deploying/configuring/replication.html?lang=pt-BR#configuring-your-replication-agents).
+Consulte a página [Replicação](https://experienceleague.adobe.com/en/docs/experience-manager-65/content/implementing/deploying/configuring/replication#configuring-your-replication-agents).
 
 ### Como solucionar problemas de limpeza do Dispatcher?
 
@@ -141,7 +139,7 @@ Se as operações de exclusão estiverem fazendo com que o Dispatcher libere, [u
 
 ### Como liberar ativos DAM do cache do Dispatcher?
 
-Você pode usar o recurso de “replicação em cadeia”. Com esse recurso ativado, o agente de limpeza do Dispatcher envia uma solicitação de limpeza quando uma replicação é recebida do autor.
+Você pode usar o recurso de “replicação em cadeia”. Com esse recurso ativado, o agente de liberação do Dispatcher envia uma solicitação de liberação quando uma replicação é recebida do autor.
 
 Para habilitá-lo:
 

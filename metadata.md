@@ -5,10 +5,10 @@ type: Documentation
 git-repo: https://github.com/AdobeDocs/experience-manager-dispatcher.pt-BR
 index: y
 recommendations: noDisplay
-source-git-commit: 70364ba7229e76ed8b30012029f9a5529b08312d
-workflow-type: ht
+source-git-commit: 2d90738d01fef6e37a2c25784ed4d1338c037c23
+workflow-type: tm+mt
 source-wordcount: '109'
-ht-degree: 100%
+ht-degree: 73%
 
 ---
 
@@ -20,9 +20,9 @@ O arquivo metadata.md inclui metadados de nível de repositório que passam para
 | metadados | para que serve |
 |--- |--- |
 | solution-title | Usado no cabeçalho do artigo como link |
-| solution-hub-url | Abre a página de ajuda do hub |
+| solution-hub-url | Abre a página do hub de ajuda |
 | solution-icon | Exibe o ícone da solução ao lado do título da solução. Ainda não implementado |
 | getting-started-url | Link para a página de introdução |
-| tutorials-url | Link para tutoriais em vídeo — tutoriais de ajuda ou tutoriais de KT |
+| tutorials-url | Link para tutoriais em vídeo — tutoriais de ajuda ou tutoriais do KT |
 | mini-toc-levels | Calcula o número de níveis de cabeçalho exibidos no painel direito. O padrão é 2 |
 | git-repo | Especifica o local do repositório principal para uso interno |
