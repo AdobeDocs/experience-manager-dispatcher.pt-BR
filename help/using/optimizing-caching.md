@@ -10,9 +10,9 @@ index: y
 internal: n
 snippet: y
 source-git-commit: 2d90738d01fef6e37a2c25784ed4d1338c037c23
-workflow-type: tm+mt
+workflow-type: ht
 source-wordcount: '1125'
-ht-degree: 73%
+ht-degree: 100%
 
 ---
 
@@ -33,23 +33,23 @@ Last Modified Date: 2017-10-25T04:13:34.919-0400
 >
 >As versões do Dispatcher são independentes do AEM. Você pode ter sido redirecionado para esta página se tiver seguido um link para a documentação do Dispatcher incorporada à documentação de uma versão anterior do AEM.
 
-O Dispatcher oferece vários mecanismos integrados que você pode usar para otimizar o desempenho. Esta seção informa como projetar seu site para potencializar os benefícios do armazenamento em cache.
+O Dispatcher oferece vários mecanismos integrados para otimizar o desempenho. Esta seção informa como projetar seu site para potencializar os benefícios do armazenamento em cache.
 
 >[!NOTE]
 >
 >Pode ser útil ter em mente que o Dispatcher armazena o cache em um servidor da Web padrão. Isso significa que você:
 >
->* pode armazenar em cache tudo que pode ser armazenado como uma página e solicitado usando um URL
->* O não pode armazenar outras coisas, como cabeçalhos HTTP, cookies, dados de sessão e dados de formulário.
+>* pode armazenar em cache tudo o que se pode armazenar como uma página e solicitar usando um URL
+>* não pode armazenar outras coisas, como cabeçalhos HTTP, cookies, dados de sessão e dados de formulário.
 >
 >Em geral, muitas estratégias de armazenamento em cache envolvem selecionar bons URLs e não depender desses dados adicionais.
 
 ## Uso de codificação de página consistente {#using-consistent-page-encoding}
 
-Os cabeçalhos de solicitação HTTP não são armazenados em cache e, portanto, podem ocorrer problemas se você armazenar informações de codificação de página no cabeçalho. Nessa situação, quando o Dispatcher fornece uma página do cache, a codificação padrão do servidor Web é usada para a página. Há duas maneiras de evitar esse problema:
+Os cabeçalhos de solicitação HTTP não são armazenados em cache e, portanto, poderão ocorrer problemas se você armazenar informações de codificação de página no cabeçalho. Nessa situação, quando o Dispatcher fornece uma página do cache, a codificação padrão do servidor Web é usada para a página. Há duas maneiras de evitar esse problema:
 
 * Se você usar apenas uma codificação, verifique se a codificação usada no servidor Web é igual à codificação padrão do site do AEM.
-* Para definir a codificação, use uma `<META>` tag no HTML `head` , como no exemplo a seguir:
+* Para definir a codificação, use uma tag `<META>` na seção `head` do HTML, como no exemplo a seguir:
 
 ```xml
         <META http-equiv="Content-Type" content="text/html; charset=EUC-JP">
@@ -87,7 +87,7 @@ www.myCompany.com/news/main.large.html
 
 >[!NOTE]
 >
->Para a maioria dos aspectos de layout, também é possível usar folhas de estilos e/ou scripts do cliente. Normalmente, eles funcionam bem com o armazenamento em cache.
+>Para a maioria dos aspectos de layout, também é possível usar folhas de estilos e/ou scripts do lado do cliente. Normalmente, eles funcionam bem com o armazenamento em cache.
 >
 >Isso também é útil para uma versão impressa, na qual você pode usar um URL como:
 >
@@ -97,7 +97,7 @@ www.myCompany.com/news/main.large.html
 
 ## Invalidar arquivos de imagem usados como títulos {#invalidating-image-files-used-as-titles}
 
-Se você renderizou títulos de página ou outro texto como imagens, armazene os arquivos para que eles sejam excluídos após uma atualização de conteúdo na página:
+Se você renderizou títulos de páginas ou outros textos como imagens, armazene os arquivos para que sejam excluídos após uma atualização de conteúdo na página:
 
 1. Coloque o arquivo de imagem na mesma pasta da página.
 1. Use o seguinte formato de nomenclatura para o arquivo de imagem:
@@ -112,22 +112,22 @@ Por exemplo, você pode armazenar o título da página myPage.html no arquivo my
 
 ## Invalidar arquivos de imagem usados para navegação {#invalidating-image-files-used-for-navigation}
 
-Se você usar imagens para as entradas de navegação, o método é basicamente o mesmo com títulos, apenas um pouco mais complexos. Armazene todas as imagens de navegação com as páginas de destino. Se você usar duas imagens para o normal e o ativo, poderá usar os seguintes scripts:
+Se você usa imagens para as entradas de navegação, o método é basicamente o mesmo para títulos, apenas um pouco mais complexo. Armazene todas as imagens de navegação com as páginas de destino. Se você usar duas imagens para o normal e o ativo, poderá usar os seguintes scripts:
 
 * Um script que exibe a página, como de costume.
 * Um script que processa solicitações &quot;.normal&quot; e retorna a imagem normal.
 * Um script que processa solicitações &quot;.active&quot; e retorna a imagem ativada.
 
-É importante criar essas imagens com o mesmo identificador de nome da página para garantir que uma atualização de conteúdo exclua essas imagens e a página.
+É importante criar essas imagens com o mesmo identificador de nome da página para garantir que uma atualização de conteúdo exclua essas imagens, bem como a página.
 
-Para páginas que não são modificadas, as imagens permanecem no cache, embora as próprias páginas sejam invalidadas automaticamente.
+Para páginas que não são modificadas, as imagens ainda permanecem no cache, embora as próprias páginas sejam invalidadas automaticamente.
 
 ## Personalização {#personalization}
 
 O Dispatcher não pode armazenar dados personalizados em cache, portanto, é recomendável limitar a personalização ao local necessário. Para ilustrar o motivo:
 
 * Se você usar uma página inicial personalizável livremente, essa página deverá ser composta sempre que um usuário a solicitar.
-* Se, por outro lado, você oferecer uma opção de dez páginas iniciais diferentes, será possível armazenar cada uma delas em cache, melhorando o desempenho.
+* Se, por outro lado, você oferecer a opção de dez páginas iniciais diferentes, poderá armazenar em cache cada uma delas para melhorar o desempenho.
 
 >[!NOTE]
 >
@@ -141,7 +141,7 @@ O Dispatcher não pode armazenar dados personalizados em cache, portanto, é rec
 
 ## Conexões adesivas {#sticky-connections}
 
-As [conexões adesivas](dispatcher.md#TheBenefitsofLoadBalancing) garantem que os documentos de um usuário sejam todos compostos no mesmo servidor. Se um usuário sair dessa pasta e posteriormente retornar a ela, a conexão ainda permanecerá. Defina uma pasta para que ela possa armazenar todos os documentos que exigem conexões adesivas para o site. Tente não manter outros documentos nela. Isso impactará o balanceamento de carga se você usar páginas personalizadas e dados de sessão.
+As [conexões adesivas](dispatcher.md#TheBenefitsofLoadBalancing) garantem que os documentos de um usuário sejam todos compostos no mesmo servidor. Se um usuário sair dessa pasta e posteriormente retornar a ela, a conexão ainda permanecerá. Defina uma pasta para conter todos os documentos que exigem conexões fixas para o site. Tente não manter outros documentos nela. Isso impactará o balanceamento de carga se você usar páginas personalizadas e dados de sessão.
 
 ## Tipos MIME {#mime-types}
 
@@ -162,5 +162,5 @@ O tipo MIME faz parte do cabeçalho HTTP e, como tal, o Dispatcher não o armaze
 Para garantir que os arquivos sejam armazenados em cache corretamente, siga estas diretrizes:
 
 * Certifique-se de que os arquivos sempre tenham a extensão adequada.
-* Evite scripts de servidor de arquivos genéricos, que tenham URLs como download.jsp?file=2214. Substitua o script para que ele use URLs que contenham a especificação do arquivo. Para o exemplo anterior, seria `download.2214.pdf`.
+* Evite scripts de servidor de arquivos genéricos, que tenham URLs como download.jsp?file=2214. Reescreva o script para utilizar URLs que contenham a especificação do arquivo. No exemplo anterior, isso seria `download.2214.pdf`.
 

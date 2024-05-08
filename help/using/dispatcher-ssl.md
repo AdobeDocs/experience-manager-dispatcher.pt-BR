@@ -10,9 +10,9 @@ internal: n
 snippet: y
 exl-id: ec378409-ddb7-4917-981d-dbf2198aca98
 source-git-commit: 2d90738d01fef6e37a2c25784ed4d1338c037c23
-workflow-type: tm+mt
+workflow-type: ht
 source-wordcount: '1302'
-ht-degree: 90%
+ht-degree: 100%
 
 ---
 
@@ -33,9 +33,9 @@ Configure o Dispatcher para se comunicar com a instância de renderização do A
 
 Antes de configurar o Dispatcher, configure o AEM ou o CQ para usar o SSL:
 
-* AEM 6.2: [Ativar HTTP por SSL](https://experienceleague.adobe.com/pt-br/docs/experience-manager-release-information/aem-release-updates/previous-updates/aem-previous-versions)
-* AEM 6.1: [Ativar HTTP por SSL](https://experienceleague.adobe.com/pt-br/docs/experience-manager-release-information/aem-release-updates/previous-updates/aem-previous-versions)
-* Versões anteriores do AEM: consulte [esta página](https://experienceleague.adobe.com/pt-br/docs/experience-manager-release-information/aem-release-updates/previous-updates/aem-previous-versions).
+* AEM 6.2: [Ativar HTTP por SSL](https://experienceleague.adobe.com/br/docs/experience-manager-release-information/aem-release-updates/previous-updates/aem-previous-versions)
+* AEM 6.1: [Ativar HTTP por SSL](https://experienceleague.adobe.com/br/docs/experience-manager-release-information/aem-release-updates/previous-updates/aem-previous-versions)
+* Versões anteriores do AEM: consulte [esta página](https://experienceleague.adobe.com/br/docs/experience-manager-release-information/aem-release-updates/previous-updates/aem-previous-versions).
 
 ### Cabeçalhos de solicitação relacionados ao SSL {#ssl-related-request-headers}
 
@@ -129,7 +129,7 @@ Para configurar o SSL mútuo, você precisa de certificados assinados por uma CA
 
 Para configurar o SSL mútuo, execute as seguintes etapas:
 
-1. [Instale](dispatcher-install.md) a versão mais recente do Dispatcher para sua plataforma. Usar um binário do Dispatcher compatível com SSL (o SSL está no nome do arquivo, como `dispatcher-apache2.4-linux-x86-64-ssl10-4.1.7.tar`).
+1. [Instale](dispatcher-install.md) a versão mais recente do Dispatcher para sua plataforma. Use um binário do Dispatcher compatível com SSL (possui “SSL” no nome do arquivo, como `dispatcher-apache2.4-linux-x86-64-ssl10-4.1.7.tar`).
 1. [Crie ou obtenha um certificado assinado pela CA](dispatcher-ssl.md#main-pars-title-3) para o Dispatcher e a instância de renderização.
 1. [Crie um repositório de chaves que contenha o certificado de renderização](dispatcher-ssl.md#main-pars-title-6) e configure o serviço HTTP da renderização.
 1. [Configure o módulo do servidor Web Dispatcher](dispatcher-ssl.md#main-pars-title-4) para SSL mútuo.
@@ -157,7 +157,7 @@ Se você estiver agindo como a autoridade de certificação, use o [OpenSSL](htt
 
 Use OpenSSL para criar as solicitações de certificados para enviar à CA de terceiros ou para assinar com sua CA.
 
-Ao criar um certificado, o OpenSSL usa a propriedade Nome Comum para identificar o titular do certificado. Para o certificado da instância de renderização, use o nome de host do computador da instância como o Nome Comum se você configurar o Dispatcher para aceitar o certificado. Faça isso somente se ele corresponder ao nome do host da instância de publicação. Consulte a [DispatcherCheckPeerCN](dispatcher-ssl.md#main-pars-title-11) propriedade.
+Ao criar um certificado, o OpenSSL usa a propriedade Nome Comum para identificar o titular do certificado. Para o certificado da instância de renderização, use o nome de host do computador da instância como o Nome comum se configurar o Dispatcher para aceitar o certificado. Faça isso somente se ele corresponder ao nome do host da instância de publicação. Consulte a propriedade [DispatcherCheckPeerCN](dispatcher-ssl.md#main-pars-title-11).
 
 1. Abra um terminal e altere o diretório atual para o diretório que contém o arquivo CH.sh das bibliotecas OpenSSL.
 1. Digite o seguinte comando e forneça valores quando solicitado. Se necessário, use o nome de host da instância de publicação como o Nome comum. O nome do host é um nome que pode ser resolvido por DNS para o endereço IP da renderização:
@@ -174,7 +174,7 @@ Ao criar um certificado, o OpenSSL usa a propriedade Nome Comum para identificar
    ./CA.sh -sign
    ```
 
-   Dois arquivos chamados de `newcert.pem` e `newkey.pem` serão criados no diretório que contém os seus arquivos de gerenciamento da CA. Esses dois arquivos são o certificado público e a chave privada para o computador de renderização, respectivamente.
+   Dois arquivos chamados de `newcert.pem` e `newkey.pem` serão criados no diretório que contém os seus arquivos de gerenciamento da CA. Esses dois arquivos são o certificado público e a chave privada do computador de renderização, respectivamente.
 
 1. Renomeie `newcert.pem` como `rendercert.pem` e renomeie `newkey.pem` como `renderkey.pem`.
 1. Repita as etapas 2 e 3 para criar um certificado e uma chave pública para o módulo do Dispatcher. Use um nome comum específico para a instância do Dispatcher.
@@ -247,11 +247,11 @@ Last Modified Date: 2014-08-12T13:11:21.401-0400
 
 #### Configuração da instância de renderização {#configuring-the-render-instance}
 
-Para configurar o serviço HTTP da instância de renderização para usar SSL, use o certificado de renderização com as instruções na *`Enable SSL on the Publish Instance`* seção:
+Para configurar o serviço HTTP da instância de renderização para usar SSL, use o certificado de renderização com as instruções da seção *`Enable SSL on the Publish Instance`*:
 
-* AEM 6.2: [Ativar HTTP por SSL](https://experienceleague.adobe.com/pt-br/docs/experience-manager-release-information/aem-release-updates/previous-updates/aem-previous-versions)
-* AEM 6.1: [Ativar HTTP por SSL](https://experienceleague.adobe.com/pt-br/docs/experience-manager-release-information/aem-release-updates/previous-updates/aem-previous-versions)
-* Versões anteriores do AEM: consulte [esta página.](https://experienceleague.adobe.com/pt-br/docs/experience-manager-release-information/aem-release-updates/previous-updates/aem-previous-versions)
+* AEM 6.2: [Ativar HTTP por SSL](https://experienceleague.adobe.com/br/docs/experience-manager-release-information/aem-release-updates/previous-updates/aem-previous-versions)
+* AEM 6.1: [Ativar HTTP por SSL](https://experienceleague.adobe.com/br/docs/experience-manager-release-information/aem-release-updates/previous-updates/aem-previous-versions)
+* Versões anteriores do AEM: consulte [esta página.](https://experienceleague.adobe.com/br/docs/experience-manager-release-information/aem-release-updates/previous-updates/aem-previous-versions)
 
 ### Configuração do SSL para o módulo Dispatcher {#configuring-ssl-for-the-dispatcher-module}
 
