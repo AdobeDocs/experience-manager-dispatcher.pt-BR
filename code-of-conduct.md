@@ -1,21 +1,21 @@
 ---
-source-git-commit: 2d90738d01fef6e37a2c25784ed4d1338c037c23
-workflow-type: ht
-source-wordcount: '421'
-ht-degree: 100%
+source-git-commit: 0a1aa854ea286a30c3527be8fc7c0998726a663f
+workflow-type: tm+mt
+source-wordcount: '435'
+ht-degree: 69%
 
 ---
 # Código de conduta da Adobe
 
 ## Compromisso da Adobe
 
-Para promover um ambiente aberto e acolhedor, tanto contribuidores quanto mantenedores se comprometem em tornar a participação em um projeto e na comunidade uma experiência livre de assédio para todos(as). Essa experiência independe de idade, formato de corpo, deficiências, etnia, identidade e expressão de gênero, nível de experiência, nacionalidade, aparência pessoal, raça, religião ou identidade e orientação sexual.
+Para promover um ambiente aberto e acolhedor, tanto contribuidores quanto mantenedores se comprometem em tornar a participação em um projeto e na comunidade uma experiência livre de assédio para todos(as). Essa experiência ocorre independentemente da idade, do tamanho corporal, da deficiência, da etnia, da identidade de gênero e da expressão. Independentemente do nível de experiência, nacionalidade, aparência pessoal, raça, religião ou identidade e orientação sexual.
 
 ## Padrões da Adobe
 
 Exemplos de comportamento que contribuem para a criação de um ambiente positivo incluem:
 
-* Uso de linguagem acolhedora e inclusiva
+* Usar um idioma acolhedor e inclusivo
 * Respeito por pontos de vista e experiências diferentes
 * Recepção sincera de críticas construtivas
 * Ênfase no que é melhor para a comunidade
@@ -27,17 +27,17 @@ Exemplos de comportamento inaceitável dos participantes incluem:
 * Brincadeiras de mal gosto, insultos/comentários depreciativos e ataques pessoais ou políticos
 * Assédio público ou privado
 * Publicação de informações privadas de outras pessoas, como endereço físico ou eletrônico, sem permissão explícita
-* Outros tipos de conduta que poderiam ser considerados razoavelmente inadequados em um contexto profissional
+* Outros comportamentos que podem ser considerados inadequados em um ambiente profissional
 
 ## Responsabilidades da Adobe
 
 Os mantenedores dos projetos são responsáveis por esclarecer as normas de comportamento aceitável e por tomar medidas corretivas adequadas e equilibradas em resposta a quaisquer casos de comportamento inaceitável.
 
-Mantenedores de projetos têm o direito e a responsabilidade de remover, editar ou rejeitar comentários, confirmações, códigos, edições de wiki, tópicos ou outras contribuições não alinhadas a este Código de Conduta. Além disso, podem banir, temporária ou permanentemente, qualquer colaborador(a) por outros comportamentos que considerem inadequados, ameaçadores, ofensivos ou prejudiciais.
+Os administradores do projeto têm o direito e a responsabilidade de remover, editar ou rejeitar comentários. Essa supervisão inclui confirmações, código, edições de wiki, problemas ou outras contribuições não alinhadas a este Código de conduta. Além disso, podem banir, temporária ou permanentemente, qualquer colaborador(a) por outros comportamentos que considerem inadequados, ameaçadores, ofensivos ou prejudiciais.
 
 ## Escopo
 
-Este código de conduta se aplica tanto em espaços de projetos como em espaços públicos quando um indivíduo representa o projeto ou sua comunidade. Exemplos de representação de um projeto ou comunidade incluem o uso de um endereço de email oficial do projeto, a publicação por meio de uma conta oficial de mídia social ou a atuação como representante designado em um evento online ou offline. A representação de um projeto pode ser definida e esclarecida pelos responsáveis pela manutenção do projeto.
+Este código de conduta se aplica tanto em espaços de projetos como em espaços públicos quando um indivíduo representa o projeto ou sua comunidade. Exemplos de representação de um projeto ou comunidade incluem o uso de um endereço de email oficial do projeto. Também pode incluir a publicação por meio de uma conta oficial de mídia social. Ou pode incluir atuar como representante designado em um evento online ou offline. Os administradores do projeto podem definir e esclarecer melhor a representação de um projeto.
 
 ## Execução
 
@@ -48,4 +48,6 @@ Os responsáveis pela manutenção dos projetos que não seguirem ou não aplica
 ## Atribuição
 
 Este Código de Conduta foi adaptado do [Contributor Covenant](https://www.contributor-covenant.org/), versão 1.4, disponível em [Contributor Covenant](https://www.contributor-covenant.org/version/1/4/code-of-conduct/).
+
+
 

@@ -1,32 +1,34 @@
 ---
-title: Configuração do Dispatcher para evitar ataques CSRF
-description: Saiba como configurar o AEM Dispatcher para impedir ataques de falsificações de solicitações entre sites.
+title: Configuração do Adobe Experience Manager Dispatcher para evitar ataques CSRF
+description: Saiba como configurar o Adobe Experience Manager Dispatcher para impedir ataques de falsificações de solicitações entre sites.
 topic-tags: dispatcher
 content-type: reference
 exl-id: bcd38878-f977-46a6-b01a-03e4d90aef01
-source-git-commit: 2d90738d01fef6e37a2c25784ed4d1338c037c23
-workflow-type: ht
-source-wordcount: '217'
-ht-degree: 100%
+source-git-commit: 0a1aa854ea286a30c3527be8fc7c0998726a663f
+workflow-type: tm+mt
+source-wordcount: '235'
+ht-degree: 48%
 
 ---
 
-# Configuração do Dispatcher para evitar ataques CSRF {#configuring-dispatcher-to-prevent-csrf-attacks}
+# Configuração do Adobe Experience Manager Dispatcher para evitar ataques CSRF{#configuring-dispatcher-to-prevent-csrf-attacks}
 
-O AEM fornece uma estrutura destinada a impedir ataques de falsificação de solicitação entre sites. Para usar esta estrutura corretamente, faça as seguintes alterações na configuração do Dispatcher:
+O AEM (Adobe Experience Manager) fornece uma estrutura destinada a impedir ataques de falsificação de solicitação entre sites. Para usar adequadamente essa estrutura, faça as seguintes alterações na configuração do Dispatcher:
 
 >[!NOTE]
 >
->Atualize os números de regras nos exemplos abaixo com base em sua configuração existente. Observe que os dispatchers usam a última regra correspondente para conceder uma permissão ou negá-la, portanto, coloque as regras no final da lista existente.
+>Atualize os números de regras nos exemplos abaixo com base em sua configuração existente. Lembre-se de que os Dispatchers usam a última regra correspondente para conceder ou negar uma permissão. Portanto, coloque as regras perto da parte inferior da lista existente.
 
 1. Na seção `/clientheaders` de `author-farm.any` e `publish-farm.any`, adicione a seguinte entrada no final da lista:\
    `CSRF-Token`
 1. Na seção /filters do arquivo `author-farm.any` e `publish-farm.any` ou `publish-filters.any`, adicione a linha a seguir para permitir solicitações de `/libs/granite/csrf/token.json` por meio do Dispatcher.\
    `/0999 { /type "allow" /glob " * /libs/granite/csrf/token.json*" }`
-1. Na seção `/cache /rules` de `publish-farm.any`, adicione uma regra para impedir que o Dispatcher armazene em cache o arquivo `token.json`. Geralmente, autores(as) ignoram o armazenamento em cache, por isso não há necessidade de adicionar a regra ao `author-farm.any`.\
+
+1. Na seção `/cache /rules` de `publish-farm.any`, adicione uma regra para impedir que o Dispatcher armazene em cache o arquivo `token.json`. Geralmente, os autores ignoram o armazenamento em cache, de modo que não é necessário adicionar a regra ao `author-farm.any`.
+
    `/0999 { /glob "/libs/granite/csrf/token.json" /type "deny" }`
 
-Para confirmar que a configuração esteja funcionando, observe o dispatcher.log no modo DEBUG para validar que o arquivo token.json não esteja sendo armazenado em cache e não esteja sendo bloqueado por filtros. Você deve ver mensagens semelhantes a:\
+Para validar se a configuração está funcionando, observe o dispatcher.log no modo DEBUG. Isso pode ajudá-lo a validar que o `token.json` para garantir que não seja armazenado em cache ou bloqueado por filtros. Você deve ver mensagens semelhantes a:\
 `... checking [/libs/granite/csrf/token.json]  `
 `... request URL not in cache rules: /libs/granite/csrf/token.json`\
 `... cache-action for [/libs/granite/csrf/token.json]: NONE`
