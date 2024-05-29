@@ -1,13 +1,13 @@
 ---
-source-git-commit: 2d90738d01fef6e37a2c25784ed4d1338c037c23
-workflow-type: ht
-source-wordcount: '72'
-ht-degree: 100%
+source-git-commit: 9be9f5935c21ebbf211b5da52280a31772993c2e
+workflow-type: tm+mt
+source-wordcount: '70'
+ht-degree: 88%
 
 ---
-# Documentação do Dispatcher do Adobe Experience Manager
+# Detecção de padrão do Adobe Experience Manager
 
-Este é o repositório da documentação do Dispatcher do Adobe Experience Manager.
+Este repositório para a Detecção de padrões do Adobe Experience Manager.
 
 Suas contribuições para a documentação são bem-vindas. Consulte os seguintes recursos:
 

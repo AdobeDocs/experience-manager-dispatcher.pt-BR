@@ -7,10 +7,10 @@ products: SG_EXPERIENCEMANAGER/DISPATCHER
 topic-tags: dispatcher
 content-type: reference
 exl-id: 1470b636-7e60-48cc-8c31-899f8785dafa
-source-git-commit: 2d90738d01fef6e37a2c25784ed4d1338c037c23
-workflow-type: ht
-source-wordcount: '2918'
-ht-degree: 100%
+source-git-commit: 9be9f5935c21ebbf211b5da52280a31772993c2e
+workflow-type: tm+mt
+source-wordcount: '2929'
+ht-degree: 87%
 
 ---
 
@@ -38,7 +38,7 @@ Por exemplo, uma empresa publica sites para duas de suas marcas: marca A e marca
 
 As páginas para a `BrandA.com` são armazenadas abaixo de `/content/sitea`. As solicitações do cliente para o URL `https://BrandA.com/en.html` são retornadas à página renderizada para o nó `/content/sitea/en`. Da mesma forma, as páginas para a `BrandB.com` são armazenadas abaixo de `/content/siteb`.
 
-Ao usar o Dispatcher para armazenar conteúdo em cache, devem ser feitas associações entre o URL da página na solicitação HTTP do cliente, o caminho do arquivo em cache correspondente e o caminho do arquivo correspondente no repositório.
+Ao usar o Dispatcher para armazenar o conteúdo em cache, faça associações entre o URL da página na solicitação HTTP do cliente, o caminho do arquivo em cache correspondente e o caminho do arquivo correspondente no repositório.
 
 ## Solicitações do cliente
 
@@ -66,10 +66,10 @@ Para usar o Dispatcher com vários domínios, configure o AEM, o Dispatcher e o 
 
 ## Mapeamento de URL {#url-mapping}
 
-Para permitir que URLs de domínio e caminhos de conteúdo sejam resolvidos em arquivos em cache, em algum momento do processo um caminho de arquivo ou URL de página deve ser traduzido. São fornecidas descrições das seguintes estratégias comuns, em que as traduções de caminho ou URL ocorrem em diferentes pontos do processo:
+Para permitir que URLs de domínio e caminhos de conteúdo sejam resolvidos em arquivos em cache, um caminho de arquivo ou URL de página deve ser traduzido durante o processo. São fornecidas descrições das seguintes estratégias comuns, em que as traduções de caminho ou URL ocorrem em diferentes pontos do processo:
 
 * (Recomendado) A instância de publicação do AEM usa o mapeamento Sling na resolução de recursos para implementar regras internas de reescrita de URL. Os URLs de domínio são traduzidos para caminhos do repositório de conteúdo. Consulte [AEM substitui URLs de entrada](#aem-rewrites-incoming-urls).
-* O servidor da Web usa regras internas de reescrita de URL que traduzem URLs de domínio para caminhos de cache. Consulte [O servidor Web reescreve URLs de entrada](#the-web-server-rewrites-incoming-urls).
+* O servidor Web usa regras internas de reescrita de URL que traduzem URLs de domínio para caminhos de cache. Consulte [O servidor Web reescreve URLs de entrada](#the-web-server-rewrites-incoming-urls).
 
 No geral, é recomendado usar URLs curtos para páginas da web. Normalmente, os URLs de página espelham a estrutura das pastas do repositório que contêm o conteúdo da Web. No entanto, os URLs não revelam os nós de repositório mais importantes, como `/content`. O cliente não está necessariamente ciente da estrutura do repositório do AEM.
 
@@ -201,7 +201,7 @@ Observe que os hosts virtuais herdam o valor da propriedade [DispatcherConfig](d
 Para oferecer suporte a URLs que incluem nomes de domínio e seus hosts virtuais correspondentes, defina os seguintes farms do Dispatcher:
 
 * Configure um farm do Dispatcher para cada host virtual. Esses farms processam solicitações do servidor Web para cada domínio, verificam arquivos em cache e solicitam páginas dos renderizadores.
-* Configure um farm do Dispatcher usado para invalidar o conteúdo do cache, independentemente do domínio ao qual o conteúdo pertence. Esse farm lida com solicitações de invalidação de arquivos dos agentes de replicação de limpeza do Dispatcher.
+* Configure um farm do Dispatcher usado para invalidar o conteúdo no cache, independentemente do domínio ao qual o conteúdo pertence. Esse farm lida com solicitações de invalidação de arquivos dos agentes de replicação de limpeza do Dispatcher.
 
 ### Criação de farms do Dispatcher para hosts virtuais
 
@@ -210,7 +210,7 @@ Os farms para hosts virtuais devem ter as seguintes configurações para que os 
 * A propriedade `/virtualhosts` é definida como o nome de domínio. Essa propriedade permite que o Dispatcher associe o farm ao domínio.
 * A propriedade `/filter` permite acesso ao caminho do URL da solicitação truncado após a parte do nome de domínio. Por exemplo, para o URL `https://branda.com/en.html`, o caminho é interpretado como `/en.html`, portanto, o filtro deve permitir acesso a esse caminho.
 
-* A propriedade `/docroot` é definida como o caminho do diretório raiz do conteúdo do site do domínio no cache do Dispatcher. Esse caminho é usado como o prefixo do URL concatenado da solicitação original. Por exemplo, o docroot de `/usr/lib/apache/httpd-2.4.3/htdocs/sitea` faz com que a solicitação de `https://branda.com/en.html` resolva para o arquivo `/usr/lib/apache/httpd-2.4.3/htdocs/sitea/en.html`.
+* A variável `/docroot` é definida como o caminho do diretório raiz. Ou seja, o diretório raiz do conteúdo do site do domínio no cache do Dispatcher. Esse caminho é usado como o prefixo do URL concatenado da solicitação original. Por exemplo, o docroot de `/usr/lib/apache/httpd-2.4.3/htdocs/sitea` faz com que a solicitação de `https://branda.com/en.html` resolva para o arquivo `/usr/lib/apache/httpd-2.4.3/htdocs/sitea/en.html`.
 
 Além disso, a instância de publicação do AEM deve ser designada como renderizador do host virtual. Configure outras propriedades do farm, conforme necessário. O código a seguir é uma configuração de farm abreviada para o domínio branda.com:
 
@@ -236,11 +236,11 @@ Além disso, a instância de publicação do AEM deve ser designada como renderi
 
 ### Criar um farm do Dispatcher para invalidação de cache
 
-Um farm do Dispatcher é necessário para manipular solicitações para invalidar arquivos em cache. Esse farm deve ser capaz de acessar arquivos .stat nos diretórios docroot de cada host virtual.
+Um farm do Dispatcher é necessário para manipular solicitações para invalidar arquivos em cache. Esse farm deve poder acessar arquivos .stat no `docroot` de cada host virtual.
 
-As seguintes configurações de propriedade permitem que o Dispatcher resolva arquivos no repositório de conteúdo do AEM a partir de arquivos no cache:
+As seguintes configurações de propriedade permitem que o Dispatcher resolva arquivos no repositório de conteúdo AEM a partir de arquivos no cache:
 
-* A propriedade `/docroot` é definida como docroot padrão do servidor Web. Normalmente, esse é o diretório onde a pasta `/content` é criada. Um exemplo de valor para o Apache no Linux® é `/usr/lib/apache/httpd-2.4.3/htdocs`.
+* A variável `/docroot` é definida como o padrão `docroot` do servidor Web. Normalmente, a /`docroot` é o diretório onde a variável `/content` pasta é criada. Um exemplo de valor para o Apache no Linux® é `/usr/lib/apache/httpd-2.4.3/htdocs`.
 * A propriedade `/filter` permite acesso a arquivos abaixo do diretório `/content`.
 
 A propriedade `/statfileslevel`deve ser alta o suficiente para que os arquivos .stat sejam criados no diretório raiz de cada host virtual. Essa propriedade permite que o cache de cada domínio seja invalidado separadamente. Para a configuração do exemplo, um valor `/statfileslevel` de `2` cria arquivos .stat no diretório `*docroot*/content/sitea` e no diretório `*docroot*/content/siteb`.
@@ -302,7 +302,7 @@ Depois de criar o mapeamento da página de conteúdo, para descobrir se são nec
 
 ### Exemplo de nós de mapeamento de recursos
 
-A tabela a seguir lista os nós que implementam o mapeamento de recursos para o domínio branda.com. Os nós semelhantes são criados para o domínio `brandb.com`, como `/etc/map/http/brandb.com`. Em todos os casos, os mapeamentos são necessários quando as referências no HTML da página não são resolvidas corretamente no contexto do Sling.
+A tabela a seguir lista os nós que implementam o mapeamento de recursos para o domínio branda.com. Os nós semelhantes são criados para o domínio `brandb.com`, como `/etc/map/http/brandb.com`. Em todos os casos, os mapeamentos são necessários quando as referências na página HTML não são resolvidas corretamente no contexto do Sling.
 
 | Caminho do nó | Tipo | Propriedade |
 |--- |--- |--- |
@@ -344,11 +344,11 @@ Configure os seguintes aspectos no servidor Web:
 
 O seguinte exemplo de arquivo httpd.conf configura dois hosts virtuais para um servidor Web Apache:
 
-* Os nomes de servidor (que coincidem com os nomes de domínio) são `brandA.com` (linha 16) e `brandB.com` (linha 32).
+* Os nomes de servidor (que correspondem aos nomes de domínio) são `brandA.com` (Linha 16) e `brandB.com` (Linha 32).
 
-* A raiz do documento de cada domínio virtual é o diretório no cache do Dispatcher que contém as páginas do site. (linhas 20 e 33)
-* A regra de reescrita de URL para cada domínio virtual é uma expressão regular que prefixa o caminho da página solicitada com o caminho para as páginas no cache. (linhas 19 e 35)
-* A propriedade `DispatherUseProcessedURL` é definida como `1`. (linha 10)
+* A raiz do documento de cada domínio virtual é o diretório no cache do Dispatcher que contém as páginas do site. (Linhas 20 e 33)
+* A regra de reescrita de URL para cada domínio virtual é uma expressão regular. A expressão regular prefixa o caminho da página solicitada. Ela recebe o prefixo path to the pages no cache. (Linhas 19 e 35)
+* A propriedade `DispatherUseProcessedURL` é definida como `1`. (Linha 10)
 
 Por exemplo, o servidor Web executa as seguintes ações quando recebe uma solicitação com o URL `https://brandA.com/en/products.html`:
 
@@ -417,7 +417,7 @@ Quando o servidor Web reescreve URLs, o Dispatcher requer um único farm definid
 
 O exemplo de arquivo de configuração a seguir é baseado no arquivo de exemplo `dispatcher.any` que está instalado com o Dispatcher. As seguintes alterações são necessárias para suportar as configurações do servidor Web do arquivo `httpd.conf` anterior:
 
-* A propriedade `/virtualhosts` faz com que o Dispatcher manipule solicitações para os domínios `brandA.com` e `brandB.com`. (linha 12)
+* A propriedade `/virtualhosts` faz com que o Dispatcher manipule solicitações para os domínios `brandA.com` e `brandB.com`. (Linha 12)
 * A propriedade `/statfileslevel` é definida como 2, para que os arquivos .stat sejam criados em cada diretório que contenha o conteúdo da Web do domínio (linha 41): `/statfileslevel "2"`
 
 Como de costume, a raiz do documento do cache é a mesma raiz do documento do servidor Web (linha 40): `/usr/lib/apache/httpd-2.4.3/htdocs`

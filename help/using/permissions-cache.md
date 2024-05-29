@@ -6,10 +6,10 @@ products: SG_EXPERIENCEMANAGER/DISPATCHER
 topic-tags: dispatcher
 content-type: reference
 exl-id: 3d8d8204-7e0d-44ad-b41b-6fec2689c6a6
-source-git-commit: 2d90738d01fef6e37a2c25784ed4d1338c037c23
-workflow-type: ht
-source-wordcount: '910'
-ht-degree: 100%
+source-git-commit: 9be9f5935c21ebbf211b5da52280a31772993c2e
+workflow-type: tm+mt
+source-wordcount: '924'
+ht-degree: 86%
 
 ---
 
@@ -42,7 +42,7 @@ Os diagramas a seguir ilustram a ordem dos eventos que ocorrem quando um navegad
 
 1. O Dispatcher determina que o conteúdo não seja armazenado em cache ou exige atualização.
 1. O Dispatcher encaminha a solicitação original para o renderizador.
-1. O renderizador chama o servlet do autorizador do AEM (esse não é o servlet AuthChcker do Dispatcher) para executar uma verificação de segurança. Quando o usuário é autorizado, o renderizador inclui a página renderizada no corpo da mensagem de resposta.
+1. O renderizador chama o servlet autorizador AEM (esse servlet não é o servlet AuthChcker do Dispatcher) para executar uma verificação de segurança. Quando o usuário é autorizado, o renderizador inclui a página renderizada no corpo da mensagem de resposta.
 1. O Dispatcher encaminha a resposta ao navegador. O Dispatcher adiciona o corpo da mensagem de resposta do renderizador ao cache.
 
 ## O usuário não está autorizado {#user-is-not-authorized}
@@ -51,9 +51,9 @@ Os diagramas a seguir ilustram a ordem dos eventos que ocorrem quando um navegad
 
 1. O Dispatcher verifica o cache.
 1. O Dispatcher envia uma mensagem de solicitação para o renderizador, que inclui todas as linhas de cabeçalho da solicitação do navegador.
-1. O renderizador chama o servlet Auth Checker para executar uma verificação de segurança que falha, e o renderizador encaminha a solicitação original para o Dispatcher.
+1. O renderizador chama o servlet Auth Checker para executar uma verificação de segurança, que falha, e o renderizador encaminha a solicitação original para o Dispatcher.
 1. O Dispatcher encaminha a solicitação original para o renderizador.
-1. O renderizador chama o servlet do autorizador do AEM (esse não é o servlet AuthChcker do Dispatcher) para executar uma verificação de segurança. Quando o usuário é autorizado, o renderizador inclui a página renderizada no corpo da mensagem de resposta.
+1. O renderizador chama o servlet autorizador AEM (esse servlet não é o servlet AuthChcker do Dispatcher) para executar uma verificação de segurança. Quando o usuário é autorizado, o renderizador inclui a página renderizada no corpo da mensagem de resposta.
 1. O Dispatcher encaminha a resposta ao navegador. O Dispatcher adiciona o corpo da mensagem de resposta do renderizador ao cache.
 
 ## Implementação de armazenamento em cache sensível a permissões {#implementing-permission-sensitive-caching}
@@ -74,7 +74,7 @@ Para implementar o armazenamento em cache sensível a permissões, execute as se
 
 ## Criar o servlet Auth Checker {#create-the-auth-checker-servlet}
 
-Crie e implante um servlet que execute a autenticação e a autorização do usuário que solicita o conteúdo da Web. O servlet pode usar qualquer método de autenticação e autorização, como a conta de usuário do AEM e ACLs do repositório ou um serviço de pesquisa LDAP. Você implanta o servlet na instância de AEM que o Dispatcher usa como renderizador.
+Crie e implante um servlet que execute a autenticação e a autorização do usuário que solicita o conteúdo da Web. O servlet pode usar qualquer autenticação. Também pode usar qualquer método de autorização. Por exemplo, ele pode usar a conta de usuário AEM e as ACLs de repositório. Ou pode usar um serviço de pesquisa LDAP. Você implanta o servlet na instância de AEM que o Dispatcher usa como renderizador.
 
 O servlet deve ser acessível a todos os usuários. Portanto, seu servlet deve estender a classe `org.apache.sling.api.servlets.SlingSafeMethodsServlet`, que fornece acesso somente de leitura ao sistema.
 

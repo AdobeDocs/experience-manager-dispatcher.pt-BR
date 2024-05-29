@@ -9,10 +9,10 @@ products: SG_EXPERIENCEMANAGER/DISPATCHER
 topic-tags: dispatcher
 content-type: reference
 exl-id: 90eb6a78-e867-456d-b1cf-f62f49c91851
-source-git-commit: 0a1aa854ea286a30c3527be8fc7c0998726a663f
+source-git-commit: 9be9f5935c21ebbf211b5da52280a31772993c2e
 workflow-type: tm+mt
-source-wordcount: '1411'
-ht-degree: 73%
+source-wordcount: '1407'
+ht-degree: 74%
 
 ---
 
@@ -124,11 +124,11 @@ Após a configuração, ao ativar uma página do autor para publicar, esse agent
 
 Para invalidar (ou liberar) o cache do Dispatcher sem ativar uma página, emita uma solicitação HTTP para o Dispatcher. Por exemplo, você pode criar um aplicativo do AEM que permita aos administradores ou outros aplicativos liberar o cache.
 
-A solicitação HTTP faz com que o AEM Dispatcher exclua arquivos específicos do cache. Como opção, o Dispatcher atualiza o cache com uma nova cópia.
+A solicitação HTTP faz com que o Dispatcher exclua arquivos específicos do cache. Como opção, o Dispatcher atualiza o cache com uma nova cópia.
 
 ### Exclusão de arquivos em cache {#delete-cached-files}
 
-Emita uma solicitação HTTP que faz com que o Dispatcher AEM exclua arquivos do cache. O Dispatcher armazena os arquivos em cache novamente somente quando recebe uma solicitação do cliente para a página. A exclusão de arquivos em cache dessa maneira é adequada para sites que provavelmente não receberão solicitações simultâneas para a mesma página.
+Emita uma solicitação HTTP que faz com que o Dispatcher exclua arquivos do cache. O Dispatcher armazena os arquivos em cache novamente somente quando recebe uma solicitação do cliente para a página. A exclusão de arquivos em cache dessa maneira é adequada para sites que provavelmente não receberão solicitações simultâneas para a mesma página.
 
 A solicitação HTTP tem o seguinte formato:
 
@@ -151,7 +151,7 @@ A invalidação (ou seja, tocar em arquivos .stat) pode ser evitada por enviar u
 
 ### Exclusão e rearmazenamento de arquivos em cache {#delete-and-recache-files}
 
-Emita uma solicitação HTTP que faz com que o Dispatcher AEM exclua arquivos em cache e, imediatamente, recupere e armazene o arquivo em cache novamente. Exclua e imediatamente armazene arquivos em cache novamente quando houver probabilidade de os sites receberem solicitações simultâneas do cliente para a mesma página. O rearmazenamento em cache imediato garante que o Dispatcher recupere e armazene em cache a página apenas uma vez, e não uma vez para cada uma das solicitações simultâneas do cliente.
+Emita uma solicitação HTTP que faz com que o Dispatcher exclua arquivos em cache e, imediatamente, recupere e armazene o arquivo em cache novamente. Exclua e imediatamente armazene arquivos em cache novamente quando houver probabilidade de os sites receberem solicitações simultâneas do cliente para a mesma página. O rearmazenamento em cache imediato garante que o Dispatcher recupere e armazene em cache a página apenas uma vez, e não uma vez para cada uma das solicitações simultâneas do cliente.
 
 **Observação:** a exclusão e o rearmazenamento em cache de arquivos devem ser executados somente na instância de publicação. Quando executados da instância do autor, as condições de corrida ocorrem mediante tentativas de recuperar recursos antes de serem publicadas.
 
@@ -185,7 +185,7 @@ Content-Length: 36
 
 O código a seguir implementa um servlet que envia uma solicitação de invalidação para o Dispatcher. O servlet recebe uma mensagem de solicitação que contém os parâmetros `handle` e `page`. Esses parâmetros fornecem o valor do cabeçalho `CQ-Handle` e o caminho da página para refazer o armazenamento em cache, respectivamente. O servlet usa os valores para criar a solicitação HTTP para o Dispatcher.
 
-Quando o servlet é implantado na instância de publicação, o seguinte URL faz com que o AEM Dispatcher exclua a página /content/geometrixx-outdoors/en.html e, em seguida, armazene em cache uma nova cópia.
+Quando o servlet é implantado na instância de publicação, o seguinte URL faz com que o Dispatcher exclua a página /content/geometrixx-outdoors/en.html e, em seguida, armazene em cache uma nova cópia.
 
 `10.36.79.223:4503/bin/flushcache/html?page=/content/geometrixx-outdoors/en.html&handle=/content/geometrixx-outdoors/en/men.html`
 
