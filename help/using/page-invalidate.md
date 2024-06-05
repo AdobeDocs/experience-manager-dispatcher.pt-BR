@@ -12,7 +12,7 @@ exl-id: 90eb6a78-e867-456d-b1cf-f62f49c91851
 source-git-commit: 9be9f5935c21ebbf211b5da52280a31772993c2e
 workflow-type: tm+mt
 source-wordcount: '1407'
-ht-degree: 74%
+ht-degree: 94%
 
 ---
 
@@ -24,13 +24,13 @@ Ao usar o Dispatcher com o AEM, a interação deve ser configurada para garantir
 
 A conta de usuário `admin` padrão é usada para autenticar os agentes de replicação instalados por padrão. Crie uma conta de usuário dedicada para uso com agentes de replicação.
 
-Para obter mais informações, consulte [Configurar usuários de replicação e transporte](https://experienceleague.adobe.com/br/docs/experience-manager-release-information/aem-release-updates/previous-updates/aem-previous-versions#VerificationSteps) seção da Lista de verificação de segurança do AEM.
+Para obter mais informações, consulte a seção [Configurar reprodução e usuários de transporte](https://experienceleague.adobe.com/br/docs/experience-manager-release-information/aem-release-updates/previous-updates/aem-previous-versions#VerificationSteps) da Lista de verificação de segurança do AEM.
 
 <!-- OLD URL from above https://helpx.adobe.com/experience-manager/6-3/sites/administering/using/security-checklist.html#VerificationSteps -->
 
 ## Invalidação do cache do Dispatcher no ambiente de criação {#invalidating-dispatcher-cache-from-the-authoring-environment}
 
-Um agente de replicação na instância do autor do AEM envia uma solicitação de invalidação de cache para o Dispatcher quando uma página é publicada. O Dispatcher atualiza o arquivo eventualmente no cache conforme o novo conteúdo é publicado.
+Um agente de replicação na instância do autor do AEM envia uma solicitação de invalidação de cache para o Dispatcher quando uma página é publicada. O Dispatcher atualiza o arquivo no cache conforme o novo conteúdo é publicado.
 
 <!-- 
 
@@ -50,7 +50,7 @@ Last Modified Date: 2017-05-25T10:37:23.679-0400
 
  -->
 
-Use o procedimento a seguir para configurar um agente de replicação na instância do autor do AEM. A configuração invalida o cache do Dispatcher na ativação da página:
+Use o procedimento a seguir para configurar um agente de replicação na instância de criação do AEM. A configuração invalida o cache do Dispatcher após a ativação da página:
 
 1. Abra o console Ferramentas do AEM. (`https://localhost:4502/miscadmin#/etc`)
 1. Abra o agente de replicação necessário abaixo de Ferramentas/Replicação/Agentes no autor. Você pode usar o agente de limpeza do Dispatcher instalado por padrão.
@@ -72,13 +72,13 @@ Para obter detalhes adicionais sobre como habilitar o acesso a URLs personalizad
 
 >[!NOTE]
 >
->O agente para liberar o cache do Dispatcher não precisa de um nome de usuário e senha, mas, se configurado, eles são enviados com autenticação básica.
+>O agente para limpar o cache do Dispatcher não precisa ter um nome de usuário e senha, mas, se configurado, eles serão enviados com um processo de autenticação básica.
 
 Há dois problemas potenciais com essa abordagem:
 
 * O Dispatcher deve estar acessível na instância de criação. Se sua rede (por exemplo, o firewall) estiver configurada de modo que o acesso entre os dois seja restrito, esse pode não ser o caso.
 
-* A publicação e a invalidação do cache ocorrem simultaneamente. Dependendo do tempo, um usuário pode solicitar uma página logo após sua remoção do cache e antes da publicação da nova página. O AEM retorna a página antiga, e o Dispatcher a armazena em cache novamente. Essa situação é mais um problema para sites grandes.
+* A publicação e a invalidação do cache ocorrem simultaneamente. Dependendo do tempo, um usuário pode solicitar uma página logo após sua remoção do cache e antes da publicação da nova página. O AEM retorna a página antiga, e o Dispatcher a armazena em cache novamente. Esse problema ocorre mais com sites grandes.
 
 ## Invalidação do cache do Dispatcher de uma Instância de publicação {#invalidating-dispatcher-cache-from-a-publishing-instance}
 
@@ -94,21 +94,21 @@ Comment Type: draft
 
  -->
 
-* Prevenção de possíveis conflitos de tempo entre o AEM Dispatcher e a instância de publicação (consulte [Invalidação do cache do Dispatcher no ambiente de criação](#invalidating-dispatcher-cache-from-the-authoring-environment)).
+* Como evitar possíveis conflitos de tempo entre o Dispatcher do AEM e a instância de publicação (consulte [Invalidar o cache do Dispatcher do ambiente de criação](#invalidating-dispatcher-cache-from-the-authoring-environment)).
 * O sistema inclui várias instâncias de publicação que residem em servidores de alto desempenho e somente uma instância de criação.
 
 >[!NOTE]
 >
->Um administrador de AEM experiente deve tomar a decisão de usar esse método.
+>Uma pessoa responsável pela administração do AEM que seja experiente deve tomar a decisão de usar esse método.
 
-Um agente de replicação que opera na instância de publicação controla a liberação do Dispatcher. No entanto, a configuração é feita no ambiente de criação e depois transferida pela ativação do agente:
+Um agente de replicação que opera na instância de publicação controla a limpeza do Dispatcher. No entanto, a configuração é feita no ambiente de criação e depois transferida pela ativação do agente:
 
 1. Abra o console Ferramentas do AEM.
 1. Abra o agente de replicação necessário abaixo de Ferramentas/Replicação/Agentes na publicação. Você pode usar o agente de limpeza do Dispatcher instalado por padrão.
 1. Clique em Editar e, na guia Configurações, certifique-se de que **Ativado** esteja selecionado.
 1. (Opcional) Para ativar solicitações de invalidação de alias ou caminho personalizado, selecione a opção **Atualização de alias**.
 1. Na guia Transporte, acesse o Dispatcher inserindo o URI necessário.\
-   Se você estiver usando o agente de limpeza padrão do Dispatcher, atualize o nome do host e a porta. Por exemplo, `http://<dispatcherHost>:<portApache>/dispatcher/invalidate.cache`
+   Se você estiver usando o agente de limpeza do Dispatcher padrão, atualize o nome do host e a porta; por exemplo, `http://<dispatcherHost>:<portApache>/dispatcher/invalidate.cache`
 
    **Observação:** para agentes de liberação do Dispatcher, a propriedade URI será usada somente se você usar entradas de host virtual baseadas em caminho para diferenciar farms. Use esse campo para direcionar o farm a ser invalidado. Por exemplo, o farm nº 1 tem um host virtual de `www.mysite.com/path1/*`, e o farm nº 2 tem um host virtual de `www.mysite.com/path2/*`. Você pode usar um URL de `/path1/invalidate.cache` para direcionar o primeiro farm, e `/path2/invalidate.cache` para direcionar o segundo farm. Para obter mais informações, consulte [Uso do Dispatcher com vários domínios](dispatcher-domains.md).
 
@@ -143,11 +143,11 @@ O Dispatcher libera (exclui) os arquivos e pastas em cache com nomes que corresp
 
 * Todos os arquivos (de qualquer extensão de arquivo) com nome `en` no diretório `geometrixx-outdoors`
 
-* Qualquer diretório chamado `_jcr_content` abaixo do `en` diretório (que, se existir, contém renderizações em cache de subnós da página)
+* Qualquer diretório chamado `_jcr_content` abaixo do diretório `en` (que, se existir, contém renderizações em cache de subnós da página)
 
 Todos os outros arquivos no cache do Dispatcher (ou até um nível específico, dependendo da configuração `/statfileslevel`) são invalidados ao tocar no arquivo `.stat`. A última data de modificação desse arquivo é comparada com a última data de modificação de um documento em cache, e o documento será buscado novamente se o arquivo `.stat` for mais recente. Consulte [Invalidação de arquivos por nível de pasta](dispatcher-configuration.md#main-pars_title_26) para obter mais detalhes.
 
-A invalidação (ou seja, tocar em arquivos .stat) pode ser evitada por enviar um cabeçalho `CQ-Action-Scope: ResourceOnly` adicional. Essa funcionalidade pode ser usada para liberar recursos específicos. Tudo isso sem invalidar outras partes do cache, como dados JSON. Esses dados são criados dinamicamente e exigem limpeza regular independente do cache. Por exemplo, representando dados obtidos de um sistema de terceiros para exibir notícias, marcadores de ações e assim por diante.
+A invalidação (ou seja, tocar em arquivos .stat) pode ser evitada por enviar um cabeçalho `CQ-Action-Scope: ResourceOnly` adicional. Essa funcionalidade pode ser usada para liberar recursos específicos. Tudo isso sem invalidar outras partes do cache, como dados JSON. Esses dados são criados dinamicamente e exigem limpeza regular independente do cache. Por exemplo, representar dados obtidos de um sistema de terceiros para exibir notícias, cotações da bolsa e assim por diante.
 
 ### Exclusão e rearmazenamento de arquivos em cache {#delete-and-recache-files}
 
@@ -169,7 +169,7 @@ page_path1
 page_pathn
 ```
 
-Os caminhos de página para rearmazenar em cache imediatamente são listados em linhas separadas no corpo da mensagem. O valor de `CQ-Handle` é o caminho de uma página que invalida as páginas para o rearmazenamento em cache. (Consulte o parâmetro `/statfileslevel` do item de configuração do [Cache](dispatcher-configuration.md#main-pars_146_44_0010).) O exemplo de mensagem de solicitação HTTP a seguir exclui e rearmazena em cache o `/content/geometrixx-outdoors/en.html page`:
+Os caminhos das páginas para armazenar novamente em cache imediatamente são listados em linhas separadas no corpo da mensagem. O valor de `CQ-Handle` é o caminho de uma página que invalida as páginas para o rearmazenamento em cache. (Consulte o parâmetro `/statfileslevel` do item de configuração do [Cache](dispatcher-configuration.md#main-pars_146_44_0010).) O exemplo de mensagem de solicitação HTTP a seguir exclui e rearmazena em cache o `/content/geometrixx-outdoors/en.html page`:
 
 ```xml
 POST /dispatcher/invalidate.cache HTTP/1.1  

@@ -13,7 +13,7 @@ role: Admin
 source-git-commit: 9be9f5935c21ebbf211b5da52280a31772993c2e
 workflow-type: tm+mt
 source-wordcount: '82'
-ht-degree: 74%
+ht-degree: 96%
 
 ---
 
@@ -23,7 +23,7 @@ ht-degree: 74%
 + [Visão geral](dispatcher.md)
 + Introdução {#getting-started}
    + [Instalação do Dispatcher](dispatcher-install.md)
-   + [Lista de verificação de segurança do Dispatcher](security-checklist.md)
+   + [Lista de verificação de segurança do Dispatcher ](security-checklist.md)
    + [Notas de versão do AEM Dispatcher](release-notes.md)
 + Configuração {#configuring}
    + [Configuração do Dispatcher](dispatcher-configuration.md)
@@ -32,7 +32,7 @@ ht-degree: 74%
    + [Armazenamento em cache de conteúdo protegido](permissions-cache.md)
    + [Utilização do Dispatcher do AEM com vários domínios](dispatcher-domains.md)
    + [Utilização do SSL com o Dispatcher do AEM](dispatcher-ssl.md)
-   + [Configuração do AEM Dispatcher para impedir ataques CSRF](configuring-dispatcher-to-prevent-csrf.md)
+   + [Configuração do Dispatcher do AEM para evitar ataques CSRF](configuring-dispatcher-to-prevent-csrf.md)
 + Resolução de problemas {#troubleshooting}
    + [Resolução de problemas do Dispatcher](dispatcher-troubleshooting.md)
    + [Perguntas frequentes sobre os principais problemas do Dispatcher](dispatcher-faq.md)
