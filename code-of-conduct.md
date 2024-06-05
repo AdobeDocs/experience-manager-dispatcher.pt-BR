@@ -1,21 +1,21 @@
 ---
 source-git-commit: 0a1aa854ea286a30c3527be8fc7c0998726a663f
-workflow-type: tm+mt
+workflow-type: ht
 source-wordcount: '435'
-ht-degree: 69%
+ht-degree: 100%
 
 ---
 # Código de conduta da Adobe
 
 ## Compromisso da Adobe
 
-Para promover um ambiente aberto e acolhedor, tanto contribuidores quanto mantenedores se comprometem em tornar a participação em um projeto e na comunidade uma experiência livre de assédio para todos(as). Essa experiência ocorre independentemente da idade, do tamanho corporal, da deficiência, da etnia, da identidade de gênero e da expressão. Independentemente do nível de experiência, nacionalidade, aparência pessoal, raça, religião ou identidade e orientação sexual.
+Para promover um ambiente aberto e acolhedor, tanto contribuidores quanto mantenedores se comprometem em tornar a participação em um projeto e na comunidade uma experiência livre de assédio para todos(as). Esta experiência não leva em consideração a idade, tamanho corporal, deficiência, etnia, identidade e expressão de gênero. Independentemente do nível de experiência, nacionalidade, aparência pessoal, raça, religião ou identidade e orientação sexual.
 
 ## Padrões da Adobe
 
 Exemplos de comportamento que contribuem para a criação de um ambiente positivo incluem:
 
-* Usar um idioma acolhedor e inclusivo
+* Uso de linguagem acolhedora e inclusiva
 * Respeito por pontos de vista e experiências diferentes
 * Recepção sincera de críticas construtivas
 * Ênfase no que é melhor para a comunidade
@@ -27,7 +27,7 @@ Exemplos de comportamento inaceitável dos participantes incluem:
 * Brincadeiras de mal gosto, insultos/comentários depreciativos e ataques pessoais ou políticos
 * Assédio público ou privado
 * Publicação de informações privadas de outras pessoas, como endereço físico ou eletrônico, sem permissão explícita
-* Outros comportamentos que podem ser considerados inadequados em um ambiente profissional
+* Outra conduta que poderia razoavelmente ser considerada inadequada em um ambiente profissional
 
 ## Responsabilidades da Adobe
 
@@ -37,7 +37,7 @@ Os administradores do projeto têm o direito e a responsabilidade de remover, ed
 
 ## Escopo
 
-Este código de conduta se aplica tanto em espaços de projetos como em espaços públicos quando um indivíduo representa o projeto ou sua comunidade. Exemplos de representação de um projeto ou comunidade incluem o uso de um endereço de email oficial do projeto. Também pode incluir a publicação por meio de uma conta oficial de mídia social. Ou pode incluir atuar como representante designado em um evento online ou offline. Os administradores do projeto podem definir e esclarecer melhor a representação de um projeto.
+Este código de conduta se aplica tanto em espaços de projetos como em espaços públicos quando um indivíduo representa o projeto ou sua comunidade. Exemplos de representação de um projeto ou comunidade incluem o uso de um endereço de email oficial do projeto. Também pode incluir a publicação por meio de uma conta oficial de redes sociais. Ou pode atuar como representante designado em um evento online ou offline. Os administradores do projeto podem definir e esclarecer melhor a representação de um projeto.
 
 ## Execução
 

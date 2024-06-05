@@ -1,6 +1,6 @@
 ---
 title: Lista de verificação de segurança do Dispatcher
-description: Saiba mais sobre a Lista de verificação de segurança do Dispatcher que deve ser concluída antes de entrar em produção.
+description: Saiba mais sobre a Lista de verificação de segurança do Dispatcher que deve ser concluída antes de iniciar a produção.
 contentOwner: User
 products: SG_EXPERIENCEMANAGER/DISPATCHER
 topic-tags: dispatcher
@@ -11,9 +11,9 @@ internal: n
 snippet: y
 exl-id: 49009810-b5bf-41fd-b544-19dd0c06b013
 source-git-commit: 0a1aa854ea286a30c3527be8fc7c0998726a663f
-workflow-type: tm+mt
+workflow-type: ht
 source-wordcount: '590'
-ht-degree: 64%
+ht-degree: 100%
 
 ---
 
@@ -38,11 +38,11 @@ A Adobe recomenda conferir a seguinte lista de verificação antes de prosseguir
 
 ## Usar a versão mais recente do Dispatcher {#use-the-latest-version-of-dispatcher}
 
-Instale a versão mais recente disponível para sua plataforma. Atualize sua instância do Dispatcher para usar a versão mais recente e aproveitar os aprimoramentos de produto e segurança. Consulte [Instalação do Dispatcher](dispatcher-install.md).
+Instale a versão mais recente disponível para a sua plataforma. Atualize a instância do Dispatcher para usar a versão mais recente e assim aproveitar os aprimoramentos de produto e segurança. Consulte [Instalação do Dispatcher](dispatcher-install.md).
 
 >[!NOTE]
 >
->Você pode verificar a versão atual da instalação do Dispatcher observando o arquivo de log do Dispatcher.
+>Você pode verificar a versão atual de instalação do Dispatcher observando o arquivo de log do Dispatcher.
 >
 >`[Thu Apr 30 17:30:49 2015] [I] [23171(140735307338496)] Dispatcher initialized (build 4.1.9)`
 >
@@ -52,9 +52,9 @@ Instale a versão mais recente disponível para sua plataforma. Atualize sua ins
 
 A Adobe recomenda que você [limite os clientes que possam liberar seu cache.](dispatcher-configuration.md#limiting-the-clients-that-can-flush-the-cache)
 
-## Ativar o HTTPS para segurança da camada de transporte {#enable-https-for-transport-layer-security}
+## Habilitar HTTPS para segurança da camada de transporte {#enable-https-for-transport-layer-security}
 
-O Adobe recomenda ativar a camada de transporte HTTPS nas instâncias de autor e publicação.
+A Adobe recomenda habilitar a camada de transporte HTTPS nas instâncias de criação e publicação.
 
 <!-- 
 
@@ -89,23 +89,23 @@ Listas de permissões são uma maneira melhor de fornecer controle de acesso, po
 
 ## Execução do Dispatcher com um usuário de sistema dedicado {#run-dispatcher-with-a-dedicated-system-user}
 
-Ao configurar o Dispatcher, verifique se o servidor Web é executado por um usuário dedicado com menos privilégios. É recomendável conceder acesso de gravação somente à pasta de cache do Dispatcher.
+Ao configurar o Dispatcher, verifique se o servidor Web é executado por um usuário dedicado com menos privilégios. É recomendado conceder acesso de gravação somente à pasta de cache do Dispatcher.
 
 Além disso, os usuários de IIS devem configurar o site da seguinte maneira:
 
-1. Na configuração do caminho físico para o seu site, selecione **Conectar-se como um usuário específico**.
+1. Na configuração do caminho físico do seu site, selecione **Conectar como um usuário específico**.
 1. Defina o usuário.
 
 ## Evitar ataques de negação de serviço (DoS) {#prevent-denial-of-service-dos-attacks}
 
 Um ataque de negação de serviço (DoS) é uma tentativa de tornar um recurso de computador indisponível para os usuários desejados.
 
-No nível do Dispatcher, há dois métodos de configuração para impedir ataques de DoS: [Filtros](https://experienceleague.adobe.com/en/docs#/filter)
+No nível do Dispatcher, existem dois métodos de configuração para evitar ataques DoS: [Filtros](https://experienceleague.adobe.com/pt-br/docs#/filter)
 
 * Use o módulo mod_rewrite (por exemplo, [Apache 2.4](https://httpd.apache.org/docs/2.4/mod/mod_rewrite.html)) para executar validações de URL (se as regras do padrão de URL não forem muito complexas).
 
 * Evite que o Dispatcher armazene URLs em cache com extensões falsas por meio de [filtros](dispatcher-configuration.md#configuring-access-to-content-filter).\
-  Por exemplo, altere as regras de armazenamento em cache para limitá-lo aos tipos MIME esperados, como:
+  Por exemplo, altere as regras de armazenamento em cache para limitá-lo aos tipos mime esperados, como:
 
    * `.html`
    * `.jpg`
@@ -116,9 +116,9 @@ No nível do Dispatcher, há dois métodos de configuração para impedir ataque
    * `.pdf`
    * `.ppt`
 
-  Um exemplo de arquivo de configuração pode ser visto para [restrição de acesso externo](#restrict-access). Inclui restrições para tipos MIME.
+  Um exemplo de arquivo de configuração pode ser visto para [restrição de acesso externo](#restrict-access). Inclui restrições para tipos de mime.
 
-Para ativar a funcionalidade completa nas instâncias de publicação, configure filtros para impedir o acesso aos seguintes nós:
+Para habilitar a funcionalidade completa nas instâncias de publicação, configure filtros para impedir o acesso aos seguintes nós:
 
 * `/etc/`
 * `/libs/`
@@ -161,5 +161,5 @@ Para mais informações sobre clickjacking, consulte o [site OWASP](https://owas
 
 ## Realizar um teste de penetração {#perform-a-penetration-test}
 
-A Adobe recomenda realizar um teste de penetração na infraestrutura do AEM antes de continuar a produção.
+A Adobe recomenda realizar um teste de penetração na infraestrutura do AEM antes de prosseguir para a produção.
 

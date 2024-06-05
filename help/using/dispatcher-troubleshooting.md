@@ -10,9 +10,9 @@ topic-tags: dispatcher
 content-type: reference
 exl-id: 29f338ab-5d25-48a4-9309-058e0cc94cff
 source-git-commit: 0a1aa854ea286a30c3527be8fc7c0998726a663f
-workflow-type: tm+mt
+workflow-type: ht
 source-wordcount: '539'
-ht-degree: 90%
+ht-degree: 100%
 
 ---
 
@@ -22,7 +22,7 @@ ht-degree: 90%
 >
 >As versões do Dispatcher são independentes do AEM. No entanto, a documentação do Dispatcher está incorporada na documentação do AEM. Sempre use a documentação do Dispatcher incorporada à documentação da versão mais recente do AEM.
 >
->Você pode ter sido redirecionado para esta página se tiver seguido um link para a documentação do Dispatcher. Esse link está incorporado na documentação de uma versão anterior do AEM.
+>Você pode ter sido redirecionado para esta página se clicou em um link para a documentação do Dispatcher. Esse link está incorporado na documentação de uma versão anterior do AEM.
 
 >[!NOTE]
 >
