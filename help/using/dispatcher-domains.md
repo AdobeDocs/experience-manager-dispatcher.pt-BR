@@ -1,5 +1,5 @@
 ---
-title: Utilização do Dispatcher com vários domínios
+title: Uso do Dispatcher com vários domínios
 description: Saiba como usar o Dispatcher para processar solicitações de página em vários domínios da Web.
 contentOwner: User
 cq-exporttemplate: /etc/contentsync/templates/geometrixx/page/rewrite
@@ -8,9 +8,9 @@ topic-tags: dispatcher
 content-type: reference
 exl-id: 1470b636-7e60-48cc-8c31-899f8785dafa
 source-git-commit: 9be9f5935c21ebbf211b5da52280a31772993c2e
-workflow-type: tm+mt
+workflow-type: ht
 source-wordcount: '2929'
-ht-degree: 87%
+ht-degree: 100%
 
 ---
 
@@ -38,7 +38,7 @@ Por exemplo, uma empresa publica sites para duas de suas marcas: marca A e marca
 
 As páginas para a `BrandA.com` são armazenadas abaixo de `/content/sitea`. As solicitações do cliente para o URL `https://BrandA.com/en.html` são retornadas à página renderizada para o nó `/content/sitea/en`. Da mesma forma, as páginas para a `BrandB.com` são armazenadas abaixo de `/content/siteb`.
 
-Ao usar o Dispatcher para armazenar o conteúdo em cache, faça associações entre o URL da página na solicitação HTTP do cliente, o caminho do arquivo em cache correspondente e o caminho do arquivo correspondente no repositório.
+Ao usar o Dispatcher para armazenar conteúdo em cache, devem ser feitas associações entre o URL da página na solicitação HTTP do cliente, o caminho do arquivo em cache correspondente e o caminho do arquivo correspondente no repositório.
 
 ## Solicitações do cliente
 
@@ -201,7 +201,7 @@ Observe que os hosts virtuais herdam o valor da propriedade [DispatcherConfig](d
 Para oferecer suporte a URLs que incluem nomes de domínio e seus hosts virtuais correspondentes, defina os seguintes farms do Dispatcher:
 
 * Configure um farm do Dispatcher para cada host virtual. Esses farms processam solicitações do servidor Web para cada domínio, verificam arquivos em cache e solicitam páginas dos renderizadores.
-* Configure um farm do Dispatcher usado para invalidar o conteúdo no cache, independentemente do domínio ao qual o conteúdo pertence. Esse farm lida com solicitações de invalidação de arquivos dos agentes de replicação de limpeza do Dispatcher.
+* Configure um farm do Dispatcher usado para invalidar o conteúdo do cache, independentemente do domínio ao qual o conteúdo pertence. Esse farm lida com solicitações de invalidação de arquivos dos agentes de replicação de limpeza do Dispatcher.
 
 ### Criação de farms do Dispatcher para hosts virtuais
 
@@ -210,7 +210,7 @@ Os farms para hosts virtuais devem ter as seguintes configurações para que os 
 * A propriedade `/virtualhosts` é definida como o nome de domínio. Essa propriedade permite que o Dispatcher associe o farm ao domínio.
 * A propriedade `/filter` permite acesso ao caminho do URL da solicitação truncado após a parte do nome de domínio. Por exemplo, para o URL `https://branda.com/en.html`, o caminho é interpretado como `/en.html`, portanto, o filtro deve permitir acesso a esse caminho.
 
-* A variável `/docroot` é definida como o caminho do diretório raiz. Ou seja, o diretório raiz do conteúdo do site do domínio no cache do Dispatcher. Esse caminho é usado como o prefixo do URL concatenado da solicitação original. Por exemplo, o docroot de `/usr/lib/apache/httpd-2.4.3/htdocs/sitea` faz com que a solicitação de `https://branda.com/en.html` resolva para o arquivo `/usr/lib/apache/httpd-2.4.3/htdocs/sitea/en.html`.
+* A propriedade `/docroot` é definida como o caminho do diretório raiz. Ou seja, o diretório raiz do conteúdo do site do domínio no cache do Dispatcher. Esse caminho é usado como o prefixo do URL concatenado da solicitação original. Por exemplo, o docroot de `/usr/lib/apache/httpd-2.4.3/htdocs/sitea` faz com que a solicitação de `https://branda.com/en.html` resolva para o arquivo `/usr/lib/apache/httpd-2.4.3/htdocs/sitea/en.html`.
 
 Além disso, a instância de publicação do AEM deve ser designada como renderizador do host virtual. Configure outras propriedades do farm, conforme necessário. O código a seguir é uma configuração de farm abreviada para o domínio branda.com:
 
@@ -236,11 +236,11 @@ Além disso, a instância de publicação do AEM deve ser designada como renderi
 
 ### Criar um farm do Dispatcher para invalidação de cache
 
-Um farm do Dispatcher é necessário para manipular solicitações para invalidar arquivos em cache. Esse farm deve poder acessar arquivos .stat no `docroot` de cada host virtual.
+Um farm do Dispatcher é necessário para manipular solicitações para invalidar arquivos em cache. Este farm deve ser capaz de acessar arquivos .stat nos diretórios `docroot` de cada host virtual.
 
-As seguintes configurações de propriedade permitem que o Dispatcher resolva arquivos no repositório de conteúdo AEM a partir de arquivos no cache:
+As seguintes configurações de propriedade permitem que o Dispatcher resolva arquivos no repositório de conteúdo do AEM a partir de arquivos no cache:
 
-* A variável `/docroot` é definida como o padrão `docroot` do servidor Web. Normalmente, a /`docroot` é o diretório onde a variável `/content` pasta é criada. Um exemplo de valor para o Apache no Linux® é `/usr/lib/apache/httpd-2.4.3/htdocs`.
+* A propriedade `/docroot` é definida como o padrão `docroot` do servidor Web. Normalmente, /`docroot` é o diretório onde a pasta `/content` é criada. Um exemplo de valor para o Apache no Linux® é `/usr/lib/apache/httpd-2.4.3/htdocs`.
 * A propriedade `/filter` permite acesso a arquivos abaixo do diretório `/content`.
 
 A propriedade `/statfileslevel`deve ser alta o suficiente para que os arquivos .stat sejam criados no diretório raiz de cada host virtual. Essa propriedade permite que o cache de cada domínio seja invalidado separadamente. Para a configuração do exemplo, um valor `/statfileslevel` de `2` cria arquivos .stat no diretório `*docroot*/content/sitea` e no diretório `*docroot*/content/siteb`.
@@ -344,10 +344,10 @@ Configure os seguintes aspectos no servidor Web:
 
 O seguinte exemplo de arquivo httpd.conf configura dois hosts virtuais para um servidor Web Apache:
 
-* Os nomes de servidor (que correspondem aos nomes de domínio) são `brandA.com` (Linha 16) e `brandB.com` (Linha 32).
+* Os nomes de servidor (que coincidem com os nomes de domínio) são `brandA.com` (Linha 16) e `brandB.com` (Linha 32).
 
 * A raiz do documento de cada domínio virtual é o diretório no cache do Dispatcher que contém as páginas do site. (Linhas 20 e 33)
-* A regra de reescrita de URL para cada domínio virtual é uma expressão regular. A expressão regular prefixa o caminho da página solicitada. Ela recebe o prefixo path to the pages no cache. (Linhas 19 e 35)
+* A regra de reescrita de URL para cada domínio virtual é uma expressão regular. A expressão regular prefixa o caminho da página solicitada. Ele recebe o prefixo do caminho para as páginas no cache. (Linhas 19 e 35)
 * A propriedade `DispatherUseProcessedURL` é definida como `1`. (Linha 10)
 
 Por exemplo, o servidor Web executa as seguintes ações quando recebe uma solicitação com o URL `https://brandA.com/en/products.html`:

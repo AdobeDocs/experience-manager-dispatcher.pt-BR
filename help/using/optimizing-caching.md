@@ -10,9 +10,9 @@ index: y
 internal: n
 snippet: y
 source-git-commit: 9be9f5935c21ebbf211b5da52280a31772993c2e
-workflow-type: tm+mt
+workflow-type: ht
 source-wordcount: '1128'
-ht-degree: 81%
+ht-degree: 100%
 
 ---
 
@@ -31,7 +31,7 @@ Last Modified Date: 2017-10-25T04:13:34.919-0400
 
 >[!NOTE]
 >
->As versões do Dispatcher são independentes do AEM. Você pode ter sido redirecionado para esta página se tiver seguido um link para a documentação do Dispatcher. Esse link foi incorporado na documentação de uma versão anterior do AEM.
+>As versões do Dispatcher são independentes do AEM. Você pode ter sido redirecionado para esta página se clicou em um link para a documentação do Dispatcher. Esse link foi incorporado na documentação de uma versão anterior do AEM.
 
 O Dispatcher oferece vários mecanismos integrados para otimizar o desempenho. Esta seção informa como projetar seu site para potencializar os benefícios do armazenamento em cache.
 
@@ -57,7 +57,7 @@ Os cabeçalhos de solicitação HTTP não são armazenados em cache e, portanto,
 
 ## Evitar parâmetros de URL {#avoid-url-parameters}
 
-Se possível, evite parâmetros de URL para páginas que você deseja armazenar em cache. Por exemplo, se você tiver uma galeria de imagens, o URL a seguir nunca será armazenado em cache (a menos que o Dispatcher esteja [configurado adequadamente](dispatcher-configuration.md#main-pars_title_24)):
+Se possível, evite parâmetros de URL para páginas que você deseja armazenar em cache. Por exemplo, se você tiver uma galeria de imagens, o seguinte URL nunca será armazenado em cache (a menos que o Dispatcher esteja [configurado adequadamente](dispatcher-configuration.md#main-pars_title_24)):
 
 ```xml
 www.myCompany.com/pictures/gallery.html?event=christmas&amp;page=1
@@ -87,9 +87,9 @@ www.myCompany.com/news/main.large.html
 
 >[!NOTE]
 >
->Para a maioria dos aspectos de layout, também é possível usar folhas de estilos, scripts do lado do cliente ou ambos. Um ou ambos funcionam bem com o armazenamento em cache.
+>Para a maioria dos aspectos de layout, também é possível usar folhas de estilos e/ou scripts do lado do cliente. Um ou ambos funcionam bem com o armazenamento em cache.
 >
->Esse método também é útil para uma versão impressa, na qual você pode usar um URL como:
+>Este método também é útil para uma versão impressa, na qual você pode usar um URL como:
 >
 >`www.myCompany.com/news/main.print.html`
 >
@@ -108,15 +108,15 @@ Por exemplo, você pode armazenar o título da página myPage.html no arquivo my
 
 >[!NOTE]
 >
->O arquivo de imagem não existe necessariamente na instância do AEM. Você pode usar um script que cria dinamicamente o arquivo de imagem. O Dispatcher armazena o arquivo no servidor Web.
+>O arquivo de imagem não existe necessariamente de forma física na instância do AEM. Você pode usar um script que cria dinamicamente o arquivo de imagem. O Dispatcher armazena o arquivo no servidor Web.
 
 ## Invalidar arquivos de imagem usados para navegação {#invalidating-image-files-used-for-navigation}
 
 Se você usa imagens para as entradas de navegação, o método é basicamente o mesmo para títulos, apenas um pouco mais complexo. Armazene todas as imagens de navegação com as páginas de destino. Se você usar duas imagens para o normal e o ativo, poderá usar os seguintes scripts:
 
 * Um script que exibe a página, como de costume.
-* Um script que processa `.normal` solicita e retorna a imagem normal.
-* Um script que processa `.active` solicita e retorna a imagem ativada.
+* Um script que processa solicitações `.normal` e retorna a imagem normal.
+* Um script que processa solicitações `.active` e retorna a imagem ativada.
 
 É importante criar essas imagens com o mesmo identificador de nome da página para garantir que uma atualização de conteúdo exclua essas imagens, bem como a página.
 
@@ -157,7 +157,7 @@ Para a maioria dos arquivos, o tipo MIME está implícito na extensão de arquiv
 
 Se o nome do arquivo não tiver extensão, ele será exibido como texto sem formatação.
 
-O tipo MIME faz parte do cabeçalho HTTP e, como tal, o Dispatcher não o armazena em cache. O aplicativo AEM pode retornar arquivos que não têm uma extensão de arquivo reconhecida. Se, em vez disso, os arquivos dependerem do tipo MIME, esses arquivos poderão ser exibidos incorretamente.
+O tipo MIME faz parte do cabeçalho HTTP e, como tal, o Dispatcher não o armazena em cache. O aplicativo AEM pode retornar arquivos que não tenham uma extensão de arquivo reconhecida. Se, em vez disso, os arquivos dependerem do tipo MIME, esses arquivos poderão ser exibidos incorretamente.
 
 Para garantir que os arquivos sejam armazenados em cache corretamente, siga estas diretrizes:
 

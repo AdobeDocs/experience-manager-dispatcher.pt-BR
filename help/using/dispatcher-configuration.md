@@ -3,9 +3,9 @@ title: Configuração do Dispatcher do AEM
 description: Saiba como configurar o Dispatcher. Saiba mais sobre o suporte para IPv4 e IPv6, arquivos de configuração, variáveis de ambiente e nomeação da instância. Leia sobre definição de farms, identificação de hosts virtuais e muito mais.
 exl-id: 91159de3-4ccb-43d3-899f-9806265ff132
 source-git-commit: 9be9f5935c21ebbf211b5da52280a31772993c2e
-workflow-type: tm+mt
+workflow-type: ht
 source-wordcount: '8876'
-ht-degree: 95%
+ht-degree: 100%
 
 ---
 
@@ -259,7 +259,7 @@ Comment Type: draft
 
 A propriedade `/clientheaders` define uma lista de cabeçalhos HTTP que o Dispatcher transmite da solicitação HTTP do cliente para o renderizador (instância do AEM).
 
-Por padrão, o Dispatcher encaminha os cabeçalhos HTTP padrão para a instância AEM. Em algumas instâncias, você pode encaminhar cabeçalhos adicionais ou remover cabeçalhos específicos:
+Por padrão, o Dispatcher encaminha os cabeçalhos HTTP padrão para a instância do AEM. Em algumas instâncias, você pode encaminhar cabeçalhos adicionais ou remover cabeçalhos específicos:
 
 * Adicione cabeçalhos (como cabeçalhos personalizados) esperados pela sua instância do AEM na solicitação HTTP.
 * Remova cabeçalhos, como cabeçalhos de autenticação, que são relevantes apenas para o servidor web.
@@ -455,7 +455,7 @@ Um exemplo de configuração tem a seguinte aparência:
 
 ## Definição de renderizadores de página {#defining-page-renderers-renders}
 
-A variável `/renders` define o URL para o qual o Dispatcher envia solicitações para renderizar um documento. O exemplo de seção `/renders` a seguir identifica uma única instância do AEM para renderização:
+A propriedade `/renders` define o URL para o qual o Dispatcher envia solicitações para renderizar um documento. O exemplo de seção `/renders` a seguir identifica uma única instância do AEM para renderização:
 
 ```xml
 /renders
@@ -914,7 +914,7 @@ Last Modified Date: 2015-03-25T14:23:05.185-0400
 <p style="font-family: tahoma, arial, helvetica, sans-serif; font-size: 12px;">The "com.adobe.granite.dispatcher.vanityurl.content" package needs to be made public before publishing this contnet.</p>
  -->
 
-Configure o Dispatcher para habilitar o acesso a URLs personalizados que estão configurados para suas páginas AEM.
+Configure o Dispatcher para habilitar o acesso a URLs personalizados que estão configurados para suas páginas do AEM.
 
 Quando o acesso a URLs personalizados está ativado, o Dispatcher chama periodicamente um serviço que é executado na instância de renderização para obter uma lista de URLs personalizados. O Dispatcher armazena essa lista em um arquivo local. Quando uma solicitação de página é negada devido a um filtro na seção `/filter`, o Dispatcher consulta a lista de URLs personalizados. Se o URL negado estiver na lista, o Dispatcher permitirá acesso ao URL personalizado.
 
@@ -1003,7 +1003,7 @@ A propriedade `/docroot` identifica o diretório em que os arquivos em cache sã
 
 >[!NOTE]
 >
->O valor deve ser o mesmo caminho da raiz do documento do servidor Web, para que o Dispatcher e o servidor Web lidem com os mesmos arquivos.\
+>O valor deve ser o mesmo caminho que a raiz do documento do servidor Web para que o Dispatcher e o servidor Web manipulem os mesmos arquivos.\
 >O servidor da Web é responsável por fornecer o código de status correto quando o arquivo de cache do Dispatcher é usado, por isso é importante que ele também possa encontrá-lo.
 
 Se você usar vários farms, cada farm deverá usar uma raiz de documento diferente.
@@ -1022,7 +1022,7 @@ O arquivo de status não tem conteúdo. Quando o conteúdo é atualizado, o Disp
 
 A propriedade `/serveStaleOnError` controla se o Dispatcher retorna documentos invalidados quando o servidor de renderização retorna um erro. Por padrão, quando um arquivo de status é tocado e invalida o conteúdo em cache, o Dispatcher exclui o conteúdo em cache. Essa ação é executada na próxima vez que for solicitada.
 
-Se `/serveStaleOnError` está definida como `"1"`, o Dispatcher não exclui conteúdo invalidado do cache. Ou seja, a menos que o servidor de renderização retorne uma resposta bem-sucedida. Uma resposta 5xx do AEM ou um tempo limite de conexão faz com que o Dispatcher forneça o conteúdo desatualizado e responda com e o Status HTTP de 111 (Falha na revalidação).
+Se `/serveStaleOnError` está definida como `"1"`, o Dispatcher não exclui conteúdo invalidado do cache. Ou seja, a menos que o servidor de renderização retorne uma resposta bem-sucedida. Uma resposta 5xx do AEM ou um tempo limite de conexão faz com que o Dispatcher forneça o conteúdo desatualizado e responda com o Status HTTP de 111 (Falha na revalidação).
 
 ### Armazenamento em cache quando a autenticação é usada {#caching-when-authentication-is-used}
 
@@ -1229,7 +1229,7 @@ Ele é chamado com os seguintes argumentos:
 
 Este método pode ser usado para abranger vários casos de uso diferentes. Por exemplo, invalidar outros caches específicos do aplicativo ou lidar com casos em que o URL externo de uma página e seu lugar no docroot não correspondem ao caminho do conteúdo.
 
-O script de exemplo a seguir registra cada solicitação invalidada em um arquivo.
+O script de exemplo abaixo registra cada solicitação invalidada em um arquivo.
 
 ```xml
 /invalidateHandler "/opt/dispatcher/scripts/invalidate.sh"
@@ -1431,7 +1431,7 @@ O Dispatcher é compatível com no máximo oito categorias de estatísticas. Se 
 
 **Seleção de renderizador**
 
-Sempre que o Dispatcher exigir uma página renderizada, ele usará o seguinte algoritmo para selecionar o renderizador:
+Sempre que o Dispatcher exigir uma página renderizada, ele usa o seguinte algoritmo para selecionar o renderizador:
 
 1. Se a solicitação tiver o nome do renderizador em um cookie `renderid`, o Dispatcher usará esse renderizador.
 1. Se a solicitação não incluir o cookie `renderid`, o Dispatcher compara as estatísticas de renderização:
@@ -1455,7 +1455,7 @@ Defina uma categoria para cada tipo de documento para o qual deseja manter estat
 
 A categoria `name` deve ser exclusiva do farm. O `pattern` é descrito na seção [Criação de padrões para propriedades glob](#designing-patterns-for-glob-properties).
 
-Para determinar a categoria de um URI, o Dispatcher compara o URI com cada padrão de categoria até que uma correspondência seja encontrada. O Dispatcher começa com a primeira categoria na lista e continua na ordem. Portanto, coloque primeiro as categorias com padrões mais específicos.
+Para determinar a categoria de um URI, o Dispatcher compara o URI com cada padrão de categoria até encontrar uma correspondência. O Dispatcher começa com a primeira categoria na lista e continua na ordem. Portanto, coloque primeiro as categorias com padrões mais específicos.
 
 Por exemplo, no arquivo padrão `dispatcher.any`, o Dispatcher define uma categoria HTML, e depois outras categorias. A categoria HTML é mais específica, portanto, aparece primeiro:
 
@@ -1548,7 +1548,7 @@ Use a propriedade `/health_check` para especificar um URL que é verificado quan
 
 ### Especificação do atraso de repetição de página {#specifying-the-page-retry-delay}
 
-A propriedade `/retryDelay` define o tempo (em segundos) que o Dispatcher aguarda entre rodadas de tentativas de conexão com os renderizadores do farm. Para cada rodada, o número máximo de vezes que o Dispatcher tenta uma conexão com um renderizador é o número de renderizadores no farm.
+A propriedade `/retryDelay` define o tempo (em segundos) que o Dispatcher aguarda entre rodadas de tentativas de conexão com os renderizadores do farm. Para cada rodada, o número máximo de vezes que o Dispatcher tenta uma conexão com um renderizador é o número de renderizações no farm.
 
 O Dispatcher usa um valor `"1"` se `/retryDelay` não estiver explicitamente definido. O valor padrão geralmente é apropriado.
 
@@ -1560,7 +1560,7 @@ O Dispatcher usa um valor `"1"` se `/retryDelay` não estiver explicitamente def
 
 A propriedade `/numberOfRetries` define o número máximo de rodadas de tentativas de conexão executadas pelo Dispatcher com os renderizadores. Se o Dispatcher não conseguir se conectar com êxito a um renderizador após esse número de tentativas, ele retornará uma resposta com falha.
 
-Para cada rodada, o número máximo de vezes que o Dispatcher tenta uma conexão com um renderizador é o número de renderizadores no farm. Portanto, o número máximo de vezes que o Dispatcher tenta uma conexão é ( `/numberOfRetries`) x (o número de renderizadores).
+Para cada rodada, o número máximo de vezes que o Dispatcher tenta uma conexão com um renderizador é o número de renderizações no farm. Portanto, o número máximo de vezes que o Dispatcher tenta uma conexão é ( `/numberOfRetries`) x (o número de renderizações).
 
 Se o valor não estiver definido explicitamente, o valor padrão será `5`.
 
@@ -1575,7 +1575,7 @@ Para reenviar solicitações para renderizações diferentes quando a solicitaç
 * Quando uma solicitação para um renderizador retorna o status HTTP 503 (INDISPONÍVEL), o Dispatcher envia a solicitação para um renderizador diferente.
 * Quando uma solicitação para uma renderização retorna o status HTTP 50x (diferente de 503), o Dispatcher envia uma solicitação para a página que está configurada para a propriedade `health_check`.
    * Se a verificação de integridade retornar 500 (INTERNAL_SERVER_ERROR), o Dispatcher enviará a solicitação original para um renderizador diferente.
-   * Se a verificação de integridade retornar o Status HTTP 200, o Dispatcher retornará o erro inicial HTTP 500 ao cliente.
+   * Se a verificação de integridade retornar o status HTTP 200, o Dispatcher retornará o erro inicial HTTP 500 ao cliente.
 
 Para habilitar o failover, adicione a seguinte linha no farm (ou site):
 

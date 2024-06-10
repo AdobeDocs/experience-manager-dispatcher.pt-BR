@@ -6,9 +6,9 @@ topic-tags: dispatcher
 content-type: reference
 exl-id: c9266683-6890-4359-96db-054b7e856dd0
 source-git-commit: 9be9f5935c21ebbf211b5da52280a31772993c2e
-workflow-type: tm+mt
+workflow-type: ht
 source-wordcount: '3079'
-ht-degree: 97%
+ht-degree: 100%
 
 ---
 
@@ -20,7 +20,7 @@ ht-degree: 97%
 
 O Dispatcher é a ferramenta de armazenamento em cache e balanceamento de carga do Adobe Experience Manager usada em conjunto com um servidor da web de nível corporativo.
 
-O processo de implantação do Dispatcher é independente do servidor Web e da plataforma do SO escolhida:
+O processo de implantação do Dispatcher é independente do servidor Web e da plataforma de sistema operacional escolhida:
 
 1. Saiba mais sobre o Dispatcher (nesta página). Além disso, consulte as [perguntas frequentes sobre o Dispatcher](/help/using/dispatcher-faq.md).
 1. Instale um [servidor Web compatível](https://experienceleague.adobe.com/br/docs/experience-manager-65/content/implementing/deploying/introduction/technical-requirements) de acordo com a documentação do servidor Web.
@@ -30,7 +30,7 @@ O processo de implantação do Dispatcher é independente do servidor Web e da p
 
 >[!NOTE]
 >
->Para entender melhor como o Dispatcher funciona com AEM:
+>Para entender melhor como o Dispatcher funciona com o AEM:
 >
 >* Consulte [Pergunte aos especialistas da comunidade AEM, de julho de 2017](https://communities.adobeconnect.com/pf0gem7igw1f/).
 >* Acesse [este repositório](https://github.com/adobe/aem-dispatcher-experiments). Ele contém uma coleção de experiências num formato de laboratório &quot;móvel&quot;.
@@ -41,7 +41,7 @@ Use as seguintes informações conforme necessário:
 * [Lista de verificação de segurança do Dispatcher ](security-checklist.md)
 * [Base de conhecimento do Dispatcher](https://helpx.adobe.com/br/experience-manager/kb/index/dispatcher.html)
 * [Otimização de um site para desempenho de cache](https://experienceleague.adobe.com/br/docs/experience-manager-65/content/implementing/deploying/configuring/configuring-performance)
-* [Utilização do Dispatcher com vários domínios](dispatcher-domains.md)
+* [Uso do Dispatcher com vários domínios](dispatcher-domains.md)
 * [Utilização do SSL com o Dispatcher](dispatcher-ssl.md)
 * [Implementação de armazenamento em cache sensível a permissões](permissions-cache.md)
 * [Resolução de problemas do Dispatcher](dispatcher-troubleshooting.md)
@@ -129,7 +129,7 @@ Em uma atualização de conteúdo, um ou mais documentos do AEM são alterados. 
 É de salientar os seguintes pontos:
 
 * As atualizações de conteúdo normalmente são usadas com um sistema de criação que “sabe” o que deve ser substituído.
-* As atualizações de conteúdo que afetam os arquivos são removidas, mas não substituídas imediatamente. Na próxima vez que um arquivo for solicitado, o Dispatcher buscará o novo arquivo da instância do AEM e o colocará no cache, substituindo o conteúdo antigo.
+* As atualizações de conteúdo que afetam os arquivos são removidas, mas não substituídas imediatamente. Na próxima vez que esse arquivo for solicitado, o Dispatcher buscará o novo arquivo na instância do AEM e o colocará no cache, substituindo o conteúdo antigo.
 * Normalmente, as imagens geradas automaticamente que incorporam texto de uma página são armazenadas em arquivos de imagem que começam com o mesmo identificador - garantindo assim que a associação exista para exclusão. Por exemplo, você pode armazenar o texto do título da página mypage.html como a imagem mypage.titlePicture.gif na mesma pasta. Desta forma, a imagem é automaticamente eliminada do cache sempre que a página é atualizada, para que possa ter a certeza de que a imagem reflete sempre a versão atual da página.
 * Você pode ter vários arquivos de status, por exemplo, um por pasta de idioma. Se uma página for atualizada, o AEM procurará a próxima pasta pai que contém um arquivo de status e *tocará* esse arquivo.
 

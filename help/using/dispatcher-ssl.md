@@ -10,9 +10,9 @@ internal: n
 snippet: y
 exl-id: ec378409-ddb7-4917-981d-dbf2198aca98
 source-git-commit: 9be9f5935c21ebbf211b5da52280a31772993c2e
-workflow-type: tm+mt
+workflow-type: ht
 source-wordcount: '1310'
-ht-degree: 89%
+ht-degree: 100%
 
 ---
 
@@ -121,7 +121,7 @@ Para usar o SSL mútuo, configure as conexões entre o Dispatcher e o computador
 * O Dispatcher verifica se a Autoridade de Certificação (CA) do certificado da instância de renderização é confiável.
 * (Opcional) O Dispatcher verifica se o certificado da instância de renderização corresponde ao endereço do servidor da instância de renderização.
 
-Para configurar o SSL mútuo, você precisa de certificados assinados com uma CA confiável. Certificados autoassinados não são adequados. Você pode agir como CA ou usar os serviços de uma CA de terceiros para assinar seus certificados. Para configurar o SSL mútuo, são necessários os seguintes itens:
+Para configurar o SSL mútuo, você precisa de certificados assinados por uma Autoridade de Certificação (CA) confiável. Certificados autoassinados não são adequados. Você pode agir como CA ou usar os serviços de uma CA de terceiros para assinar seus certificados. Para configurar o SSL mútuo, são necessários os seguintes itens:
 
 * Certificados assinados para a instância de renderização e o Dispatcher
 * O certificado de CA (se você estiver agindo como CA)
@@ -130,8 +130,8 @@ Para configurar o SSL mútuo, você precisa de certificados assinados com uma CA
 Para configurar o SSL mútuo, execute as seguintes etapas:
 
 1. [Instale](dispatcher-install.md) a versão mais recente do Dispatcher para sua plataforma. Use um binário do Dispatcher compatível com SSL (possui “SSL” no nome do arquivo, como `dispatcher-apache2.4-linux-x86-64-ssl10-4.1.7.tar`).
-1. [Criar ou obter um certificado assinado pela CA](dispatcher-ssl.md#main-pars-title-3) para o Dispatcher e a instância de renderização.
-1. [Criar um keystore contendo o certificado de renderização](dispatcher-ssl.md#main-pars-title-6) e configure o serviço HTTP do renderizador.
+1. [Crie ou obtenha um certificado assinado pela CA](dispatcher-ssl.md#main-pars-title-3) para o Dispatcher e a instância de renderização.
+1. [Crie um repositório de chaves que contenha o certificado de renderização](dispatcher-ssl.md#main-pars-title-6) e configure o serviço HTTP de renderização.
 1. [Configure o módulo do servidor Web Dispatcher](dispatcher-ssl.md#main-pars-title-4) para SSL mútuo.
 
 ### Criação ou obtenção de certificados assinados pela CA {#creating-or-obtaining-ca-signed-certificates}
@@ -286,7 +286,7 @@ Combine o certificado do Dispatcher e a chave privada não criptografada em um �
 Adicione as seguintes propriedades à [Configuração do módulo Dispatcher](dispatcher-install.md#main-pars-55-35-1022) (em `httpd.conf`):
 
 * `DispatcherCertificateFile`: O caminho para o arquivo de certificado unificado do Dispatcher, contendo o certificado público e a chave privada não criptografada. Esse arquivo é usado quando o servidor SSL solicita o certificado de cliente do Dispatcher.
-* `DispatcherCACertificateFile`: O caminho para o arquivo de certificado da CA. Usado se o servidor SSL apresentar uma CA que uma autoridade raiz não confia.
+* `DispatcherCACertificateFile`: o caminho para o arquivo de certificado da CA. Usado se o servidor SSL apresentar uma CA em que uma autoridade raiz não confia.
 * `DispatcherCheckPeerCN`: Opção de ativar ( `On`) ou desativar ( `Off`) a verificação do nome do host para certificados de servidor remoto.
 
 O código a seguir é um exemplo de configuração:

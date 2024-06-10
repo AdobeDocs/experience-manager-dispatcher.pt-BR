@@ -10,9 +10,9 @@ topic-tags: dispatcher
 content-type: reference
 exl-id: 90eb6a78-e867-456d-b1cf-f62f49c91851
 source-git-commit: 9be9f5935c21ebbf211b5da52280a31772993c2e
-workflow-type: tm+mt
+workflow-type: ht
 source-wordcount: '1407'
-ht-degree: 94%
+ht-degree: 100%
 
 ---
 
@@ -128,7 +128,7 @@ A solicitação HTTP faz com que o Dispatcher exclua arquivos específicos do ca
 
 ### Exclusão de arquivos em cache {#delete-cached-files}
 
-Emita uma solicitação HTTP que faz com que o Dispatcher exclua arquivos do cache. O Dispatcher armazena os arquivos em cache novamente somente quando recebe uma solicitação do cliente para a página. A exclusão de arquivos em cache dessa maneira é adequada para sites que provavelmente não receberão solicitações simultâneas para a mesma página.
+Emita uma solicitação HTTP que faça com que o Dispatcher exclua arquivos do cache. O Dispatcher armazena os arquivos em cache novamente somente quando recebe uma solicitação do cliente para a página. A exclusão de arquivos em cache dessa maneira é adequada para sites que provavelmente não receberão solicitações simultâneas para a mesma página.
 
 A solicitação HTTP tem o seguinte formato:
 
@@ -151,7 +151,7 @@ A invalidação (ou seja, tocar em arquivos .stat) pode ser evitada por enviar u
 
 ### Exclusão e rearmazenamento de arquivos em cache {#delete-and-recache-files}
 
-Emita uma solicitação HTTP que faz com que o Dispatcher exclua arquivos em cache e, imediatamente, recupere e armazene o arquivo em cache novamente. Exclua e imediatamente armazene arquivos em cache novamente quando houver probabilidade de os sites receberem solicitações simultâneas do cliente para a mesma página. O rearmazenamento em cache imediato garante que o Dispatcher recupere e armazene em cache a página apenas uma vez, e não uma vez para cada uma das solicitações simultâneas do cliente.
+Emita uma solicitação HTTP que faça com que o Dispatcher exclua arquivos em cache e, imediatamente, recupere e armazene o arquivo em cache novamente. Exclua e imediatamente armazene arquivos em cache novamente quando houver probabilidade de os sites receberem solicitações simultâneas do cliente para a mesma página. O rearmazenamento em cache imediato garante que o Dispatcher recupere e armazene em cache a página apenas uma vez, e não uma vez para cada uma das solicitações simultâneas do cliente.
 
 **Observação:** a exclusão e o rearmazenamento em cache de arquivos devem ser executados somente na instância de publicação. Quando executados da instância do autor, as condições de corrida ocorrem mediante tentativas de recuperar recursos antes de serem publicadas.
 
