@@ -6,9 +6,9 @@ content-type: reference
 products: SG_EXPERIENCEMANAGER/6.4
 exl-id: b55c7a34-d57b-4d45-bd83-29890f1524de
 source-git-commit: 5f743be9c143e1e720e59304feebaa2e272dad87
-workflow-type: tm+mt
+workflow-type: ht
 source-wordcount: '1062'
-ht-degree: 99%
+ht-degree: 100%
 
 ---
 
@@ -27,7 +27,7 @@ ht-degree: 99%
 
 ## Requisitos e pré-requisitos do sistema {#system-requirements-and-prerequisites}
 
-Consulte [Plataformas compatíveis](https://experienceleague.adobe.com/en/docs/experience-manager-65/content/implementing/deploying/introduction/technical-requirements#dispatcher-platforms-web-servers) para obter mais informações sobre requisitos e pré-requisitos.
+Consulte [Plataformas compatíveis](https://experienceleague.adobe.com/br/docs/experience-manager-65/content/implementing/deploying/introduction/technical-requirements#dispatcher-platforms-web-servers) para obter mais informações sobre requisitos e pré-requisitos.
 
 A Adobe recomenda usar a versão mais recente do AEM Dispatcher para se beneficiar das novas funcionalidades, das correções de erros mais recentes e do melhor desempenho possível.
 
