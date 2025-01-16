@@ -3,9 +3,9 @@ title: Configuração do Dispatcher do AEM
 description: Saiba como configurar o Dispatcher. Saiba mais sobre o suporte para IPv4 e IPv6, arquivos de configuração, variáveis de ambiente e nomeação da instância. Leia sobre definição de farms, identificação de hosts virtuais e muito mais.
 exl-id: 91159de3-4ccb-43d3-899f-9806265ff132
 source-git-commit: 23dde3b2ebc6a63d5e1c50e5877338c3bd09d5d2
-workflow-type: tm+mt
-source-wordcount: '0'
-ht-degree: 0%
+workflow-type: ht
+source-wordcount: '8938'
+ht-degree: 100%
 
 ---
 
@@ -959,7 +959,7 @@ Ao adicionar `/loadOnStartup 0` (veja a amostra abaixo) você pode desabilitar o
       } 
 ```
 
-Enquanto `/loadOnStartup 1` carrega as URLs personalizadas na inicialização. Lembre-se de que `/loadOnStartup 1` é o valor padrão atual para este parâmetro.
+Enquanto `/loadOnStartup 1` carrega os URLs personalizados na inicialização. Lembre-se de que `/loadOnStartup 1` é o valor padrão atual para este parâmetro.
 
 ## Encaminhamento de solicitações de sindicalização - `/propagateSyndPost` {#forwarding-syndication-requests-propagatesyndpost}
 
