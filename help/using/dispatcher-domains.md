@@ -7,10 +7,10 @@ products: SG_EXPERIENCEMANAGER/DISPATCHER
 topic-tags: dispatcher
 content-type: reference
 exl-id: 1470b636-7e60-48cc-8c31-899f8785dafa
-source-git-commit: 3b24e3eb54aa48c4891943b7458c57525897517f
+source-git-commit: b8dc67a9633c1a459a2851f4be99a5fcbec7fe79
 workflow-type: tm+mt
-source-wordcount: '2929'
-ht-degree: 100%
+source-wordcount: '3008'
+ht-degree: 97%
 
 ---
 
@@ -195,6 +195,10 @@ DocumentRoot "/usr/lib/apache/httpd-2.4.3/htdocs"
 ```
 
 Observe que os hosts virtuais herdam o valor da propriedade [DispatcherConfig](dispatcher-install.md#main-pars-67-table-7) configurada na seção do servidor principal. Os hosts virtuais podem incluir sua própria propriedade DispatcherConfig para substituir a configuração do servidor principal.
+
+>[!NOTE]
+>
+>No AEM as a Cloud Service, uma configuração do vhost separada deve ser usada com um DocumentRoot em um nível superior a cada uma das subpáginas. Isso é tratado por padrão no arquétipo, mas quando várias DocumentRoots são usadas, uma configuração vhost de prioridade mais alta deve ser usada para que a invalidação de cache possa ser tratada para todo o cache, pois não pode ser configurada separadamente para cada site. O ServerAlias dessa nova configuração deve aceitar o cabeçalho de host &quot;localhost&quot;.
 
 ### Configuração do Dispatcher para lidar com vários domínios {#configure-dispatcher-to-handle-multiple-domains}
 
@@ -500,7 +504,7 @@ Como de costume, a raiz do documento do cache é a mesma raiz do documento do se
 
 Para reescrever referências a arquivos com extensões diferentes de .html ou .htm, crie um componente de transformador de reescrita do Sling e adicione-o ao pipeline de reescrita padrão.
 
-Reescreva referências quando os caminhos de recursos não resolverem corretamente no contexto do servidor Web. Por exemplo, um transformador é necessário quando os componentes geradores de imagem criam links como /content/sitea/en/products.navimage.png. O componente `topnav` da seção [Como criar um site na Internet com todos os recursos](https://experienceleague.adobe.com/br/docs/experience-manager-65/content/implementing/developing/introduction/the-basics) cria esses links.
+Reescreva referências quando os caminhos de recursos não resolverem corretamente no contexto do servidor Web. Por exemplo, um transformador é necessário quando os componentes geradores de imagem criam links como /content/sitea/en/products.navimage.png. O componente `topnav` da seção [Como criar um site na Internet com todos os recursos](https://experienceleague.adobe.com/pt-br/docs/experience-manager-65/content/implementing/developing/introduction/the-basics) cria esses links.
 
 O [reescritor Sling](https://sling.apache.org/documentation/bundles/output-rewriting-pipelines-org-apache-sling-rewriter.html) é um módulo que pós-processa a saída do Sling. As implementações de pipeline SAX da reescrita consistem em um gerador, um ou mais transformadores e um serializador:
 
@@ -538,7 +542,7 @@ Para criar um componente transformador e usá-lo em um pipeline, execute as segu
 
 >[!NOTE]
 >
->Para criar um projeto Maven, use o arquétipo [multimódulo](https://experienceleague.adobe.com/br/docs/experience-manager-release-information/aem-release-updates/previous-updates/aem-previous-versions) do plug-in Maven para pacotes de conteúdo. Os POMs criam e instalam automaticamente um pacote de conteúdo.
+>Para criar um projeto Maven, use o arquétipo [multimódulo](https://experienceleague.adobe.com/pt-br/docs/experience-manager-release-information/aem-release-updates/previous-updates/aem-previous-versions) do plug-in Maven para pacotes de conteúdo. Os POMs criam e instalam automaticamente um pacote de conteúdo.
 
 Os exemplos a seguir implementam um transformador que reescreve referências a arquivos de imagem.
 
