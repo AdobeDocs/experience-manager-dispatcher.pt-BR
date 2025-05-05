@@ -26,7 +26,7 @@ A conta de usuário `admin` padrão é usada para autenticar os agentes de repli
 
 Para obter mais informações, consulte a seção [Configurar reprodução e usuários de transporte](https://experienceleague.adobe.com/br/docs/experience-manager-release-information/aem-release-updates/previous-updates/aem-previous-versions#VerificationSteps) da Lista de verificação de segurança do AEM.
 
-<!-- OLD URL from above https://helpx.adobe.com/experience-manager/6-3/sites/administering/using/security-checklist.html#VerificationSteps -->
+<!-- OLD URL from above https://helpx.adobe.com/br/experience-manager/6-3/sites/administering/using/security-checklist.html#VerificationSteps -->
 
 ## Invalidação do cache do Dispatcher no ambiente de criação {#invalidating-dispatcher-cache-from-the-authoring-environment}
 
