@@ -1,23 +1,23 @@
 ---
-title: Otimização de um site para desempenho de cache
+title: Otimizar um site para desempenho de cache
 description: Saiba como projetar seu site para potencializar os benefícios do armazenamento em cache.
 contentOwner: User
 products: SG_EXPERIENCEMANAGER/DISPATCHER
 topic-tags: dispatcher
 content-type: reference
-redirecttarget: https://helpx.adobe.com/br/experience-manager/6-4/sites/deploying/using/configuring-performance.html
+redirecttarget: https://helpx.adobe.com/experience-manager/6-4/sites/deploying/using/configuring-performance.html
 index: y
 internal: n
 snippet: y
-source-git-commit: 9be9f5935c21ebbf211b5da52280a31772993c2e
+source-git-commit: c41b4026a64f9c90318e12de5397eb4c116056d9
 workflow-type: tm+mt
 source-wordcount: '1128'
-ht-degree: 100%
+ht-degree: 96%
 
 ---
 
 
-# Otimização de um site para desempenho de cache {#optimizing-a-website-for-cache-performance}
+# Otimizar um site para desempenho de cache {#optimizing-a-website-for-cache-performance}
 
 <!-- 
 
@@ -44,7 +44,7 @@ O Dispatcher oferece vários mecanismos integrados para otimizar o desempenho. E
 >
 >Em geral, muitas estratégias de armazenamento em cache envolvem selecionar bons URLs e não depender desses dados adicionais.
 
-## Uso de codificação de página consistente {#using-consistent-page-encoding}
+## Usar codificação de página consistente {#using-consistent-page-encoding}
 
 Os cabeçalhos de solicitação HTTP não são armazenados em cache e, portanto, poderão ocorrer problemas se você armazenar informações de codificação de página no cabeçalho. Nessa situação, quando o Dispatcher fornece uma página do cache, a codificação padrão do servidor Web é usada para a página. Há duas maneiras de evitar esse problema:
 

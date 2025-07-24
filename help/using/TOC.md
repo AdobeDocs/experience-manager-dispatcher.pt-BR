@@ -10,10 +10,10 @@ feature-set: Experience Manager
 feature: Dispatcher
 topic: Administration
 role: Admin
-source-git-commit: 9be9f5935c21ebbf211b5da52280a31772993c2e
+source-git-commit: c41b4026a64f9c90318e12de5397eb4c116056d9
 workflow-type: tm+mt
-source-wordcount: '82'
-ht-degree: 100%
+source-wordcount: '81'
+ht-degree: 50%
 
 ---
 
@@ -22,17 +22,17 @@ ht-degree: 100%
 
 + [Visão geral](dispatcher.md)
 + Introdução {#getting-started}
-   + [Instalação do Dispatcher](dispatcher-install.md)
-   + [Lista de verificação de segurança do Dispatcher ](security-checklist.md)
+   + [Instalar o Dispatcher](dispatcher-install.md)
+   + [Lista de verificação de segurança do Dispatcher](security-checklist.md)
    + [Notas de versão do AEM Dispatcher](release-notes.md)
 + Configuração {#configuring}
-   + [Configuração do Dispatcher](dispatcher-configuration.md)
+   + [Configure o Dispatcher](dispatcher-configuration.md)
    + [Invalidar páginas em cache do AEM](page-invalidate.md)
-   + [Otimização de um site para desempenho de cache](https://experienceleague.adobe.com/br/docs/experience-manager-65/content/implementing/deploying/configuring/configuring-performance)
-   + [Armazenamento em cache de conteúdo protegido](permissions-cache.md)
-   + [Utilização do Dispatcher do AEM com vários domínios](dispatcher-domains.md)
-   + [Utilização do SSL com o Dispatcher do AEM](dispatcher-ssl.md)
-   + [Configuração do Dispatcher do AEM para evitar ataques CSRF](configuring-dispatcher-to-prevent-csrf.md)
+   + [Otimizar um Site para Desempenho de Cache](https://experienceleague.adobe.com/pt-br/docs/experience-manager-65/content/implementing/deploying/configuring/configuring-performance)
+   + [Armazenar conteúdo protegido em cache](permissions-cache.md)
+   + [Usar o AEM Dispatcher com vários domínios](dispatcher-domains.md)
+   + [Usar SSL com AEM Dispatcher](dispatcher-ssl.md)
+   + [Configurar o AEM Dispatcher para evitar ataques CSRF](configuring-dispatcher-to-prevent-csrf.md)
 + Resolução de problemas {#troubleshooting}
-   + [Resolução de problemas do Dispatcher](dispatcher-troubleshooting.md)
+   + [Solução de problemas do Dispatcher](dispatcher-troubleshooting.md)
    + [Perguntas frequentes sobre os principais problemas do Dispatcher](dispatcher-faq.md)

@@ -1,19 +1,19 @@
 ---
-title: Instalação do Dispatcher
+title: Instalar o Dispatcher
 description: Saiba como instalar o módulo do Dispatcher no Microsoft&reg; Internet Information Server, Apache Web Server e Sun Java&trade; Web Server-iPlanet.
 contentOwner: User
 converted: true
 topic-tags: dispatcher
 content-type: reference
 exl-id: 9375d1c0-8d9e-46cb-9810-fa4162a8c1ba
-source-git-commit: 9be9f5935c21ebbf211b5da52280a31772993c2e
+source-git-commit: c41b4026a64f9c90318e12de5397eb4c116056d9
 workflow-type: tm+mt
-source-wordcount: '3748'
-ht-degree: 100%
+source-wordcount: '3720'
+ht-degree: 94%
 
 ---
 
-# Instalação do Dispatcher {#installing-dispatcher}
+# Instalar o Dispatcher {#installing-dispatcher}
 
 <!-- 
 
@@ -39,9 +39,9 @@ A tabela a seguir lista o identificador do servidor Web usado em nomes de arquiv
 
 | Servidor Web | Kit de instalação |
 |--- |--- |
-| Apache 2.4 | dispatcher-apache **2.4**-&lt;other parameters> |
-| Microsoft® Internet Information Server 7.5, 8, 8.5, 10 | dispatcher-**iis**-&lt;other parameters> |
-| Sun Java™ Web Server iPlanet | dispatcher-**ns**-&lt;other parameters> |
+| Apache 2.4 | `dispatcher-apache**2.4**-<other parameters>` |
+| Microsoft® Internet Information Server 7.5, 8, 8.5, 10 | `dispatcher-**iis**-<other parameters>` |
+| Sun Java™ Web Server iPlanet | `dispatcher-**ns**-<other parameters>` |
 
 >[!CAUTION]
 >
@@ -130,7 +130,7 @@ Use o procedimento a seguir para copiar os arquivos do Dispatcher para o local c
       * Instância do autor: `author_dispatcher.any`
       * Instância de publicação: `dispatcher.any`
 
-## Microsoft® IIS: configuração do arquivo INI do Dispatcher {#microsoft-iis-configure-the-dispatcher-ini-file}
+## Microsoft® IIS - Configurar o arquivo INI da Dispatcher {#microsoft-iis-configure-the-dispatcher-ini-file}
 
 Para configurar a instalação do Dispatcher, edite o arquivo `disp_iis.ini`. O formato básico do arquivo `.ini` é o seguinte:
 
@@ -150,7 +150,7 @@ A tabela a seguir descreve cada propriedade.
 | `logfile` | O local do arquivo `dispatcher.log`. Se esse local não for configurado, as mensagens de log serão enviadas ao log de eventos do Windows. |
 | `loglevel` | Define o nível de log usado para enviar mensagens para o log de eventos. Os seguintes valores podem ser especificados no nível de log do arquivo de log: <br/>0 - somente mensagens de erro. <br/>1 - erros e avisos. <br/>2 - erros, avisos e mensagens informativas <br/>3 - erros, avisos, mensagens informativas e mensagens de depuração. <br/>**Observação**: defina o nível de log como 3 durante a instalação e o teste, e depois como 0 durante a execução em um ambiente de produção. |
 | `replaceauthorization` | Especifica como os cabeçalhos de autorização na solicitação HTTP são tratados. Os seguintes valores são válidos:<br/>0 - Os cabeçalhos de autorização não são modificados. <br/>1 - Substitui qualquer cabeçalho chamado “Autorização”, diferente de “Básica”, por seu `Basic <IIS:LOGON\_USER>` equivalente.<br/> |
-| `servervariables` | Define como as variáveis do servidor são processadas.<br/>0 - As variáveis do servidor IIS não são enviadas para o Dispatcher nem para o AEM. <br/>1 - Todas as variáveis do servidor IIS, (como `LOGON\_USER, QUERY\_STRING, ...`), são enviadas ao Dispatcher, juntamente com os cabeçalhos de solicitação (e também à instância do AEM, se não estiver armazenada em cache).  <br/>As variáveis de servidor incluem `AUTH\_USER, LOGON\_USER, HTTPS\_KEYSIZE` e muitas outras. Consulte a documentação do IIS para obter a lista completa de variáveis, com detalhes. |
+| `servervariables` | Define como as variáveis do servidor são processadas.<br/>0 - As variáveis do servidor IIS não são enviadas para o Dispatcher nem para o AEM. <br/>1 - todas as variáveis do servidor IIS (como `LOGON\_USER, QUERY\_STRING, ...`) são enviadas para o Dispatcher, juntamente com os cabeçalhos solicitados (e também para a instância do AEM, se não estiver armazenada em cache).  <br/>As variáveis de servidor incluem `AUTH\_USER, LOGON\_USER, HTTPS\_KEYSIZE` e muitas outras. Consulte a documentação do IIS para obter a lista completa de variáveis, com detalhes. |
 | `enable_chunked_transfer` | Define se a transferência de conteúdo da resposta do cliente estará habilitada (1) ou desabilitada (0). O valor padrão é 0. |
 
 Um exemplo de configuração:
@@ -163,21 +163,21 @@ servervariables=1
 replaceauthorization=0
 ```
 
-### Configuração do Microsoft® IIS {#configuring-microsoft-iis}
+### Configurar o Microsoft® IIS {#configuring-microsoft-iis}
 
 Configure o IIS para integrar o Módulo ISAPI do Dispatcher. No IIS, utiliza-se o mapeamento de aplicativo curinga.
 
-### Configuração de acesso anônimo - IIS 8.5 e 10 {#configuring-anonymous-access-iis-and}
+### Configuração do acesso anônimo - IIS 8.5 e 10 {#configuring-anonymous-access-iis-and}
 
-O agente de replicação de limpeza padrão na instância do autor é configurado para que ele não envie credenciais de segurança com solicitações de limpeza. Portanto, o site no qual você está usando o cache do Dispatcher deve permitir o acesso anônimo.
+O agente de replicação `Flush` padrão na instância do Autor está configurado para que ele não envie credenciais de segurança com solicitações de liberação. Portanto, o site em que você usa o cache do Dispatcher deve permitir acesso anônimo.
 
-Se o site usar um método de autenticação, o agente de replicação de limpeza deverá ser configurado adequadamente.
+Se o site usar um método de autenticação, o agente de replicação `Flush` deverá ser configurado adequadamente.
 
 1. Abra o Gerenciador do IIS e selecione o site que você está usando como cache do Dispatcher.
 1. Usando o modo de exibição de recursos na seção do IIS, clique duas vezes em “Autenticação”. 
 1. Selecione Autenticação anônima, caso esta opção não esteja ativada, e na área Ações, clique em Ativar.
 
-### Integração do Módulo ISAPI do Dispatcher ao IIS 8.5 e 10 {#integrating-the-dispatcher-isapi-module-iis-and}
+### Integrar o módulo ISAPI do Dispatcher - IIS 8.5 e 10 {#integrating-the-dispatcher-isapi-module-iis-and}
 
 Use o procedimento a seguir para adicionar o Módulo ISAPI do Dispatcher ao IIS.
 
@@ -217,7 +217,7 @@ Forneça ao usuário padrão do Pool de aplicativos acesso de gravação à past
 1. Clique no botão Verificar nomes. Quando o Windows resolver a conta de usuário, clique em OK.
 1. Na caixa de diálogo Permissões da pasta do Dispatcher, selecione a conta que você acabou de adicionar, habilite todas as permissões da conta, **exceto Controle total**, e clique em OK. Clique em OK para fechar a caixa de diálogo Propriedades da pasta.
 
-### Registro do tipo MIME JSON - IIS 8.5 e 10 {#registering-the-json-mime-type-iis-and}
+### Registre o tipo MIME JSON - IIS 8.5 e 10 {#registering-the-json-mime-type-iis-and}
 
 Use o procedimento a seguir para registrar o tipo MIME JSON quando quiser que o Dispatcher permita chamadas JSON.
 
@@ -227,14 +227,14 @@ Use o procedimento a seguir para registrar o tipo MIME JSON quando quiser que o 
    * Extensão de nome do arquivo: `.json`
    * Tipo MIME: `application/json`
 
-### Remoção do segmento oculto bin - IIS 8.5 e 10 {#removing-the-bin-hidden-segment-iis-and}
+### Remover o segmento oculto bin - IIS 8.5 e 10 {#removing-the-bin-hidden-segment-iis-and}
 
 Use o procedimento a seguir para remover o segmento oculto `bin`. Os sites que não são novos podem conter esse segmento oculto.
 
 1. No Gerenciador do IIS, selecione seu site e, usando a Exibição de recursos, clique duas vezes em Solicitar filtragem.
 1. Selecione o segmento `bin`, clique em Remover e, na caixa de diálogo de confirmação, clique em Sim.
 
-### Registro de mensagens do IIS em um arquivo - IIS 8.5 e 10 {#logging-iis-messages-to-a-file-iis-and}
+### Registrar mensagens do IIS em um arquivo - IIS 8.5 e 10 {#logging-iis-messages-to-a-file-iis-and}
 
 Use o procedimento a seguir para gravar mensagens de log do Dispatcher em um arquivo de log, em vez de gravar no log de Eventos do Windows. Configure o Dispatcher para usar o arquivo de log e forneça ao IIS acesso de gravação ao arquivo.
 
@@ -274,7 +274,7 @@ Antes de começar a usar o Dispatcher, você deve saber:
 >
 >As instruções para instalação no **Windows** e **UNIX®** são abordadas aqui. Tenha cuidado ao executar as etapas.
 
-### Instalação do Apache Web Server {#installing-apache-web-server}
+### Instalar o Apache Web Server {#installing-apache-web-server}
 
 Para informações sobre como instalar o Apache Web Server, leia o manual de instalação [online](https://httpd.apache.org/) ou na distribuição.
 
@@ -286,7 +286,7 @@ Para informações sobre como instalar o Apache Web Server, leia o manual de ins
 
 Consulte também as [Dicas de segurança](https://httpd.apache.org/docs/2.4/misc/security_tips.html) e os [Relatórios de segurança](https://httpd.apache.org/security_report.html) do Apache HTTP Server.
 
-### Apache Web Server - Adicionar o módulo do Dispatcher {#apache-web-server-add-the-dispatcher-module}
+### Apache Web Server - Adicionar o módulo Dispatcher {#apache-web-server-add-the-dispatcher-module}
 
 O Dispatcher vem como uma das opções:
 
@@ -297,13 +297,13 @@ Os arquivos de instalação contêm os seguintes arquivos, dependendo se você s
 
 | Arquivo | Descrição |
 |--- |--- |
-| disp_apache&lt;x.y>.dll | Windows: o arquivo da biblioteca de links dinâmicos do Dispatcher. |
-| dispatcher-apache&lt;x.y>-&lt;rel-nr>.so | UNIX®: o arquivo da biblioteca de objetos compartilhados do Dispatcher. |
-| mod_dispatcher.so | UNIX®: um link de exemplo. |
-| http.conf.disp&lt;x> | Um exemplo de arquivo de configuração para o servidor Apache. |
-| dispatcher.any | Um exemplo de arquivo de configuração para o Dispatcher. |
-| README | Arquivo Readme, que contém instruções de instalação e informações de última hora. **Observação**: verifique este arquivo antes de iniciar a instalação. |
-| ALTERAÇÕES | Altera o arquivo que lista os problemas corrigidos nas versões atual e anterior. |
+| d`isp_apache<x.y>.dll` | Windows: o arquivo da biblioteca de links dinâmicos do Dispatcher. |
+| `dispatcher-apacheM<x.y>-<rel-nr>.so` | UNIX®: o arquivo da biblioteca de objetos compartilhados do Dispatcher. |
+| `mod_dispatcher.so` | UNIX®: um link de exemplo. |
+| `http.conf.disp<x>` | Um exemplo de arquivo de configuração para o servidor Apache. |
+| `dispatcher.any` | Um exemplo de arquivo de configuração para o Dispatcher. |
+| `README` | Arquivo Readme, que contém instruções de instalação e informações de última hora. **Observação**: verifique este arquivo antes de iniciar a instalação. |
+| C`HANGES` | Altera o arquivo que lista os problemas corrigidos nas versões atual e anterior. |
 
 Siga as seguintes etapas para adicionar o Dispatcher ao seu Apache Web Server:
 
@@ -357,7 +357,7 @@ Estas etapas são obrigatórias:
 
 1. (Opcional) Recomenda-se alterar o proprietário do diretório htdocs:
 
-   * O servidor Apache é iniciado como raiz, embora os processos secundários sejam iniciados como daemon (para fins de segurança). O DocumentRoot (`<APACHE_ROOT>/htdocs`) deve pertencer ao daemon do usuário:
+   * O servidor Apache é iniciado como raiz, embora os processos filhos sejam iniciados como daemon (para fins de segurança). O DocumentRoot (`<APACHE_ROOT>/htdocs`) deve pertencer ao daemon do usuário:
 
      ```xml
      cd <APACHE_ROOT>  
@@ -531,7 +531,7 @@ AllowOverride None
 ...
 ```
 
-### Habilitar o suporte para HTTPS (UNIX® e Linux®) {#enable-support-for-https-unix-and-linux}
+### Ativação do suporte para HTTPS (UNIX® e Linux®) {#enable-support-for-https-unix-and-linux}
 
 O Dispatcher usa o OpenSSL para implementar comunicação segura via HTTP. A partir da versão do Dispatcher **4.2.0**, há suporte para OpenSSL 1.0.0 e OpenSSL 1.0.1. O Dispatcher usa o OpenSSL 1.0.0 por padrão. Para usar o OpenSSL 1.0.1, use o seguinte procedimento para criar links simbólicos para que o Dispatcher use as bibliotecas OpenSSL instaladas.
 
@@ -550,7 +550,7 @@ O Dispatcher usa o OpenSSL para implementar comunicação segura via HTTP. A par
 
 >[!NOTE]
 >
->Se estiver usando uma versão personalizada do Apache, verifique se o Apache e o Dispatcher estão compilados usando a mesma versão do [OpenSSL](https://www.openssl.org/source/).
+>Se estiver usando uma versão personalizada do Apache, verifique se o Apache e o Dispatcher estão compilados usando a mesma versão do OpenSSL. <!-- URL has connection error [OpenSSL] (https://www.openssl.org/source/). -->
 
 ### Próximas etapas {#next-steps-1}
 
@@ -574,7 +574,7 @@ Para obter informações completas sobre como instalar esses servidores web, con
 * Sun Java™ System Web Server
 * Servidor Web iPlanet
 
-### Sun Java™ System Web Server/iPlanet: adicionar o módulo do Dispatcher {#sun-java-system-web-server-iplanet-add-the-dispatcher-module}
+### Sun Java™ System Web Server / iPlanet - Adicionar o módulo Dispatcher {#sun-java-system-web-server-iplanet-add-the-dispatcher-module}
 
 O Dispatcher vem como uma das opções:
 

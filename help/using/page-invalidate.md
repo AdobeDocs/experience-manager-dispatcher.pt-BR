@@ -9,10 +9,10 @@ products: SG_EXPERIENCEMANAGER/DISPATCHER
 topic-tags: dispatcher
 content-type: reference
 exl-id: 90eb6a78-e867-456d-b1cf-f62f49c91851
-source-git-commit: 9be9f5935c21ebbf211b5da52280a31772993c2e
+source-git-commit: c41b4026a64f9c90318e12de5397eb4c116056d9
 workflow-type: tm+mt
 source-wordcount: '1407'
-ht-degree: 100%
+ht-degree: 95%
 
 ---
 
@@ -20,15 +20,15 @@ ht-degree: 100%
 
 Ao usar o Dispatcher com o AEM, a interação deve ser configurada para garantir um gerenciamento eficiente do cache. Dependendo do seu ambiente, a configuração também pode aumentar o desempenho.
 
-## Configuração das contas de usuário do AEM {#setting-up-aem-user-accounts}
+## Configurar contas de usuário do AEM {#setting-up-aem-user-accounts}
 
 A conta de usuário `admin` padrão é usada para autenticar os agentes de replicação instalados por padrão. Crie uma conta de usuário dedicada para uso com agentes de replicação.
 
-Para obter mais informações, consulte a seção [Configurar reprodução e usuários de transporte](https://experienceleague.adobe.com/br/docs/experience-manager-release-information/aem-release-updates/previous-updates/aem-previous-versions#VerificationSteps) da Lista de verificação de segurança do AEM.
+Para obter mais informações, consulte a seção [Configurar usuários de replicação e transporte](https://experienceleague.adobe.com/pt-br/docs/experience-manager-release-information/aem-release-updates/previous-updates/aem-previous-versions#VerificationSteps) da Lista de Verificação de Segurança do AEM.
 
-<!-- OLD URL from above https://helpx.adobe.com/br/experience-manager/6-3/sites/administering/using/security-checklist.html#VerificationSteps -->
+<!-- OLD URL from above https://helpx.adobe.com/experience-manager/6-3/sites/administering/using/security-checklist.html#VerificationSteps -->
 
-## Invalidação do cache do Dispatcher no ambiente de criação {#invalidating-dispatcher-cache-from-the-authoring-environment}
+## Invalidar o cache do Dispatcher do ambiente de autor {#invalidating-dispatcher-cache-from-the-authoring-environment}
 
 Um agente de replicação na instância do autor do AEM envia uma solicitação de invalidação de cache para o Dispatcher quando uma página é publicada. O Dispatcher atualiza o arquivo no cache conforme o novo conteúdo é publicado.
 
@@ -66,7 +66,7 @@ Use o procedimento a seguir para configurar um agente de replicação na instân
 1. Configure outros parâmetros conforme necessário.
 1. Clique em OK para ativar o agente.
 
-Como alternativa, você também pode acessar e configurar o agente de limpeza do Dispatcher direto da interface do [AEM Touch](https://experienceleague.adobe.com/br/docs/experience-manager-65/content/implementing/deploying/configuring/replication#configuring-a-dispatcher-flush-agent).
+Como alternativa, você também pode acessar e configurar o agente de limpeza do Dispatcher direto da interface do [AEM Touch](https://experienceleague.adobe.com/pt-br/docs/experience-manager-65/content/implementing/deploying/configuring/replication#configuring-a-dispatcher-flush-agent).
 
 Para obter detalhes adicionais sobre como habilitar o acesso a URLs personalizados, consulte [Habilitar o acesso a URLs personalizados](dispatcher-configuration.md#enabling-access-to-vanity-urls-vanity-urls).
 
@@ -80,7 +80,7 @@ Há dois problemas potenciais com essa abordagem:
 
 * A publicação e a invalidação do cache ocorrem simultaneamente. Dependendo do tempo, um usuário pode solicitar uma página logo após sua remoção do cache e antes da publicação da nova página. O AEM retorna a página antiga, e o Dispatcher a armazena em cache novamente. Esse problema ocorre mais com sites grandes.
 
-## Invalidação do cache do Dispatcher de uma Instância de publicação {#invalidating-dispatcher-cache-from-a-publishing-instance}
+## Invalidar o cache do Dispatcher de uma instância de publicação {#invalidating-dispatcher-cache-from-a-publishing-instance}
 
 Em determinadas circunstâncias, os ganhos de desempenho podem ser feitos pela transferência do gerenciamento de cache do ambiente de criação para uma instância de publicação. Em seguida, o ambiente de publicação (não o ambiente de criação do AEM) enviará uma solicitação de invalidação de cache para o Dispatcher quando uma página publicada for recebida.
 
@@ -120,7 +120,7 @@ Após a configuração, ao ativar uma página do autor para publicar, esse agent
 
 1. `<publishserver> 13:29:47 127.0.0.1 POST /dispatcher/invalidate.cache 200`
 
-## Invalidação manual do cache do Dispatcher {#manually-invalidating-the-dispatcher-cache}
+## Invalidar manualmente o cache do Dispatcher {#manually-invalidating-the-dispatcher-cache}
 
 Para invalidar (ou liberar) o cache do Dispatcher sem ativar uma página, emita uma solicitação HTTP para o Dispatcher. Por exemplo, você pode criar um aplicativo do AEM que permita aos administradores ou outros aplicativos liberar o cache.
 
@@ -169,7 +169,7 @@ page_path1
 page_pathn
 ```
 
-Os caminhos das páginas para armazenar novamente em cache imediatamente são listados em linhas separadas no corpo da mensagem. O valor de `CQ-Handle` é o caminho de uma página que invalida as páginas para o rearmazenamento em cache. (Consulte o parâmetro `/statfileslevel` do item de configuração do [Cache](dispatcher-configuration.md#main-pars_146_44_0010).) O exemplo de mensagem de solicitação HTTP a seguir exclui e rearmazena em cache o `/content/geometrixx-outdoors/en.html page`:
+Os caminhos das páginas para armazenar novamente em cache imediatamente são listados em linhas separadas no corpo da mensagem. O valor de `CQ-Handle` é o caminho de uma página que invalida as páginas para o rearmazenamento em cache. (Consulte o parâmetro `/statfileslevel` do item de configuração [Cache](dispatcher-configuration.md#main-pars_146_44_0010).) O exemplo de mensagem de solicitação HTTP a seguir exclui e rearmazena em cache o `/content/geometrixx-outdoors/en.html page`:
 
 ```xml
 POST /dispatcher/invalidate.cache HTTP/1.1  

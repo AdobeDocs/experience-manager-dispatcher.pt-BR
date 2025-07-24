@@ -1,5 +1,5 @@
 ---
-title: Uso do Dispatcher com vários domínios
+title: Usar o Dispatcher com vários domínios
 description: Saiba como usar o Dispatcher para processar solicitações de página em vários domínios da Web.
 contentOwner: User
 cq-exporttemplate: /etc/contentsync/templates/geometrixx/page/rewrite
@@ -7,14 +7,16 @@ products: SG_EXPERIENCEMANAGER/DISPATCHER
 topic-tags: dispatcher
 content-type: reference
 exl-id: 1470b636-7e60-48cc-8c31-899f8785dafa
-source-git-commit: b8dc67a9633c1a459a2851f4be99a5fcbec7fe79
-workflow-type: ht
-source-wordcount: '3008'
-ht-degree: 100%
+source-git-commit: c41b4026a64f9c90318e12de5397eb4c116056d9
+workflow-type: tm+mt
+source-wordcount: '2986'
+ht-degree: 89%
 
 ---
 
-# Utilização do Dispatcher com vários domínios {#using-dispatcher-with-multiple-domains}
+# Usar o Dispatcher com vários domínios {#using-dispatcher-with-multiple-domains}
+
+<!-- This article is missing required metadata image ALT tags throughout -->
 
 >[!NOTE]
 >
@@ -54,12 +56,12 @@ Quando os clientes enviam solicitações HTTP para o servidor Web, o URL da pág
 
 ## Invalidação de cache
 
-Quando os agentes de replicação de limpeza solicitam que o Dispatcher invalide os arquivos em cache, o caminho do conteúdo no repositório deve resolver para o conteúdo no cache.
+Quando `Dispatcher Flush` agentes de replicação solicitam que o Dispatcher invalide os arquivos em cache, o caminho do conteúdo no repositório deve resolver para o conteúdo no cache.
 
 ![](assets/chlimage_1-9.png)
 
 * A: uma página é ativada na instância do autor do AEM e o conteúdo é replicado para a instância de publicação.
-* b - O agente de limpeza do Dispatcher chama o Dispatcher para invalidar o cache do conteúdo replicado.
+* b - O Agente do `Dispatcher Flush` chama o Dispatcher para invalidar o cache do conteúdo replicado.
 * c - O Dispatcher toca em um ou mais arquivos .stat para invalidar os arquivos em cache.
 
 Para usar o Dispatcher com vários domínios, configure o AEM, o Dispatcher e o servidor Web. Esta página descreve soluções gerais que se aplicam à maioria dos ambientes. Devido à complexidade de algumas topologias do AEM, sua solução pode exigir mais configurações personalizadas para resolver problemas específicos. É provável que você precise adaptar os exemplos para atender às políticas existentes de infraestrutura e gerenciamento de TI.
@@ -115,7 +117,7 @@ As soluções de exemplo fornecidas se aplicam a um ambiente com as seguintes ca
                  | - content nodes
 ```
 
-## O AEM reescreve URLs de entrada {#aem-rewrites-incoming-urls}
+## O AEM substitui URLs de entrada {#aem-rewrites-incoming-urls}
 
 O mapeamento Sling para resolução de recursos permite associar URLs recebidos a caminhos de conteúdo do AEM. Crie mapeamentos na instância de publicação do AEM para que as solicitações de renderização do Dispatcher resolvam para o conteúdo correto no repositório.
 
@@ -198,9 +200,9 @@ Observe que os hosts virtuais herdam o valor da propriedade [DispatcherConfig](d
 
 >[!NOTE]
 >
->No AEM as a Cloud Service, uma configuração de vhost separada deve ser usada com um DocumentRoot em um nível mais alto do que cada uma das subpáginas. Isso é tratado por padrão no arquétipo, mas quando várias DocumentRoots são usadas, uma configuração de vhost de prioridade mais alta deve ser usada para que a invalidação do cache possa ser tratada para todo o cache, pois ela não pode ser configurada separadamente para cada site. O ServerAlias dessa nova configuração deve aceitar o cabeçalho de host “localhost”.
+>No AEM as a Cloud Service, uma configuração do vhost separada deve ser usada com um DocumentRoot em um nível superior a cada uma das subpáginas. Esse processo é manipulado por padrão no arquétipo. No entanto, quando vários DocumentRoots são usados, uma configuração vhost de prioridade mais alta é necessária para lidar com a invalidação de cache para todo o cache, pois não pode ser configurada separadamente para cada site. O ServerAlias dessa nova configuração deve aceitar o cabeçalho de host &quot;localhost&quot;.
 
-### Configuração do Dispatcher para lidar com vários domínios {#configure-dispatcher-to-handle-multiple-domains}
+### Configurar o Dispatcher para lidar com vários domínios {#configure-dispatcher-to-handle-multiple-domains}
 
 Para oferecer suporte a URLs que incluem nomes de domínio e seus hosts virtuais correspondentes, defina os seguintes farms do Dispatcher:
 
@@ -282,11 +284,11 @@ Dispatcher initializing (build 4.1.2)
 [Fri Nov 02 16:27:18 2012] [I] [24974(140006182991616)] Dispatcher initialized (build 4.1.2)
 ```
 
-### Configuração do mapeamento Sling para resolução de recursos {#configure-sling-mapping-for-resource-resolution}
+### Configurar o mapeamento Sling para resolução de recursos {#configure-sling-mapping-for-resource-resolution}
 
-Use o mapeamento Sling para resolução de recursos, de modo que os URLs baseados em domínio resolvam para o conteúdo na instância de publicação do AEM. O mapeamento de recursos traduz os URLs recebidos do Dispatcher (originalmente de solicitações HTTP do cliente) para nós de conteúdo.
+Use o mapeamento `Sling` para resolução de recursos, de modo que as URLs baseadas em domínio resolvam para o conteúdo na instância de publicação do AEM. O mapeamento de recursos traduz os URLs recebidos do Dispatcher (originalmente de solicitações HTTP do cliente) para nós de conteúdo.
 
-Para saber mais sobre o mapeamento de recursos Sling, consulte [Mapeamentos para resolução de recursos](https://sling.apache.org/documentation/the-sling-engine/mappings-for-resource-resolution.html), na documentação do Sling.
+Para saber mais sobre o mapeamento de recursos `Sling`, consulte [Mapeamentos para Resolução de Recursos](https://sling.apache.org/documentation/the-sling-engine/mappings-for-resource-resolution.html) na documentação `Sling`.
 
 Normalmente, os mapeamentos são necessários para os seguintes recursos, embora possam ser necessários mapeamentos adicionais:
 
@@ -302,7 +304,7 @@ Depois de criar o mapeamento da página de conteúdo, para descobrir se são nec
 
 >[!NOTE]
 >
->O transformador Linkchecker do reescritor padrão do Apache Sling modifica automaticamente os hiperlinks na página para evitar links quebrados. No entanto, a reescrita de links é executada somente quando o destino do link é um arquivo HTML ou HTM. Para atualizar links para outros tipos de arquivo, crie um componente de transformador e adicione-o a um pipeline de reescrita HTML.
+>O transformador do Linkchecker da reescrita padrão do Apache `Sling` modifica automaticamente os hiperlinks na página para evitar links desfeitos. No entanto, a reescrita de links é executada somente quando o destino do link é um arquivo HTML ou HTM. Para atualizar links para outros tipos de arquivo, crie um componente de transformador e adicione-o a um pipeline de reescrita HTML.
 
 ### Exemplo de nós de mapeamento de recursos
 
@@ -316,9 +318,9 @@ A tabela a seguir lista os nós que implementam o mapeamento de recursos para o 
 | `/etc/map/http/branda.com/etc/designs` | `sling:Mapping` | `Name: sling:internalRedirect <br/>VType: String <br/>VValue: /etc/designs` |
 | `/etc/map/http/branda.com/etc/clientlibs` | `sling:Mapping` | `Name: sling:internalRedirect <br/>VType: String <br/>VValue: /etc/clientlibs` |
 
-## Configuração do agente de replicação de limpeza do Dispatcher {#configuring-the-dispatcher-flush-replication-agent}
+## Configurar o agente de replicação de limpeza do Dispatcher {#configuring-the-dispatcher-flush-replication-agent}
 
-O agente de replicação de limpeza do Dispatcher na instância de publicação do AEM deve enviar solicitações de invalidação para o farm correto do Dispatcher. Para direcionar um farm, use a propriedade URI do agente de replicação de limpeza do Dispatcher (na guia Transporte). Inclua o valor da propriedade `/virtualhost` para o farm do Dispatcher configurado para invalidar o cache:
+O agente de replicação `Dispatcher Flush` na instância de publicação do AEM deve enviar solicitações de invalidação para o farm correto do Dispatcher. Para direcionar um farm, use a propriedade URI do agente de replicação `Dispatcher Flush` (na guia Transporte). Inclua o valor da propriedade `/virtualhost` para o farm do Dispatcher configurado para invalidar o cache:
 
 `https://*webserver_name*:*port*/*virtual_host*/dispatcher/invalidate.cache`
 
@@ -412,7 +414,7 @@ LoadModule dispatcher_module modules/mod_dispatcher.so
 DocumentRoot "/usr/lib/apache/httpd-2.4.3/htdocs"
 ```
 
-### Configuração de um farm do Dispatcher {#configure-a-dispatcher-farm}
+### Configurar um farm do Dispatcher {#configure-a-dispatcher-farm}
 
 Quando o servidor Web reescreve URLs, o Dispatcher requer um único farm definido de acordo com a [Configuração do Dispatcher](dispatcher-configuration.md). As seguintes configurações são necessárias para suportar hosts virtuais do servidor Web e regras de renomeação de URL:
 
@@ -498,23 +500,23 @@ Como de costume, a raiz do documento do cache é a mesma raiz do documento do se
 
 >[!NOTE]
 >
->Como um único farm do Dispatcher é definido, o agente de replicação de limpeza do Dispatcher na instância de publicação do AEM não requer configurações especiais.
+>Como um único farm do Dispatcher é definido, o agente de replicação `Dispatcher Flush` na instância de publicação do AEM não requer configurações especiais.
 
-## Reescrita de links para arquivos que não são HTML {#rewriting-links-to-non-html-files}
+## Reescrever links para arquivos que não sejam da HTML {#rewriting-links-to-non-html-files}
 
 Para reescrever referências a arquivos com extensões diferentes de .html ou .htm, crie um componente de transformador de reescrita do Sling e adicione-o ao pipeline de reescrita padrão.
 
 Reescreva referências quando os caminhos de recursos não resolverem corretamente no contexto do servidor Web. Por exemplo, um transformador é necessário quando os componentes geradores de imagem criam links como /content/sitea/en/products.navimage.png. O componente `topnav` da seção [Como criar um site na Internet com todos os recursos](https://experienceleague.adobe.com/pt-br/docs/experience-manager-65/content/implementing/developing/introduction/the-basics) cria esses links.
 
-O [reescritor Sling](https://sling.apache.org/documentation/bundles/output-rewriting-pipelines-org-apache-sling-rewriter.html) é um módulo que pós-processa a saída do Sling. As implementações de pipeline SAX da reescrita consistem em um gerador, um ou mais transformadores e um serializador:
+O reescritor [`Sling` ](https://sling.apache.org/documentation/bundles/output-rewriting-pipelines-org-apache-sling-rewriter.html) é um módulo que pós-processa a saída `Sling`. As implementações de pipeline SAX da reescrita consistem em um gerador, um ou mais transformadores e um serializador:
 
-* **Gerador:** analisa o fluxo de saída do Sling (documento HTML) e gera eventos SAX quando encontra tipos de elemento específicos.
+* **Gerador:** analisa o fluxo de saída `Sling` (documento HTML) e gera eventos SAX quando encontra tipos de elementos específicos.
 * **Transformador:** acompanha eventos SAX e, consequentemente, modifica o destino do evento (um elemento HTML). Um pipeline de reescrita contém zero ou mais transformadores. Os transformadores são executados em sequência, transmitindo os eventos SAX para o próximo transformador na sequência.
 * **Serializador:** serializa a saída, incluindo as modificações de cada transformador.
 
 ![](assets/chlimage_1-15.png)
 
-### Pipeline de reescrita padrão do AEM {#the-aem-default-rewriter-pipeline}
+### O pipeline de reescrita padrão do AEM {#the-aem-default-rewriter-pipeline}
 
 O AEM usa uma reescrita de pipeline padrão que processa documentos do tipo text/html:
 
@@ -524,7 +526,7 @@ O AEM usa uma reescrita de pipeline padrão que processa documentos do tipo text
 
 O nó `/libs/cq/config/rewriter/default` define o pipeline.
 
-### Criação de um transformador {#creating-a-transformer}
+### Criar um transformador {#creating-a-transformer}
 
 Para criar um componente transformador e usá-lo em um pipeline, execute as seguintes tarefas:
 
@@ -577,7 +579,7 @@ public class MyRewriterTransformerFactory implements TransformerFactory {
 }
 ```
 
-### Exemplo de implementação do transformador {#example-transformer-implementation}
+### Exemplo de implementação de transformador {#example-transformer-implementation}
 
 ```java
 package com.adobe.example;

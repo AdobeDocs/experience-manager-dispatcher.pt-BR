@@ -10,14 +10,14 @@ index: y
 internal: n
 snippet: y
 exl-id: 49009810-b5bf-41fd-b544-19dd0c06b013
-source-git-commit: 0a1aa854ea286a30c3527be8fc7c0998726a663f
+source-git-commit: c41b4026a64f9c90318e12de5397eb4c116056d9
 workflow-type: tm+mt
-source-wordcount: '590'
-ht-degree: 100%
+source-wordcount: '582'
+ht-degree: 85%
 
 ---
 
-# Lista de verificação de segurança do Dispatcher {#the-dispatcher-security-checklist}
+# Lista de verificação de segurança do Dispatcher{#the-dispatcher-security-checklist}
 
 <!-- 
 
@@ -77,19 +77,19 @@ Last Modified Date: 2015-06-26T04:41:28.841-0400
 
 Ao configurar o Dispatcher, restrinja o acesso externo o máximo possível. Consulte [Seção de Exemplo /filtro](dispatcher-configuration.md#main-pars_184_1_title) na documentação do Dispatcher.
 
-## Verificar se o acesso a URLs administrativos é negado {#make-sure-access-to-administrative-urls-is-denied}
+## Verifique se o acesso a URLs administrativos foi negado {#make-sure-access-to-administrative-urls-is-denied}
 
 Use filtros para bloquear o acesso externo a URLs administrativos, como o Console da Web.
 
 Consulte [Teste de segurança do Dispatcher](dispatcher-configuration.md#testing-dispatcher-security) para obter uma lista de URLs que devem ser bloqueados.
 
-## Uso de listas de permissões em vez de lista de bloqueios {#use-allowlists-instead-of-blocklists}
+## Use as Listas de bloqueios em vez das Listas de permissões {#use-allowlists-instead-of-blocklists}
 
 Listas de permissões são uma maneira melhor de fornecer controle de acesso, pois, por natureza, elas pressupõem que todas as solicitações de acesso devem ser negadas, a menos que façam parte explicitamente da lista de permissões. Esse modelo oferece um controle mais restritivo de novas solicitações que podem ainda não ter sido revisadas ou consideradas durante um determinado estágio de configuração.
 
-## Execução do Dispatcher com um usuário de sistema dedicado {#run-dispatcher-with-a-dedicated-system-user}
+## Executar o Dispatcher com um usuário de sistema dedicado {#run-dispatcher-with-a-dedicated-system-user}
 
-Ao configurar o Dispatcher, verifique se o servidor Web é executado por um usuário dedicado com menos privilégios. É recomendado conceder acesso de gravação somente à pasta de cache do Dispatcher.
+Configure o Dispatcher para que uma conta de usuário dedicada e com menos privilégios execute o servidor Web. A Adobe recomenda conceder acesso de gravação somente à pasta de cache do Dispatcher.
 
 Além disso, os usuários de IIS devem configurar o site da seguinte maneira:
 
@@ -146,7 +146,7 @@ Last Modified Date: 2015-06-26T04:38:17.016-0400
 
  -->
 
-## Configuração do Dispatcher para evitar ataques CSRF {#configure-dispatcher-to-prevent-csrf-attacks}
+## Configurar o Dispatcher para impedir ataques CSRF {#configure-dispatcher-to-prevent-csrf-attacks}
 
 O AEM fornece uma [estrutura](https://experienceleague.adobe.com/pt-br/docs/experience-manager-release-information/aem-release-updates/previous-updates/aem-previous-versions#verification-steps) destinada a impedir ataques de falsificação de solicitação entre sites. Para fazer o uso correto dessa estrutura, inclua na lista de permissões o suporte ao token CSRF no Dispatcher fazendo o seguinte:
 

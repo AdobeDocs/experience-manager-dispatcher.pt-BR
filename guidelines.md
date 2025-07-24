@@ -1,8 +1,8 @@
 ---
-source-git-commit: 0a1aa854ea286a30c3527be8fc7c0998726a663f
-workflow-type: ht
+source-git-commit: c41b4026a64f9c90318e12de5397eb4c116056d9
+workflow-type: tm+mt
 source-wordcount: '714'
-ht-degree: 100%
+ht-degree: 96%
 
 ---
 # Diretrizes para colaboração na documentação do Adobe Experience Manager
@@ -29,9 +29,9 @@ A documentação do AEM abrange casos de uso padrão. Casos de uso que não se e
 
 ### A Adobe geralmente não documenta erros e suas soluções.
 
-A documentação do AEM abrange casos de uso padrão. Por esse motivo, bugs, efeitos causados por bugs e soluções alternativas para bugs não são documentados.
+A documentação do AEM abrange casos de uso padrão. Por esse motivo, erros, efeitos causados por erros e soluções alternativas para erros não são documentados.
 
-As exceções a esta regra se aplicam às notas de versão, em que os problemas conhecidos podem ser listados com possíveis soluções aprovadas pelo gerenciamento de produtos.
+As exceções a essa regra aplicam-se às notas de versão, nas quais problemas conhecidos podem ser listados com possíveis soluções aprovadas pelo Gerenciamento de produtos do.
 
 ### As contribuições à documentação não se destinam a responder perguntas técnicas.
 

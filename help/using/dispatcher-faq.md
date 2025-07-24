@@ -2,10 +2,10 @@
 title: Principais problemas do Dispatcher
 description: Principais problemas do Adobe Experience Manager Dispatcher.
 exl-id: 4dcc7318-aba5-4b17-8cf4-190ffefbba75
-source-git-commit: 9be9f5935c21ebbf211b5da52280a31772993c2e
+source-git-commit: c41b4026a64f9c90318e12de5397eb4c116056d9
 workflow-type: tm+mt
-source-wordcount: '1547'
-ht-degree: 100%
+source-wordcount: '1538'
+ht-degree: 99%
 
 ---
 
@@ -115,13 +115,13 @@ Consulte a página [Armazenamento em cache de conteúdo seguro](permissions-cach
 
 ### Como proteger as comunicações entre as instâncias do Dispatcher e do CQ?
 
-Consulte as páginas [Lista de verificação de segurança do Dispatcher](security-checklist.md) e [Lista de verificação de segurança do AEM](https://experienceleague.adobe.com/br/en/docs/experience-manager-64/administering/security/security-checklist).
+Consulte as páginas [Lista de verificação de segurança do Dispatcher](security-checklist.md) e [Lista de verificação de segurança do AEM](https://experienceleague.adobe.com/pt-br/docs/experience-manager-64/administering/security/security-checklist).
 
 ### Problema do Dispatcher `jcr:content` alterado para `jcr%3acontent`
 
 **Pergunta**: recentemente, a empresa enfrentou um problema no nível do Dispatcher. Uma das chamadas AJAX que estava recebendo alguns dados do repositório CQ tinha `jcr:content`. Isso foi codificado em `jcr%3acontent`, resultando no conjunto de resultados incorreto.
 
-**Resposta**: use o método `ResourceResolver.map()` para obter um URL “amigável” a ser usado/emitido para receber solicitações e também para solucionar problemas de armazenamento em cache do Dispatcher. O método map() codifica os dois pontos `:` como sublinhados e o método resolve() os decodifica novamente no formato legível do SLING JCR. Use o método map() para gerar o URL usado na chamada AJAX.
+**Resposta**: chame `ResourceResolver.map()` para gerar uma URL amigável para solicitações do GET e resolver problemas de cache do Dispatcher. O método map() codifica os dois pontos `:` como sublinhados e o método resolve() os decodifica novamente no formato legível do SLING JCR. Use o método map() para gerar o URL usado na chamada AJAX.
 
 Leia mais: [https://sling.apache.org/documentation/the-sling-engine/mappings-for-resource-resolution.html#namespace-mangling](https://sling.apache.org/documentation/the-sling-engine/mappings-for-resource-resolution.html#namespace-mangling)
 
@@ -129,11 +129,11 @@ Leia mais: [https://sling.apache.org/documentation/the-sling-engine/mappings-for
 
 ### Como configurar agentes de limpeza do Dispatcher em uma instância de publicação?
 
-Consulte a página [Replicação](https://experienceleague.adobe.com/br/docs/experience-manager-65/content/implementing/deploying/configuring/replication#configuring-your-replication-agents).
+Consulte a página [Replicação](https://experienceleague.adobe.com/pt-br/docs/experience-manager-65/content/implementing/deploying/configuring/replication#configuring-your-replication-agents).
 
 ### Como solucionar problemas de limpeza do Dispatcher?
 
-[Consulte estes artigos de solução de problemas](https://experienceleague.adobe.com/search.html?lang=pt-BR#q=troubleshooting%20dispatcher%20flushing%20issues&amp;sort=relevancy&amp;f:el_product=[Experience%20Manager]).
+[Consulte estes artigos de solução de problemas](https://experienceleague.adobe.com/search.html?lang=pt-BR#q=troubleshooting%20dispatcher%20flushing%20issues&sort=relevancy&f:el_product=[Experience%20Manager]).
 
 Se as operações de exclusão estiverem fazendo com que o Dispatcher libere, [use a solução alternativa nesta publicação de blog da comunidade, por Sensei Martin](https://mkalugin-cq.blogspot.com/2012/04/i-have-been-working-on-following.html).
 
