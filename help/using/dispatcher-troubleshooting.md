@@ -1,5 +1,5 @@
 ---
-title: Solução de problemas do Dispatcher
+title: Resolução de problemas do Dispatcher
 description: Saiba como solucionar problemas do Dispatcher.
 cmgrlastmodified: 01.11.2007 08 22 29 [aheimoz]
 pageversionid: 1193211344162
@@ -10,13 +10,13 @@ topic-tags: dispatcher
 content-type: reference
 exl-id: 29f338ab-5d25-48a4-9309-058e0cc94cff
 source-git-commit: c41b4026a64f9c90318e12de5397eb4c116056d9
-workflow-type: tm+mt
+workflow-type: ht
 source-wordcount: '472'
-ht-degree: 93%
+ht-degree: 100%
 
 ---
 
-# Solução de problemas do Dispatcher {#troubleshooting-dispatcher-problems}
+# Resolução de problemas do Dispatcher {#troubleshooting-dispatcher-problems}
 
 >[!NOTE]
 >
@@ -26,9 +26,9 @@ ht-degree: 93%
 
 >[!NOTE]
 >
->Verifique as <!-- URL is 404[Dispatcher Knowledge Base](https://helpx.adobe.com/experience-manager/kb/index/dispatcher.html), -->[Perguntas frequentes sobre solução de problemas de liberação do Dispatcher](https://experienceleague.adobe.com/search.html?lang=pt-BR#q=troubleshooting%20dispatcher%20flushing%20issues&sort=relevancy&f:el_product=[Experience%20Manager]) e as [Perguntas frequentes sobre os Principais Problemas do Dispatcher](dispatcher-faq.md) para obter mais informações.
+>Consulte a <!-- URL is 404[Dispatcher Knowledge Base](https://helpx.adobe.com/experience-manager/kb/index/dispatcher.html), -->[Resolução de problemas de limpeza do Dispatcher](https://experienceleague.adobe.com/search.html?lang=br#q=troubleshooting%20dispatcher%20flushing%20issues&sort=relevancy&f:el_product=[Experience%20Manager]) e as [perguntas frequentes sobre os principais problemas do Dispatcher](dispatcher-faq.md) para mais informações.
 
-## Verifique a configuração básica {#check-the-basic-configuration}
+## Verificar a configuração básica {#check-the-basic-configuration}
 
 Como sempre, as primeiras etapas são verificar as noções básicas:
 
@@ -45,7 +45,7 @@ Como sempre, as primeiras etapas são verificar as noções básicas:
 
       * Esses filtros estão afetando o assunto que você está investigando?
 
-## Ferramentas de Diagnóstico do IIS {#iis-diagnostic-tools}
+## Ferramentas de diagnóstico do IIS {#iis-diagnostic-tools}
 
 O IIS fornece várias ferramentas de rastreamento, dependendo da versão real:
 

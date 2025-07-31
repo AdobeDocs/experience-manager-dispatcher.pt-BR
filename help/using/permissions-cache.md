@@ -7,15 +7,15 @@ topic-tags: dispatcher
 content-type: reference
 exl-id: 3d8d8204-7e0d-44ad-b41b-6fec2689c6a6
 source-git-commit: c41b4026a64f9c90318e12de5397eb4c116056d9
-workflow-type: tm+mt
+workflow-type: ht
 source-wordcount: '923'
-ht-degree: 97%
+ht-degree: 100%
 
 ---
 
 # Armazenar conteúdo protegido em cache {#caching-secured-content}
 
-O armazenamento em cache sensível a permissões possibilita armazenar páginas seguras em cache. O Dispatcher verifica as permissões de acesso do usuário para uma página antes de entregar a página armazenada em cache.
+O armazenamento em cache sensível a permissões permite armazenar páginas seguras em cache. O Dispatcher verifica as permissões de acesso do usuário para uma página antes de entregar a página armazenada em cache.
 
 O Dispatcher inclui o módulo AuthChecker, que implementa o armazenamento sensível a permissões. Quando o módulo é ativado, o Dispatcher chama um servlet do AEM para executar a autenticação e autorização do usuário para o conteúdo solicitado. A resposta do servlet determina se o conteúdo é ou não entregue ao navegador da Web a partir do cache.
 
@@ -61,7 +61,7 @@ Os diagramas a seguir ilustram a ordem dos eventos que ocorrem quando um navegad
 Para implementar o armazenamento em cache sensível a permissões, execute as seguintes tarefas:
 
 * Desenvolva um servlet que execute autenticação e autorização
-* Configure o Dispatcher
+* Configurar o Dispatcher
 
 >[!NOTE]
 >
@@ -70,7 +70,7 @@ Para implementar o armazenamento em cache sensível a permissões, execute as se
 >[!NOTE]
 >
 >Quando há uma CDN (ou qualquer outro cache) na frente do Dispatcher, você deve definir os cabeçalhos de armazenamento em cache adequadamente, para que a CDN não armazene em cache o conteúdo privado. Por exemplo: `Header always set Cache-Control private`.
->&#x200B;>Para o AEM as a Cloud Service, consulte a página [Armazenamento em cache](https://experienceleague.adobe.com/pt-br/docs/experience-manager-cloud-service/content/implementing/content-delivery/caching) para obter mais detalhes sobre como definir cabeçalhos de cache privados.
+>>Para o AEM as a Cloud Service, consulte a página [Armazenamento em cache](https://experienceleague.adobe.com/pt-br/docs/experience-manager-cloud-service/content/implementing/content-delivery/caching) para obter mais detalhes sobre como definir cabeçalhos de cache privados.
 
 ## Criar o servlet Auth Checker {#create-the-auth-checker-servlet}
 
@@ -92,7 +92,7 @@ O servlet de exemplo a seguir obtém o URL do recurso da solicitação HTTP. O c
 
 >[!NOTE]
 >
->O valor da propriedade sling.servlet.paths deve ser ativado no serviço `Sling` Servlet Resolver (org.apache.sling.servlets.resolver.SlingServletResolver).
+>O valor da propriedade sling.servlet.paths precisa ser habilitado no serviço `Sling` Servlet Resolver (org.apache.sling.servlets.resolver.SlingServletResolver).
 
 ### Exemplo de servlet {#example-servlet}
 

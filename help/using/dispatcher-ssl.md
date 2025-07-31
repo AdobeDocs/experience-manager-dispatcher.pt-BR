@@ -1,5 +1,5 @@
 ---
-title: Usar SSL com Dispatcher
+title: Usar o SSL com o Dispatcher
 description: Saiba como configurar o Dispatcher para se comunicar com o AEM usando conexões SSL.
 contentOwner: User
 products: SG_EXPERIENCEMANAGER/DISPATCHER
@@ -10,13 +10,13 @@ internal: n
 snippet: y
 exl-id: ec378409-ddb7-4917-981d-dbf2198aca98
 source-git-commit: c41b4026a64f9c90318e12de5397eb4c116056d9
-workflow-type: tm+mt
+workflow-type: ht
 source-wordcount: '1305'
-ht-degree: 91%
+ht-degree: 100%
 
 ---
 
-# Usar SSL com Dispatcher {#using-ssl-with-dispatcher}
+# Usar o SSL com o Dispatcher {#using-ssl-with-dispatcher}
 
 Usar conexões SSL entre o Dispatcher e o computador de renderização:
 
@@ -27,7 +27,7 @@ Usar conexões SSL entre o Dispatcher e o computador de renderização:
 >
 >As operações relacionadas aos certificados SSL estão vinculadas a produtos de terceiros. Elas não estão cobertas pelo contrato de Manutenção e Suporte do Adobe Platinum.
 
-## Usar SSL quando o Dispatcher se conectar ao AEM {#use-ssl-when-dispatcher-connects-to-aem}
+## Usar o SSL quando o Dispatcher for conectado ao AEM {#use-ssl-when-dispatcher-connects-to-aem}
 
 Configure o Dispatcher para se comunicar com a instância de renderização do AEM ou CQ usando conexões SSL.
 
@@ -53,7 +53,7 @@ X-Forwarded-SSL-Cipher: DHE-RSA-AES256-SHA
 X-Forwarded-SSL-Session-ID: 814825E8CD055B4C166C2EF6D75E1D0FE786FFB29DEB6DE1E239D5C771CB5B4D
 ```
 
-### Configurar o Dispatcher para usar SSL {#configuring-dispatcher-to-use-ssl}
+### Configurar o Dispatcher para usar o SSL {#configuring-dispatcher-to-use-ssl}
 
 Para configurar o Dispatcher para se conectar com o AEM ou CQ por SSL, seu arquivo [dispatcher.any](dispatcher-configuration.md) requer as seguintes propriedades:
 
@@ -111,7 +111,7 @@ O arquivo de exemplo `dispatcher.any` a seguir mostra os valores de propriedade 
 }
 ```
 
-## Configurar SSL mútuo entre o Dispatcher e o AEM {#configuring-mutual-ssl-between-dispatcher-and-aem}
+## Configurar o SSL mútuo entre o Dispatcher e o AEM {#configuring-mutual-ssl-between-dispatcher-and-aem}
 
 Para usar o SSL mútuo, configure as conexões entre o Dispatcher e o computador de renderização (normalmente uma instância de publicação do AEM ou CQ):
 
@@ -137,9 +137,9 @@ Para configurar o SSL mútuo, execute as seguintes etapas:
 
 Crie ou obtenha os certificados assinados pela CA que autenticam a instância de publicação e o Dispatcher.
 
-#### Criar sua CA {#creating-your-ca}
+#### Criar a sua CA {#creating-your-ca}
 
-Se você estiver agindo como a autoridade de certificação, use o [OpenSSL](https://www.openssl.org/) para criar a Autoridade de Certificação que assina os certificados do servidor e do cliente. (Você deve ter as bibliotecas OpenSSL instaladas.) Se você estiver usando uma CA de terceiros, não execute este procedimento.
+Se você estiver agindo como a autoridade de certificação, use o [OpenSSL](https://www.openssl.org/) para criar a Autoridade de Certificação que assina os certificados do servidor e do cliente. (Você precisa contar com as bibliotecas OpenSSL instaladas.) Se você estiver usando uma CA externa, não realize este procedimento.
 
 1. Abra um terminal e altere o diretório atual para o diretório que contém o arquivo `CA.sh`, como `/usr/local/ssl/misc`.
 1. Para criar a CA, insira o seguinte comando e forneça valores quando solicitado:
@@ -179,11 +179,11 @@ Ao criar um certificado, o OpenSSL usa a propriedade Nome Comum para identificar
 1. Repita as etapas 2 e 3 para criar um certificado e uma chave pública para o módulo do Dispatcher. Use um nome comum específico para a instância do Dispatcher.
 1. Renomeie `newcert.pem` como `dispcert.pem` e renomeie `newkey.pem` como `dispkey.pem`.
 
-### Configurar SSL no computador de renderização {#configuring-ssl-on-the-render-computer}
+### Configurar o SSL no computador de renderização {#configuring-ssl-on-the-render-computer}
 
 Configure o SSL na instância de renderização usando os arquivos `rendercert.pem` e `renderkey.pem`.
 
-#### Converter o certificado de renderização para o formato JKS (Java™ KeyStore) {#converting-the-render-certificate-to-jks-format}
+#### Converter o certificado de renderização no formato JKS (Java™ KeyStore) {#converting-the-render-certificate-to-jks-format}
 
 Use o comando a seguir para converter o certificado de renderização, que é um arquivo PEM, em um arquivo PKCS#12. Inclua também o certificado de CA que assinou o certificado de renderização:
 
@@ -206,7 +206,7 @@ Use o comando a seguir para converter o certificado de renderização, que é um
    keytool -changealias -alias 1 -destalias jettyhttp -keystore render.keystore
    ```
 
-#### Adicionar o certificado CA à Truststore do renderizador {#adding-the-ca-cert-to-the-render-s-truststore}
+#### Adicionar o certificado da CA à Truststore de renderização {#adding-the-ca-cert-to-the-render-s-truststore}
 
 Se estiver agindo como CA, importe seu certificado de CA em um keystore. Em seguida, configure a JVM que executa a instância de renderização para confiar no keystore.
 
@@ -252,7 +252,7 @@ Para configurar o serviço HTTP da instância de renderização para usar SSL, u
 * AEM 6.1: [Ativar HTTP por SSL](https://experienceleague.adobe.com/pt-br/docs/experience-manager-release-information/aem-release-updates/previous-updates/aem-previous-versions)
 * Versões anteriores do AEM: consulte [esta página.](https://experienceleague.adobe.com/pt-br/docs/experience-manager-release-information/aem-release-updates/previous-updates/aem-previous-versions)
 
-### Configurar SSL para o módulo Dispatcher {#configuring-ssl-for-the-dispatcher-module}
+### Configurar o SSL para o módulo do Dispatcher {#configuring-ssl-for-the-dispatcher-module}
 
 Para configurar o Dispatcher para usar o SSL mútuo, prepare o certificado do Dispatcher e configure o módulo do servidor Web.
 
@@ -280,7 +280,7 @@ Combine o certificado do Dispatcher e a chave privada não criptografada em um �
    -----END CERTIFICATE-----
    ```
 
-### Especifique o certificado a ser usado para o Dispatcher {#specifying-the-certificate-to-use-for-dispatcher}
+### Especificar o certificado a ser usado para o Dispatcher {#specifying-the-certificate-to-use-for-dispatcher}
 
 Adicione as seguintes propriedades à [Configuração do módulo Dispatcher](dispatcher-install.md#main-pars-55-35-1022) (em `httpd.conf`):
 

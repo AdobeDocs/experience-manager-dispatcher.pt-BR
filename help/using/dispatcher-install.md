@@ -7,9 +7,9 @@ topic-tags: dispatcher
 content-type: reference
 exl-id: 9375d1c0-8d9e-46cb-9810-fa4162a8c1ba
 source-git-commit: c41b4026a64f9c90318e12de5397eb4c116056d9
-workflow-type: tm+mt
+workflow-type: ht
 source-wordcount: '3720'
-ht-degree: 94%
+ht-degree: 100%
 
 ---
 
@@ -93,7 +93,7 @@ Para obter informações sobre como instalar esse servidor Web, consulte os segu
 * Documentação da Microsoft® referente ao Internet Information Server
 * [“O site oficial do Microsoft® IIS”](https://www.iis.net/)
 
-### Componentes necessários do IIS {#required-iis-components}
+### Componentes do IIS obrigatórios {#required-iis-components}
 
 As versões 8.5 e 10 do IIS exigem a instalação dos seguintes componentes do IIS:
 
@@ -130,7 +130,7 @@ Use o procedimento a seguir para copiar os arquivos do Dispatcher para o local c
       * Instância do autor: `author_dispatcher.any`
       * Instância de publicação: `dispatcher.any`
 
-## Microsoft® IIS - Configurar o arquivo INI da Dispatcher {#microsoft-iis-configure-the-dispatcher-ini-file}
+## Microsoft® IIS: configuração do arquivo INI do Dispatcher {#microsoft-iis-configure-the-dispatcher-ini-file}
 
 Para configurar a instalação do Dispatcher, edite o arquivo `disp_iis.ini`. O formato básico do arquivo `.ini` é o seguinte:
 
@@ -150,7 +150,7 @@ A tabela a seguir descreve cada propriedade.
 | `logfile` | O local do arquivo `dispatcher.log`. Se esse local não for configurado, as mensagens de log serão enviadas ao log de eventos do Windows. |
 | `loglevel` | Define o nível de log usado para enviar mensagens para o log de eventos. Os seguintes valores podem ser especificados no nível de log do arquivo de log: <br/>0 - somente mensagens de erro. <br/>1 - erros e avisos. <br/>2 - erros, avisos e mensagens informativas <br/>3 - erros, avisos, mensagens informativas e mensagens de depuração. <br/>**Observação**: defina o nível de log como 3 durante a instalação e o teste, e depois como 0 durante a execução em um ambiente de produção. |
 | `replaceauthorization` | Especifica como os cabeçalhos de autorização na solicitação HTTP são tratados. Os seguintes valores são válidos:<br/>0 - Os cabeçalhos de autorização não são modificados. <br/>1 - Substitui qualquer cabeçalho chamado “Autorização”, diferente de “Básica”, por seu `Basic <IIS:LOGON\_USER>` equivalente.<br/> |
-| `servervariables` | Define como as variáveis do servidor são processadas.<br/>0 - As variáveis do servidor IIS não são enviadas para o Dispatcher nem para o AEM. <br/>1 - todas as variáveis do servidor IIS (como `LOGON\_USER, QUERY\_STRING, ...`) são enviadas para o Dispatcher, juntamente com os cabeçalhos solicitados (e também para a instância do AEM, se não estiver armazenada em cache).  <br/>As variáveis de servidor incluem `AUTH\_USER, LOGON\_USER, HTTPS\_KEYSIZE` e muitas outras. Consulte a documentação do IIS para obter a lista completa de variáveis, com detalhes. |
+| `servervariables` | Define como as variáveis do servidor são processadas.<br/>0 - As variáveis do servidor IIS não são enviadas para o Dispatcher nem para o AEM. <br/>1 - Todas as variáveis do servidor IIS, (como `LOGON\_USER, QUERY\_STRING, ...`), são enviadas ao Dispatcher, juntamente com os cabeçalhos de solicitação (e também à instância do AEM, se não estiver armazenada em cache).  <br/>As variáveis de servidor incluem `AUTH\_USER, LOGON\_USER, HTTPS\_KEYSIZE` e muitas outras. Consulte a documentação do IIS para obter a lista completa de variáveis, com detalhes. |
 | `enable_chunked_transfer` | Define se a transferência de conteúdo da resposta do cliente estará habilitada (1) ou desabilitada (0). O valor padrão é 0. |
 
 Um exemplo de configuração:
@@ -167,17 +167,17 @@ replaceauthorization=0
 
 Configure o IIS para integrar o Módulo ISAPI do Dispatcher. No IIS, utiliza-se o mapeamento de aplicativo curinga.
 
-### Configuração do acesso anônimo - IIS 8.5 e 10 {#configuring-anonymous-access-iis-and}
+### Configurar acesso anônimo: IIS 8.5 e 10 {#configuring-anonymous-access-iis-and}
 
-O agente de replicação `Flush` padrão na instância do Autor está configurado para que ele não envie credenciais de segurança com solicitações de liberação. Portanto, o site em que você usa o cache do Dispatcher deve permitir acesso anônimo.
+O agente de replicação de `Flush` padrão na instância de criação é configurado para não enviar credenciais de segurança com solicitações de limpeza. Portanto, o site no qual você usa o cache do Dispatcher precisa permitir acesso anônimo.
 
-Se o site usar um método de autenticação, o agente de replicação `Flush` deverá ser configurado adequadamente.
+Se o site usar um método de autenticação, o agente de replicação de `Flush` deverá ser configurado adequadamente.
 
 1. Abra o Gerenciador do IIS e selecione o site que você está usando como cache do Dispatcher.
 1. Usando o modo de exibição de recursos na seção do IIS, clique duas vezes em “Autenticação”. 
 1. Selecione Autenticação anônima, caso esta opção não esteja ativada, e na área Ações, clique em Ativar.
 
-### Integrar o módulo ISAPI do Dispatcher - IIS 8.5 e 10 {#integrating-the-dispatcher-isapi-module-iis-and}
+### Integrar o Módulo ISAPI do Dispatcher: IIS 8.5 e 10 {#integrating-the-dispatcher-isapi-module-iis-and}
 
 Use o procedimento a seguir para adicionar o Módulo ISAPI do Dispatcher ao IIS.
 
@@ -199,7 +199,7 @@ Use o procedimento a seguir para adicionar o Módulo ISAPI do Dispatcher ao IIS.
 1. (IIS 8.0) Para garantir que o manipulador seja usado para arquivos e pastas que ainda não foram armazenados em cache, desmarque a opção **Invocar manipulador somente se a solicitação estiver mapeada para**. Clique em **OK**.
 1. (IIS 8.0) Na caixa de diálogo Editar mapa de script, clique em OK.
 
-### Configuração do acesso ao cache - IIS 8.5 e 10 {#configuring-access-to-the-cache-iis-and}
+### Configurar acesso ao cache: IIS 8.5 e 10 {#configuring-access-to-the-cache-iis-and}
 
 Forneça ao usuário padrão do Pool de aplicativos acesso de gravação à pasta que está sendo usada como cache do Dispatcher.
 
@@ -215,9 +215,9 @@ Forneça ao usuário padrão do Pool de aplicativos acesso de gravação à past
    `IIS AppPool\DefaultAppPool`
 
 1. Clique no botão Verificar nomes. Quando o Windows resolver a conta de usuário, clique em OK.
-1. Na caixa de diálogo Permissões da pasta do Dispatcher, selecione a conta que você acabou de adicionar, habilite todas as permissões da conta, **exceto Controle total**, e clique em OK. Clique em OK para fechar a caixa de diálogo Propriedades da pasta.
+1. Na caixa de diálogo Permissões da pasta do Dispatcher, selecione a conta que você acabou de adicionar, habilite todas as permissões da conta, **exceto Controle total**, e clique em OK. Clique em OK para fechar a caixa de diálogo “Propriedades” da pasta.
 
-### Registre o tipo MIME JSON - IIS 8.5 e 10 {#registering-the-json-mime-type-iis-and}
+### Registro do tipo de MIME JSON: IIS 8.5 e 10 {#registering-the-json-mime-type-iis-and}
 
 Use o procedimento a seguir para registrar o tipo MIME JSON quando quiser que o Dispatcher permita chamadas JSON.
 
@@ -227,14 +227,14 @@ Use o procedimento a seguir para registrar o tipo MIME JSON quando quiser que o 
    * Extensão de nome do arquivo: `.json`
    * Tipo MIME: `application/json`
 
-### Remover o segmento oculto bin - IIS 8.5 e 10 {#removing-the-bin-hidden-segment-iis-and}
+### Remover o segmento oculto do compartimento: IIS 8.5 e 10 {#removing-the-bin-hidden-segment-iis-and}
 
 Use o procedimento a seguir para remover o segmento oculto `bin`. Os sites que não são novos podem conter esse segmento oculto.
 
 1. No Gerenciador do IIS, selecione seu site e, usando a Exibição de recursos, clique duas vezes em Solicitar filtragem.
 1. Selecione o segmento `bin`, clique em Remover e, na caixa de diálogo de confirmação, clique em Sim.
 
-### Registrar mensagens do IIS em um arquivo - IIS 8.5 e 10 {#logging-iis-messages-to-a-file-iis-and}
+### Registrar mensagens do IIS em um arquivo: IIS 8.5 e 10 {#logging-iis-messages-to-a-file-iis-and}
 
 Use o procedimento a seguir para gravar mensagens de log do Dispatcher em um arquivo de log, em vez de gravar no log de Eventos do Windows. Configure o Dispatcher para usar o arquivo de log e forneça ao IIS acesso de gravação ao arquivo.
 
@@ -253,7 +253,7 @@ Use o procedimento a seguir para gravar mensagens de log do Dispatcher em um arq
    `IIS AppPool\DefaultAppPool`
 
 1. Clique no botão Verificar nomes. Quando o Windows resolver a conta de usuário, clique em OK.
-1. Na caixa de diálogo Permissões da pasta do Dispatcher, selecione a conta que você acabou de adicionar, habilite todas as permissões para a conta, **exceto Controle completo**, e clique em OK. Clique em OK para fechar a caixa de diálogo Propriedades da pasta.
+1. Na caixa de diálogo Permissões da pasta do Dispatcher, selecione a conta que você acabou de adicionar, habilite todas as permissões para a conta, **exceto Controle completo**, e clique em OK. Clique em OK para fechar a caixa de diálogo “Propriedades” da pasta.
 1. Use um editor de texto para abrir o arquivo `disp_iis.ini`.
 1. Para configurar o local do arquivo de log, adicione uma linha de texto semelhante ao exemplo a seguir e salve o arquivo:
 
@@ -286,7 +286,7 @@ Para informações sobre como instalar o Apache Web Server, leia o manual de ins
 
 Consulte também as [Dicas de segurança](https://httpd.apache.org/docs/2.4/misc/security_tips.html) e os [Relatórios de segurança](https://httpd.apache.org/security_report.html) do Apache HTTP Server.
 
-### Apache Web Server - Adicionar o módulo Dispatcher {#apache-web-server-add-the-dispatcher-module}
+### Apache Web Server: adicionar o módulo do Dispatcher {#apache-web-server-add-the-dispatcher-module}
 
 O Dispatcher vem como uma das opções:
 
@@ -319,7 +319,7 @@ Siga as seguintes etapas para adicionar o Dispatcher ao seu Apache Web Server:
 
    **Observação:** você pode colocar esse arquivo em um local diferente, desde que a propriedade DispatcherLog do módulo Dispatcher esteja configurada adequadamente. (Consulte abaixo Entradas de configuração específica para o Dispatcher.)
 
-### Apache Web Server - Configurar propriedades do SELinux {#apache-web-server-configure-selinux-properties}
+### Apache Web Server: configurar propriedades do SELinux {#apache-web-server-configure-selinux-properties}
 
 Se estiver executando o Dispatcher no Red Hat® Linux® Kernel 2.6 com o SELinux habilitado, você poderá encontrar mensagens de erro como esta no arquivo de log do Dispatcher.
 
@@ -531,7 +531,7 @@ AllowOverride None
 ...
 ```
 
-### Ativação do suporte para HTTPS (UNIX® e Linux®) {#enable-support-for-https-unix-and-linux}
+### Habilitar compatibilidade com HTTPS (UNIX® e Linux®) {#enable-support-for-https-unix-and-linux}
 
 O Dispatcher usa o OpenSSL para implementar comunicação segura via HTTP. A partir da versão do Dispatcher **4.2.0**, há suporte para OpenSSL 1.0.0 e OpenSSL 1.0.1. O Dispatcher usa o OpenSSL 1.0.0 por padrão. Para usar o OpenSSL 1.0.1, use o seguinte procedimento para criar links simbólicos para que o Dispatcher use as bibliotecas OpenSSL instaladas.
 
@@ -550,7 +550,7 @@ O Dispatcher usa o OpenSSL para implementar comunicação segura via HTTP. A par
 
 >[!NOTE]
 >
->Se estiver usando uma versão personalizada do Apache, verifique se o Apache e o Dispatcher estão compilados usando a mesma versão do OpenSSL. <!-- URL has connection error [OpenSSL] (https://www.openssl.org/source/). -->
+>Se estiver usando uma versão personalizada do Apache, verifique se o Apache e o Dispatcher estão compilados com a mesma versão do OpenSSL. <!-- URL has connection error [OpenSSL] (https://www.openssl.org/source/). -->
 
 ### Próximas etapas {#next-steps-1}
 
@@ -574,7 +574,7 @@ Para obter informações completas sobre como instalar esses servidores web, con
 * Sun Java™ System Web Server
 * Servidor Web iPlanet
 
-### Sun Java™ System Web Server / iPlanet - Adicionar o módulo Dispatcher {#sun-java-system-web-server-iplanet-add-the-dispatcher-module}
+### Sun Java™ System Web Server / iPlanet: adicionar o módulo do Dispatcher {#sun-java-system-web-server-iplanet-add-the-dispatcher-module}
 
 O Dispatcher vem como uma das opções:
 

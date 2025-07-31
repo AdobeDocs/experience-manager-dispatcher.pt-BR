@@ -6,9 +6,9 @@ topic-tags: dispatcher
 content-type: reference
 exl-id: c9266683-6890-4359-96db-054b7e856dd0
 source-git-commit: c41b4026a64f9c90318e12de5397eb4c116056d9
-workflow-type: tm+mt
+workflow-type: ht
 source-wordcount: '3073'
-ht-degree: 95%
+ht-degree: 100%
 
 ---
 
@@ -75,7 +75,7 @@ O Dispatcher contém mecanismos para gerar e atualizar HTML estático com base n
 
 Esta seção ilustra os princípios por trás desse processo.
 
-### Servidor Web estático {#static-web-server}
+### Servidor web estático {#static-web-server}
 
 ![](assets/chlimage_1-3.png)
 
@@ -111,7 +111,7 @@ Esse fluxo de trabalho permite que você crie um conteúdo mais rico e dinâmico
 >
 >Pode haver limitações no nível do sistema operacional quanto ao comprimento do nome do arquivo. Isso é, se você tiver um URL com vários seletores.
 
-### Métodos de cache
+### Métodos de armazenamento em cache
 
 O Dispatcher tem dois métodos primários para atualizar o conteúdo em cache quando mudanças são feitas no site.
 
@@ -151,7 +151,7 @@ Mais uma vez, é de salientar alguns pontos:
 
 ![](assets/chlimage_1-6.png)
 
-### Determinar se um documento está sujeito ao cache
+### Determinar se um documento está sujeito ao armazenamento em cache
 
 Você pode [definir quais documentos o Dispatcher armazena em cache no arquivo de configuração](https://experienceleague.adobe.com/pt-br/docs/experience-manager-dispatcher/using/configuring/dispatcher-configuration). O Dispatcher verifica a solicitação em relação à lista de documentos que podem ser armazenados em cache. Se o documento não estiver nessa lista, o Dispatcher solicitará o documento da instância do AEM.
 
@@ -165,7 +165,7 @@ O Dispatcher sempre solicita o documento diretamente da instância do AEM nos se
 >
 >Os métodos GET ou HEAD (para o cabeçalho HTTP) podem ser armazenados em cache pelo Dispatcher. Para obter informações adicionais sobre o armazenamento em cache do cabeçalho de resposta, consulte a seção [Armazenamento em cache de cabeçalhos de resposta HTTP](https://experienceleague.adobe.com/pt-br/docs/experience-manager-dispatcher/using/configuring/dispatcher-configuration).
 
-### Determinar se um documento está em cache
+### Determinar se um documento está armazenado em cache
 
 O Dispatcher armazena os arquivos em cache no servidor Web como se fossem parte de um site estático. Se um usuário solicitar um documento armazenável em cache, o Dispatcher verificará se esse documento existe no sistema de arquivos do servidor web:
 
@@ -238,7 +238,7 @@ Em configurações complexas, você pode usar vários Dispatchers. Por exemplo, 
 
 Nesse caso, verifique se cada solicitação passa por apenas um Dispatcher. Um Dispatcher não lida com solicitações provenientes de outro Dispatcher. Portanto, verifique se ambos os Dispatchers acessam o site do AEM diretamente.
 
-## Usar o Dispatcher com um CDN {#using-dispatcher-with-a-cdn}
+## Usar o Dispatcher com uma CDN {#using-dispatcher-with-a-cdn}
 
 Uma rede de entrega de conteúdo (CDN), como Akamai Edge Delivery ou Amazon Cloud Front, fornece conteúdo de um local próximo ao usuário final. Assim,
 
@@ -258,19 +258,19 @@ O &quot;próximo servidor mais próximo&quot; depende de sua configuração espe
 
 Geralmente, o Dispatcher é o próximo servidor que pode servir o documento de um cache e influenciar os cabeçalhos de resposta retornados ao servidor da CDN.
 
-## Controlar um cache CDN {#controlling-a-cdn-cache}
+## Controlar um cache da CDN {#controlling-a-cdn-cache}
 
 Há várias maneiras de controlar por quanto tempo uma CDN armazena um recurso em cache antes de buscá-lo novamente no Dispatcher.
 
 1. Configuração explícita.
-Configure por quanto tempo os recursos específicos são mantidos no cache do CDN, dependendo do tipo mime, extensão, tipo de solicitação e assim por diante.
+Configure por quanto tempo recursos específicos são mantidos no cache da CDN, dependendo do tipo de MIME, extensão, tipo de solicitação etc.
 
-1. Cabeçalhos de expiração e controle de cache.
+1. Cabeçalhos de vencimento e controle de cache.
 A maioria das CDNs respeitará os cabeçalhos HTTP `Expires:` e `Cache-Control:` se forem enviados pelo servidor upstream. Isso pode ser feito, por exemplo, usando o módulo [mod_expires](https://httpd.apache.org/docs/2.4/mod/mod_expires.html) do Apache.
 
 1. Invalidação manual.
 As CDNs permitem que os recursos sejam removidos do cache por meio de interfaces da Web.
-1. Invalidação baseada em API.\
+1. Invalidação baseada na API.\
    A maioria das CDNs também oferece uma API REST e/ou SOAP que permite a remoção de recursos do cache.
 
 Em uma configuração típica do AEM, a configuração por extensão, por caminho ou por ambos (que pode ser alcançada através dos pontos 1 e 2 acima), oferece possibilidades de definir períodos razoáveis de armazenamento em cache. Esses períodos de armazenamento em cache são para recursos frequentemente usados que não são alterados com frequência, como imagens de design e bibliotecas do cliente. Quando novas versões são implantadas, geralmente é necessária uma invalidação manual.
@@ -281,13 +281,13 @@ Para obter um controle mais preciso, a invalidação com base em API permite inv
 
 >[!NOTE]
 >
->Consulte também [Segurança do AEM (CQ) Dispatcher e Armazenamento em cache de CDN+Browser](https://www.slideshare.net/andrewmkhoury/dispatcher-caching-aemgemspart2jan2015) e uma apresentação gravada sobre [Armazenamento em cache do Dispatcher](https://experienceleague.adobe.com/pt-br/docs/events/experience-manager-gems-recordings/gems2015/aem-dispatcher-caching-new-features-and-optimizations).
+>Consulte também [Segurança do AEM (CQ) Dispatcher e Armazenamento em cache de CDN+Navegador](https://www.slideshare.net/andrewmkhoury/dispatcher-caching-aemgemspart2jan2015) e uma apresentação gravada sobre [Armazenamento em cache do Dispatcher](https://experienceleague.adobe.com/pt-br/docs/events/experience-manager-gems-recordings/gems2015/aem-dispatcher-caching-new-features-and-optimizations).
 
-## Usar uma Dispatcher com um servidor de Autores {#using-a-dispatcher-with-an-author-server}
+## Usar um Dispatcher com um servidor de criação {#using-a-dispatcher-with-an-author-server}
 
 >[!CAUTION]
 >
->Se você usar o [AEM com interface de toque](https://experienceleague.adobe.com/pt-br/docs/experience-manager-65/content/implementing/developing/introduction/touch-ui-concepts), **não** armazene o conteúdo da instância do autor em cache. Se o cache estiver ativado para a instância do autor, você deverá desativá-lo e excluir o conteúdo do diretório do cache. Para desativar o armazenamento em cache, edite o arquivo `author_dispatcher.any` e modifique a propriedade `/rule` na seção `/cache` da seguinte maneira:
+>Se você usar o [AEM com interface de toque](https://experienceleague.adobe.com/pt-br/docs/experience-manager-65/content/implementing/developing/introduction/touch-ui-concepts), **não** armazene o conteúdo da instância do autor em cache. Se o armazenamento em cache tiver sido habilitado para a instância de criação, será necessário desabilitá-lo e excluir o conteúdo do diretório do cache. Para desativar o armazenamento em cache, edite o arquivo `author_dispatcher.any` e modifique a propriedade `/rule` na seção `/cache` da seguinte maneira:
 
 ```xml
 /rules

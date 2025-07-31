@@ -1,23 +1,23 @@
 ---
-title: Otimizar um site para desempenho de cache
+title: Otimizar um site para desempenho do cache
 description: Saiba como projetar seu site para potencializar os benefícios do armazenamento em cache.
 contentOwner: User
 products: SG_EXPERIENCEMANAGER/DISPATCHER
 topic-tags: dispatcher
 content-type: reference
-redirecttarget: https://helpx.adobe.com/br/experience-manager/6-4/sites/deploying/using/configuring-performance.html
+redirecttarget: https://helpx.adobe.com/experience-manager/6-4/sites/deploying/using/configuring-performance.html
 index: y
 internal: n
 snippet: y
 source-git-commit: c41b4026a64f9c90318e12de5397eb4c116056d9
-workflow-type: tm+mt
+workflow-type: ht
 source-wordcount: '1128'
-ht-degree: 96%
+ht-degree: 100%
 
 ---
 
 
-# Otimizar um site para desempenho de cache {#optimizing-a-website-for-cache-performance}
+# Otimizar um site para desempenho do cache {#optimizing-a-website-for-cache-performance}
 
 <!-- 
 
@@ -143,7 +143,7 @@ O Dispatcher não pode armazenar dados personalizados em cache, portanto, é rec
 
 As [conexões adesivas](dispatcher.md#TheBenefitsofLoadBalancing) garantem que os documentos de um usuário sejam todos compostos no mesmo servidor. Se um usuário sair dessa pasta e posteriormente retornar a ela, a conexão ainda permanecerá. Defina uma pasta para conter todos os documentos que exigem conexões fixas para o site. Tente não manter outros documentos nela. Isso impactará o balanceamento de carga se você usar páginas personalizadas e dados de sessão.
 
-## Tipos MIME {#mime-types}
+## Tipos de MIME {#mime-types}
 
 Há duas maneiras pelas quais um navegador pode determinar o tipo de arquivo:
 

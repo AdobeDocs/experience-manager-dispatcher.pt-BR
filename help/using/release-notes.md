@@ -6,13 +6,13 @@ content-type: reference
 products: SG_EXPERIENCEMANAGER/6.4
 exl-id: b55c7a34-d57b-4d45-bd83-29890f1524de
 source-git-commit: c41b4026a64f9c90318e12de5397eb4c116056d9
-workflow-type: tm+mt
+workflow-type: ht
 source-wordcount: '1062'
-ht-degree: 99%
+ht-degree: 100%
 
 ---
 
-# Notas de versão do AEM Dispatcher{#aem-dispatcher-release-notes}
+# Notas de versão do AEM Dispatcher {#aem-dispatcher-release-notes}
 
 ## Informações da versão {#release-information}
 
@@ -35,7 +35,7 @@ A Adobe recomenda usar a versão mais recente do AEM Dispatcher para se benefici
 
 Para obter instruções detalhadas, consulte [Instalação do Dispatcher](dispatcher-install.md).
 
-## Histórico da versão {#release-history}
+## Histórico de versões {#release-history}
 
 ### Versão 4.3.7 (27 de março de 2024) {#march}
 
