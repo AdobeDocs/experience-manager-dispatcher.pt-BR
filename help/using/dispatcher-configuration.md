@@ -2,10 +2,10 @@
 title: Configurar o AEM Dispatcher
 description: Saiba como configurar o Dispatcher. Saiba mais sobre o suporte para IPv4 e IPv6, arquivos de configuração, variáveis de ambiente e nomeação da instância. Leia sobre definição de farms, identificação de hosts virtuais e muito mais.
 exl-id: 91159de3-4ccb-43d3-899f-9806265ff132
-source-git-commit: c41b4026a64f9c90318e12de5397eb4c116056d9
-workflow-type: ht
-source-wordcount: '8937'
-ht-degree: 100%
+source-git-commit: fbfbe76b730d4037cccb400b70619fbe24b3b1bc
+workflow-type: tm+mt
+source-wordcount: '8938'
+ht-degree: 99%
 
 ---
 
@@ -209,7 +209,7 @@ Cada propriedade farm pode conter as seguintes propriedades filhas:
 | [/failover](#using-the-failover-mechanism) | Reenvia solicitações para renderizações diferentes quando a solicitação original falha. |
 | [/auth_checker](permissions-cache.md) | Para armazenamento em cache sensível a permissões, consulte [Armazenamento em cache de conteúdo protegido](permissions-cache.md). |
 
-## Especificar uma página padrão (somente IIS): `/homepage` {#specify-a-default-page-iis-only-homepage}
+## Especificação de uma página padrão (somente IIS) - /homepage {#specify-a-default-page-iis-only-homepage}
 
 >[!CAUTION]
 >
