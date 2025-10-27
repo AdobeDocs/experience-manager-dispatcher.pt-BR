@@ -5,9 +5,9 @@ pageversionid: 1193211344162
 topic-tags: dispatcher
 content-type: reference
 exl-id: c9266683-6890-4359-96db-054b7e856dd0
-source-git-commit: c41b4026a64f9c90318e12de5397eb4c116056d9
-workflow-type: ht
-source-wordcount: '3073'
+source-git-commit: 5cdfdb6d49f7d37a309fef9c5a4eb72409b54b13
+workflow-type: tm+mt
+source-wordcount: '3075'
 ht-degree: 100%
 
 ---
@@ -129,7 +129,7 @@ Em uma atualização de conteúdo, um ou mais documentos do AEM são alterados. 
 É de salientar os seguintes pontos:
 
 * As atualizações de conteúdo normalmente são usadas com um sistema de criação que “sabe” o que deve ser substituído.
-* As atualizações de conteúdo que afetam os arquivos são removidas, mas não substituídas imediatamente. Na próxima vez que esse arquivo for solicitado, o Dispatcher buscará o novo arquivo na instância do AEM e o colocará no cache, substituindo o conteúdo antigo.
+* Os arquivos afetados por uma atualização de conteúdo são removidos, mas não são substituídos imediatamente. Na próxima vez que um arquivo for solicitado, o Dispatcher buscará o novo arquivo da instância do AEM e o colocará no cache, substituindo assim o conteúdo antigo.
 * Normalmente, as imagens geradas automaticamente que incorporam texto de uma página são armazenadas em arquivos de imagem que começam com o mesmo identificador - garantindo assim que a associação exista para exclusão. Por exemplo, você pode armazenar o texto do título da página mypage.html como a imagem mypage.titlePicture.gif na mesma pasta. Desta forma, a imagem é automaticamente eliminada do cache sempre que a página é atualizada, para que possa ter a certeza de que a imagem reflete sempre a versão atual da página.
 * Você pode ter vários arquivos de status, por exemplo, um por pasta de idioma. Se uma página for atualizada, o AEM procurará a próxima pasta pai que contém um arquivo de status e *tocará* esse arquivo.
 
@@ -287,7 +287,7 @@ Para obter um controle mais preciso, a invalidação com base em API permite inv
 
 >[!CAUTION]
 >
->Se você usar o [AEM com interface de toque](https://experienceleague.adobe.com/pt-br/docs/experience-manager-65/content/implementing/developing/introduction/touch-ui-concepts), **não** armazene o conteúdo da instância do autor em cache. Se o armazenamento em cache tiver sido habilitado para a instância de criação, será necessário desabilitá-lo e excluir o conteúdo do diretório do cache. Para desativar o armazenamento em cache, edite o arquivo `author_dispatcher.any` e modifique a propriedade `/rule` na seção `/cache` da seguinte maneira:
+>Se você usar o [AEM com interface de toque](https://experienceleague.adobe.com/pt-br/docs/experience-manager-65/content/implementing/developing/introduction/touch-ui-concepts), **não** armazene o conteúdo da instância de criação em cache. Se o armazenamento em cache tiver sido habilitado para a instância de criação, será necessário desabilitá-lo e excluir o conteúdo do diretório do cache. Para desativar o armazenamento em cache, edite o arquivo `author_dispatcher.any` e modifique a propriedade `/rule` na seção `/cache` da seguinte maneira:
 
 ```xml
 /rules
@@ -297,7 +297,7 @@ Para obter um controle mais preciso, a invalidação com base em API permite inv
 }
 ```
 
-Um Dispatcher pode ser usado na frente de uma instância do autor para melhorar o desempenho da criação. Para configurar um Dispatcher de criação, faça o seguinte:
+Um Dispatcher pode ser usado na frente de uma instância de criação para melhorar o desempenho da criação. Para configurar um Dispatcher de criação, faça o seguinte:
 
 1. Instale um Dispatcher em um servidor web (Apache ou IIS; consulte [Instalação do Dispatcher](dispatcher-install.md)).
 1. Teste o Dispatcher recém-instalado em uma instância de publicação do AEM em funcionamento. Isso garante que uma instalação correta de linha de base foi alcançada.
@@ -305,7 +305,7 @@ Um Dispatcher pode ser usado na frente de uma instância do autor para melhorar 
 1. Substitua o arquivo de amostra `dispatcher.any` pelo arquivo `author_dispatcher.any` fornecido com o [download do Dispatcher](release-notes.md#downloads).
 1. Abra o `author_dispatcher.any` em um editor de texto e faça as seguintes alterações:
 
-   1. Altere o `/hostname` e `/port` da seção `/renders` para apontar para a instância do autor.
+   1. Altere o `/hostname` e `/port` da seção `/renders` para apontar para a instância de criação.
    1. Altere o `/docroot` da seção `/cache` para apontar para um diretório de cache. Caso esteja usando o [AEM com Touch UI](https://experienceleague.adobe.com/pt-br/docs/experience-manager-65/content/implementing/developing/introduction/touch-ui-concepts), consulte o aviso acima.
    1. Salve as alterações.
 
@@ -320,7 +320,7 @@ Um Dispatcher pode ser usado na frente de uma instância do autor para melhorar 
 >
 >Se você tiver usado o Dispatcher do autor configurado anteriormente e ativado um *agente de limpeza do Dispatcher*, faça o seguinte:
 
-1. Exclua ou desative o agente de limpeza do **Dispatcher do autor** na instância do autor do AEM.
+1. Exclua ou desative o agente de limpeza do **Dispatcher do autor** na instância de criação do AEM.
 1. Refaça a configuração do Dispatcher do autor seguindo as novas instruções acima.
 
 <!--
