@@ -5,10 +5,10 @@ pageversionid: 1193211344162
 topic-tags: dispatcher
 content-type: reference
 exl-id: c9266683-6890-4359-96db-054b7e856dd0
-source-git-commit: 5cdfdb6d49f7d37a309fef9c5a4eb72409b54b13
+source-git-commit: b7ab59ad2da1b73ebbf7819670f056a68162796d
 workflow-type: tm+mt
-source-wordcount: '3075'
-ht-degree: 100%
+source-wordcount: '3065'
+ht-degree: 98%
 
 ---
 
@@ -129,7 +129,7 @@ Em uma atualização de conteúdo, um ou mais documentos do AEM são alterados. 
 É de salientar os seguintes pontos:
 
 * As atualizações de conteúdo normalmente são usadas com um sistema de criação que “sabe” o que deve ser substituído.
-* Os arquivos afetados por uma atualização de conteúdo são removidos, mas não são substituídos imediatamente. Na próxima vez que um arquivo for solicitado, o Dispatcher buscará o novo arquivo da instância do AEM e o colocará no cache, substituindo assim o conteúdo antigo.
+* Os arquivos afetados por uma atualização de conteúdo são removidos, mas não são substituídos imediatamente. Na próxima vez que o arquivo for solicitado, o Dispatcher recuperará a versão atualizada da instância do AEM e substituirá a cópia em cache.
 * Normalmente, as imagens geradas automaticamente que incorporam texto de uma página são armazenadas em arquivos de imagem que começam com o mesmo identificador - garantindo assim que a associação exista para exclusão. Por exemplo, você pode armazenar o texto do título da página mypage.html como a imagem mypage.titlePicture.gif na mesma pasta. Desta forma, a imagem é automaticamente eliminada do cache sempre que a página é atualizada, para que possa ter a certeza de que a imagem reflete sempre a versão atual da página.
 * Você pode ter vários arquivos de status, por exemplo, um por pasta de idioma. Se uma página for atualizada, o AEM procurará a próxima pasta pai que contém um arquivo de status e *tocará* esse arquivo.
 
@@ -281,7 +281,7 @@ Para obter um controle mais preciso, a invalidação com base em API permite inv
 
 >[!NOTE]
 >
->Consulte também [Segurança do AEM (CQ) Dispatcher e Armazenamento em cache de CDN+Navegador](https://www.slideshare.net/andrewmkhoury/dispatcher-caching-aemgemspart2jan2015) e uma apresentação gravada sobre [Armazenamento em cache do Dispatcher](https://experienceleague.adobe.com/pt-br/docs/events/experience-manager-gems-recordings/gems2015/aem-dispatcher-caching-new-features-and-optimizations).
+>Consulte também [Segurança do AEM (CQ) Dispatcher e Armazenamento em cache de CDN+Navegador](https://www.slideshare.net/slideshow/dispatcher-caching-aemgemspart2jan2015/44053023) e uma apresentação gravada sobre [Armazenamento em cache do Dispatcher](https://experienceleague.adobe.com/en/docs/events/experience-manager-gems-recordings/overview#).
 
 ## Usar um Dispatcher com um servidor de criação {#using-a-dispatcher-with-an-author-server}
 
