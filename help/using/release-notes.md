@@ -5,10 +5,10 @@ topic-tags: release-notes
 content-type: reference
 products: SG_EXPERIENCEMANAGER/6.4
 exl-id: b55c7a34-d57b-4d45-bd83-29890f1524de
-source-git-commit: b7ab59ad2da1b73ebbf7819670f056a68162796d
+source-git-commit: f4ed724deccf14c570ca873728a97d0ae5fe0e4f
 workflow-type: tm+mt
-source-wordcount: '1098'
-ht-degree: 94%
+source-wordcount: '1105'
+ht-degree: 93%
 
 ---
 
@@ -41,9 +41,8 @@ Para obter instruções detalhadas, consulte [Instalação do Dispatcher](dispat
 
 **Melhorias**:
 
-* DISP-1040 - correção para clientes que estão reescrevendo urls
+* DISP-1040 - Implementar `/allowedClients` na configuração do Dispatcher para controlar quais IPs podem executar invalidações de cache e bloquear ou remover cabeçalhos (`handle`, `cq-handle`, etc.), a menos que seja explicitamente necessário
 * DISP-1046 - stale-while-error também deve lidar com respostas 429 do AEM
-* DISP-1041 - tornar o uri de invalidação configurável (#179)
 * SKYOPS-107219 - Otimize a implementação atual do carregamento de vanityUrls
 
 ### Versão 4.3.7 (27 de março de 2024) {#march}
@@ -137,7 +136,7 @@ Para obter instruções detalhadas, consulte [Instalação do Dispatcher](dispat
 * DISP-720 - Arquivos temporários não fechados, que podem levar à exaustão (muitos arquivos abertos)
 * DISP-721 - O Dispatcher interrompe o poll() quando o Apache reinicia normalmente o filho
 * DISP-722 - Arquivos de cache são criados com o modo octal 0600
-* DISP-723 - Tempo limite de 10 minutos implícito (e “Tente novamente”) quando o tempo limite de renderização está definido como 0
+* DISP-723 - Tempo-limite de 10 minutos implícito (e “Tente novamente”) quando o tempo-limite de renderização está definido como 0
 * DISP-725: caracteres finais de strings são silenciosamente convertidos em valor não nomeado
 * DISP-726 - Registra um aviso quando nenhum farm corresponde ao host de entrada
 * DISP-727 - O Dispatcher verifica a duração do conteúdo da solicitação para arquivos de cache vazios
