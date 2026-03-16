@@ -10,10 +10,10 @@ feature-set: Experience Manager
 feature: Dispatcher
 topic: Administration
 role: Admin
-source-git-commit: c41b4026a64f9c90318e12de5397eb4c116056d9
+source-git-commit: fc4c45e045ee1a67f3d2ae6c005a88afde09f206
 workflow-type: tm+mt
-source-wordcount: '81'
-ht-degree: 100%
+source-wordcount: '99'
+ht-degree: 93%
 
 ---
 
@@ -28,6 +28,7 @@ ht-degree: 100%
 + Configuração {#configuring}
    + [Configurar o Dispatcher](dispatcher-configuration.md)
    + [Invalidar páginas em cache do AEM](page-invalidate.md)
+   + [Aprimoramento do Dispatcher ETag para revalidação de CDN](dispatcher-etag-enhancement.md)
    + [Otimizar um site para desempenho do cache](https://experienceleague.adobe.com/pt-br/docs/experience-manager-65/content/implementing/deploying/configuring/configuring-performance)
    + [Armazenar conteúdo protegido em cache](permissions-cache.md)
    + [Usar o AEM Dispatcher com vários domínios](dispatcher-domains.md)
