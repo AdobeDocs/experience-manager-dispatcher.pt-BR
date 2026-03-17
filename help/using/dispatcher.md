@@ -281,7 +281,7 @@ Para obter um controle mais preciso, a invalidação com base em API permite inv
 
 >[!NOTE]
 >
->Consulte também [Segurança do AEM (CQ) Dispatcher e Armazenamento em cache de CDN+Navegador](https://www.slideshare.net/slideshow/dispatcher-caching-aemgemspart2jan2015/44053023) e uma apresentação gravada sobre [Armazenamento em cache do Dispatcher](https://experienceleague.adobe.com/en/docs/events/experience-manager-gems-recordings/overview#).
+>Consulte também [Segurança do AEM (CQ) Dispatcher e Armazenamento em cache de CDN+Navegador](https://www.slideshare.net/slideshow/dispatcher-caching-aemgemspart2jan2015/44053023) e uma apresentação gravada sobre [Armazenamento em cache do Dispatcher](https://experienceleague.adobe.com/pt-br/docs/events/experience-manager-gems-recordings/overview#).
 
 ## Usar um Dispatcher com um servidor de criação {#using-a-dispatcher-with-an-author-server}
 
