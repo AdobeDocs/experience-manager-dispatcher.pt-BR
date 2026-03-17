@@ -2,10 +2,10 @@
 title: Configurar o AEM Dispatcher
 description: Saiba como configurar o Dispatcher. Saiba mais sobre o suporte para IPv4 e IPv6, arquivos de configuração, variáveis de ambiente e nomeação da instância. Leia sobre definição de farms, identificação de hosts virtuais e muito mais.
 exl-id: 91159de3-4ccb-43d3-899f-9806265ff132
-source-git-commit: fbfbe76b730d4037cccb400b70619fbe24b3b1bc
-workflow-type: ht
-source-wordcount: '8938'
-ht-degree: 100%
+source-git-commit: 53781f068db078045ae366d3494cd7d1b78c4a7e
+workflow-type: tm+mt
+source-wordcount: '9194'
+ht-degree: 99%
 
 ---
 
@@ -225,7 +225,7 @@ Comment Type: draft
 <p>Typically this situation occurs when a user specifies an URL for which neither IIS or AEM provides an automatic redirection target. For example, if the AEM render instance is shut down after the content is cached, the content redirect URL is unavailable.</p> 
 <p>The following example configuration displays the <span class="code">index.html</span> page in such circumstances:</p>
 
- -->
+-->
 
 <!-- 
 
@@ -235,7 +235,7 @@ Comment Type: draft
   /homepage&nbsp;"/index.html" 
 </codeblock>
 
- -->
+-->
 
 <!-- 
 
@@ -243,7 +243,7 @@ Comment Type: draft
 
 <p>The <span class="code">/homepage</span> section is located inside the <span class="code">/farms</span> section, for example:<br /> </p>
 
- -->
+-->
 
 <!-- 
 
@@ -253,7 +253,7 @@ Comment Type: draft
   #name&nbsp;of&nbsp;dispatcher!!discoiqbr!!/name&nbsp;"day&nbsp;sites"!!discoiqbr!!!!discoiqbr!!#farms&nbsp;section&nbsp;defines&nbsp;a&nbsp;list&nbsp;of&nbsp;farms&nbsp;or&nbsp;sites!!discoiqbr!!/farms!!discoiqbr!!{!!discoiqbr!!&nbsp;&nbsp;&nbsp;/daycom!!discoiqbr!!&nbsp;&nbsp;&nbsp;{!!discoiqbr!!&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;/homepage&nbsp;"/index.html"!!discoiqbr!!&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;...!!discoiqbr!!&nbsp;&nbsp;&nbsp;}!!discoiqbr!!&nbsp;&nbsp;&nbsp;/docdaycom!!discoiqbr!!&nbsp;&nbsp;&nbsp;{!!discoiqbr!!&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;...!!discoiqbr!!&nbsp;&nbsp;&nbsp;}!!discoiqbr!!} 
 </codeblock>
 
- -->
+-->
 
 ## Especificar os cabeçalhos HTTP a serem passados {#specifying-the-http-headers-to-pass-through-clientheaders}
 
@@ -402,7 +402,7 @@ Usando este exemplo, a tabela a seguir mostra os hosts virtuais que são resolvi
 
 >[!CAUTION]
 >
->Defina `/allowAuthorized` como `"0"` na seção `/cache` para ativar esse recurso. Conforme detalhado na seção [Armazenamento em cache quando a autenticação é usada](#caching-when-authentication-is-used), ao definir solicitações `/allowAuthorized 0 ` que incluem informações de autenticação que **não** estão em cache. Se o armazenamento em cache com permissão confidencial for necessário, consulte a página [Armazenamento em cache de conteúdo protegido](https://experienceleague.adobe.com/pt-br/docs/experience-manager-dispatcher/using/configuring/permissions-cache).
+>Defina `/allowAuthorized` como `"0"` na seção `/cache` para habilitar esse recurso. Conforme detalhado na seção [Armazenamento em cache quando a autenticação é usada](#caching-when-authentication-is-used), ao definir solicitações `/allowAuthorized 0 ` que incluem informações de autenticação que **não** estão em cache. Se o armazenamento em cache com permissão confidencial for necessário, consulte a página [Armazenamento em cache de conteúdo protegido](https://experienceleague.adobe.com/pt-br/docs/experience-manager-dispatcher/using/configuring/permissions-cache).
 
 Crie uma sessão segura para acessar o farm de renderização, de modo que os usuários precisem fazer logon para acessar qualquer página no farm. Depois de fazer logon, os usuários podem acessar as páginas no farm. Consulte [Criação de um grupo fechado de usuários](https://experienceleague.adobe.com/pt-br/docs/experience-manager-65/content/security/cug#creating-the-user-group-to-be-used) para informações sobre como usar este recurso com CUGs. Além disso, consulte a [Lista de verificação de segurança](/help/using/security-checklist.md) do Dispatcher antes de entrar em atividade.
 
@@ -507,13 +507,13 @@ O exemplo de seção `/renders` a seguir distribui solicitações de renderizaç
 
 **/timeout**
 
-Especifica o tempo limite da conexão acessando a instância do AEM em milissegundos. O padrão é `"0"`, fazendo com que o Dispatcher aguarde indefinidamente.
+Especifica o tempo-limite da conexão acessando a instância do AEM em milissegundos. O padrão é `"0"`, fazendo com que o Dispatcher aguarde indefinidamente.
 
 **/receiveTimeout**
 
-Especifica o tempo em milissegundos que uma resposta pode demorar. O padrão é `"600000"`, fazendo com que o Dispatcher aguarde 10 minutos. Uma configuração de `"0"` elimina o tempo limite.
+Especifica o tempo em milissegundos que uma resposta pode demorar. O padrão é `"600000"`, fazendo com que o Dispatcher aguarde 10 minutos. Uma configuração de `"0"` elimina o tempo-limite.
 
-Se o tempo limite for atingido durante a análise dos cabeçalhos de resposta, um Status 504 de HTTP (Gateway incorreto) será retornado. Se o tempo limite for atingido enquanto o corpo da resposta estiver sendo lido, o Dispatcher retornará a resposta incompleta ao cliente. Isso também exclui qualquer arquivo armazenado em cache que foi gravado.
+Se o tempo-limite for atingido durante a análise dos cabeçalhos de resposta, um Status 504 de HTTP (Gateway incorreto) será retornado. Se o tempo-limite for atingido enquanto o corpo da resposta estiver sendo lido, o Dispatcher retornará a resposta incompleta ao cliente. Isso também exclui qualquer arquivo armazenado em cache que foi gravado.
 
 **/ipv4**
 
@@ -614,7 +614,7 @@ Nas versões posteriores do Dispatcher 4.2.0, é possível incluir expressões r
 
 #### Resolução de problemas de filtros {#troubleshooting-filters}
 
-Se os filtros não estiverem sendo acionados da maneira esperada, ative a opção [Registro de rastreamento](#trace-logging) no Dispatcher para ver qual filtro está interceptando a solicitação.
+Se os filtros não estiverem acionando da maneira esperada, habilite [Rastrear log](#trace-logging) no Dispatcher para ver qual filtro está interceptando a solicitação.
 
 #### Exemplo de filtro: negar tudo {#example-filter-deny-all}
 
@@ -719,7 +719,7 @@ Last Modified Date: 2015-06-26T04:32:37.986-0400
 
 <p>We should mention the config files that are shipped with the dispatcher distribution and only give a few examples here. This aims to avoid confusion and reduce content maintenance.<br /> </p>
 
- -->
+-->
 
 ```xml
   /filter
@@ -778,10 +778,11 @@ Last Modified Date: 2015-06-26T04:32:37.986-0400
 >
 >Quando usado com o Apache, crie seus padrões de filtros de URL de acordo com a propriedade DispatcherUseProcessedURL do módulo Dispatcher. (Consulte [Apache Web Server - Configuração do Apache Web Server para o Dispatcher](dispatcher-install.md##apache-web-server-configure-apache-web-server-for-dispatcher).)
 
-<!----
+<!--
 >[!NOTE]
 >
->Filters `0030` and `0031` regarding Dynamic Media are applicable to AEM 6.0 and higher. -->
+>Filters `0030` and `0031` regarding Dynamic Media are applicable to AEM 6.0 and higher. 
+-->
 
 Considere as seguintes recomendações se optar por estender o acesso:
 
@@ -894,7 +895,7 @@ Você deve ver a renderização normal da página para `/content/add_valid_page.
 * `/etc/cloudservices.html`
 * `/welcome`
 
-Para determinar se o acesso de gravação anônimo está ativado, execute o seguinte comando em um terminal ou prompt de comando. A gravação de dados no nó não deve ser possível.
+Para determinar se o acesso de gravação anônimo está habilitado, execute o seguinte comando em um terminal ou prompt de comando. A gravação de dados no nó não deve ser possível.
 
 `curl -X POST "https://anonymous:anonymous@hostname:port/content/usergenerated/mytestnode"`
 
@@ -912,11 +913,11 @@ Last Modified Date: 2015-03-25T14:23:05.185-0400
 
 <p style="font-family: tahoma, arial, helvetica, sans-serif; font-size: 12px;">For https://jira.corp.adobe.com/browse/DOC-4812</p> 
 <p style="font-family: tahoma, arial, helvetica, sans-serif; font-size: 12px;">The "com.adobe.granite.dispatcher.vanityurl.content" package needs to be made public before publishing this contnet.</p>
- -->
+-->
 
 Configure o Dispatcher para habilitar o acesso a URLs personalizados que estão configurados para suas páginas do AEM.
 
-Quando o acesso a URLs personalizados está ativado, o Dispatcher chama periodicamente um serviço que é executado na instância de renderização para obter uma lista de URLs personalizados. O Dispatcher armazena essa lista em um arquivo local. Quando uma solicitação de página é negada devido a um filtro na seção `/filter`, o Dispatcher consulta a lista de URLs personalizados. Se o URL negado estiver na lista, o Dispatcher permitirá acesso ao URL personalizado.
+Quando o acesso a URLs personalizados está habilitado, o Dispatcher chama periodicamente um serviço que é executado na instância de renderização para obter uma lista de URLs personalizados. O Dispatcher armazena essa lista em um arquivo local. Quando uma solicitação de página é negada devido a um filtro na seção `/filter`, o Dispatcher consulta a lista de URLs personalizados. Se o URL negado estiver na lista, o Dispatcher permitirá acesso ao URL personalizado.
 
 Para habilitar o acesso a URLs personalizados, adicione uma seção `/vanity_urls` à seção `/farms`, semelhante ao exemplo a seguir:
 
@@ -937,7 +938,7 @@ A seção `/vanity_urls` contém as seguintes propriedades:
 
 >[!NOTE]
 >
->Se a renderização for uma instância do AEM, você deverá instalar o [pacote VanityURLS-Components da Distribuição de softwares](https://experience.adobe.com/#/downloads/content/software-distribution/br/aem.html?package=/content/software-distribution/en/details.html/content/dam/aem/public/adobe/packages/granite/vanityurls-components) para ativar o serviço de URLs personalizados. (Consulte [Distribuição de softwares](https://experienceleague.adobe.com/pt-br/docs/experience-manager-65/content/sites/administering/contentmanagement/package-manager#software-distribution) para obter mais detalhes.)
+>Se a renderização for uma instância do AEM, você deverá instalar o [pacote VanityURLS-Components da Distribuição de softwares](https://experience.adobe.com/#/downloads/content/software-distribution/br/aem.html?package=/content/software-distribution/en/details.html/content/dam/aem/public/adobe/packages/granite/vanityurls-components) para habilitar o serviço de URLs personalizados. (Consulte [Distribuição de softwares](https://experienceleague.adobe.com/pt-br/docs/experience-manager-65/content/sites/administering/contentmanagement/package-manager#software-distribution) para obter mais detalhes.)
 
 Use o procedimento a seguir para habilitar o acesso a URLs personalizados.
 
@@ -1037,7 +1038,7 @@ O arquivo de status não tem conteúdo. Quando o conteúdo é atualizado, o Disp
 
 A propriedade `/serveStaleOnError` controla se o Dispatcher retorna documentos invalidados quando o servidor de renderização retorna um erro. Por padrão, quando um arquivo de status é tocado e invalida o conteúdo em cache, o Dispatcher exclui o conteúdo em cache. Essa ação é executada na próxima vez que for solicitada.
 
-Se `/serveStaleOnError` está definida como `"1"`, o Dispatcher não exclui conteúdo invalidado do cache. Ou seja, a menos que o servidor de renderização retorne uma resposta bem-sucedida. Uma resposta 502, 503 ou 504 do AEM ou um tempo limite de conexão faz com que o Dispatcher forneça o conteúdo desatualizado e responda com um status HTTP de 111 (Falha na revalidação).
+Se `/serveStaleOnError` está definida como `"1"`, o Dispatcher não exclui conteúdo invalidado do cache. Ou seja, a menos que o servidor de renderização retorne uma resposta bem-sucedida. Uma resposta 502, 503 ou 504 do AEM ou um tempo-limite de conexão faz com que o Dispatcher forneça o conteúdo desatualizado e responda com um status HTTP de 111 (Falha na revalidação).
 
 ### Armazenamento em cache quando a autenticação é usada {#caching-when-authentication-is-used}
 
@@ -1130,7 +1131,7 @@ Comment Type: draft
  <p> </p> 
 </note>
 
- -->
+-->
 
 <!-- 
 
@@ -1138,7 +1139,7 @@ Comment Type: draft
 
 <p>The following rule caches all documents in compressed form; Apache can return either the uncompressed or the compressed form to the client:</p>
 
- -->
+-->
 
 <!-- 
 
@@ -1148,7 +1149,7 @@ Comment Type: draft
   /rules!!discoiqbr!!&nbsp;&nbsp;{!!discoiqbr!!&nbsp;&nbsp;&nbsp;/rulelabel&nbsp;&nbsp;{&nbsp;&nbsp;/glob&nbsp;"*"&nbsp;/type&nbsp;"allow"&nbsp;&nbsp;/compress&nbsp;"gzip"&nbsp;}!!discoiqbr!!&nbsp;&nbsp;} 
 </codeblock>
 
- -->
+-->
 
 <!-- 
 
@@ -1158,7 +1159,7 @@ Last Modified Date: 2017-11-13T09:23:24.326-0500
 
 <p>Hidden the <span class="code">mod_gzip</span> content as requested in CQDOC-11124.</p>
 
- -->
+-->
 
 ### Invalidar arquivos por nível de pasta {#invalidating-files-by-folder-level}
 
@@ -1208,7 +1209,7 @@ Para obter informações sobre propriedades Glob, consulte [Criação de padrõe
 
 Essa configuração causa a seguinte atividade quando `/content/wknd/us/en` é ativado:
 
-* Todos os arquivos com padrão en.* são removidos da pasta `/content/wknd/us`.
+* Todos os arquivos com o padrão en.* são removidos da pasta `/content/wknd/us`.
 * A pasta `/content/wknd/us/en./_jcr_content` é removida.
 * Todos os outros arquivos que correspondem à configuração `/invalidate` não são excluídos imediatamente. Esses arquivos são excluídos quando ocorre a próxima solicitação. No exemplo, `/content/wknd.html` não é excluído; ele é excluído quando `/content/wknd.html` é solicitado.
 
@@ -1304,7 +1305,7 @@ Para especificar quais parâmetros são ignorados, adicione regras glob à propr
 >[!NOTE]
 >
 >Ao configurar a propriedade glob, ela deve corresponder ao nome do parâmetro de consulta. Por exemplo, se desejar ignorar o parâmetro “p1” do URL `http://example.com/path/test.html?p1=test&p2=v2`, então a propriedade global deverá ser:
->> `/0002 { /glob "p1" /type "allow" }`
+> `/0002 { /glob "p1" /type "allow" }`
 
 O exemplo a seguir faz com que o Dispatcher ignore todos os parâmetros, exceto o parâmetro `nocache`. Sendo assim, o Dispatcher nunca armazena em cache URLs de solicitação que incluam o parâmetro `nocache`:
 
@@ -1523,7 +1524,7 @@ O exemplo a seguir define uma conexão adesiva à pasta /products:
 /stickyConnectionsFor "/products"
 ```
 
-Quando uma página é composta de conteúdo de vários nós de conteúdo, inclua a propriedade `/paths`, que lista os caminhos para o conteúdo. Por exemplo, uma página trm conteúdo de `/content/image`, `/content/video` e `/var/files/pdfs`. A seguinte configuração ativa conexões adesivas para todo o conteúdo da página:
+Quando uma página é composta de conteúdo de vários nós de conteúdo, inclua a propriedade `/paths`, que lista os caminhos para o conteúdo. Por exemplo, uma página trm conteúdo de `/content/image`, `/content/video` e `/var/files/pdfs`. A seguinte configuração habilita conexões adesivas para todo o conteúdo da página:
 
 ```xml
 /stickyConnections {
@@ -1537,13 +1538,13 @@ Quando uma página é composta de conteúdo de vários nós de conteúdo, inclua
 
 ### `httpOnly` {#httponly}
 
-Quando as conexões adesivas são ativadas, o módulo Dispatcher define o cookie `renderid`. Este cookie não tem o sinalizador `httponly`, que deve ser adicionado para melhorar a segurança. Você pode adicionar o sinalizador `httponly` definindo a propriedade `httpOnly` no nó `/stickyConnections` de um arquivo de configuração `dispatcher.any`. O valor da propriedade (`0` ou `1`) define se o cookie `renderid` tem o atributo `HttpOnly` anexado. O valor padrão é `0`, o que significa que o atributo não será adicionado.
+Quando conexões adesivas são habilitadas, o módulo Dispatcher define o cookie `renderid`. Este cookie não tem o sinalizador `httponly`, que deve ser adicionado para melhorar a segurança. Você pode adicionar o sinalizador `httponly` definindo a propriedade `httpOnly` no nó `/stickyConnections` de um arquivo de configuração `dispatcher.any`. O valor da propriedade (`0` ou `1`) define se o cookie `renderid` tem o atributo `HttpOnly` anexado. O valor padrão é `0`, o que significa que o atributo não será adicionado.
 
 Para obter informações adicionais sobre o sinalizador `httponly`, leia [esta página](https://owasp.org/www-community/HttpOnly).
 
 ### `secure` {#secure}
 
-Quando as conexões adesivas são ativadas, o módulo Dispatcher define o cookie `renderid`. Este cookie não tem o sinalizador `secure`, que deve ser adicionado para melhorar a segurança. Você adiciona o sinalizador `secure` definindo a propriedade `secure` no nó `/stickyConnections` de um arquivo de configuração `dispatcher.any`. O valor da propriedade (`0` ou `1`) define se o cookie `renderid` tem o atributo `secure` anexado. O valor padrão é `0`, o que significa que o atributo será adicionado **se** a solicitação recebida estiver segura. Se o valor for definido como `1`, o sinalizador de segurança será adicionado independentemente da solicitação de entrada ser segura ou não.
+Quando conexões adesivas são habilitadas, o módulo Dispatcher define o cookie `renderid`. Este cookie não tem o sinalizador `secure`, que deve ser adicionado para melhorar a segurança. Você adiciona o sinalizador `secure` definindo a propriedade `secure` no nó `/stickyConnections` de um arquivo de configuração `dispatcher.any`. O valor da propriedade (`0` ou `1`) define se o cookie `renderid` tem o atributo `secure` anexado. O valor padrão é `0`, o que significa que o atributo será adicionado **se** a solicitação recebida estiver segura. Se o valor for definido como `1`, o sinalizador de segurança será adicionado independentemente da solicitação de entrada ser segura ou não.
 
 ## Tratar erros de conexão de renderização {#handling-render-connection-errors}
 
@@ -1585,7 +1586,7 @@ Se o valor não estiver definido explicitamente, o valor padrão será `5`.
 
 ### Usar o mecanismo de failover {#using-the-failover-mechanism}
 
-Para reenviar solicitações para renderizações diferentes quando a solicitação original falhar, ative o mecanismo de failover no farm do Dispatcher. Quando o failover é ativado, o Dispatcher apresenta o seguinte comportamento:
+Para reenviar solicitações para renderizações diferentes quando a solicitação original falhar, habilite o mecanismo de failover no farm do Dispatcher. Quando o failover é habilitado, o Dispatcher apresenta o seguinte comportamento:
 
 * Quando uma solicitação para um renderizador retorna o status HTTP 503 (INDISPONÍVEL), o Dispatcher envia a solicitação para um renderizador diferente.
 * Quando uma solicitação para uma renderização retorna o status HTTP 50x (diferente de 503), o Dispatcher envia uma solicitação para a página que está configurada para a propriedade `health_check`.
@@ -1642,13 +1643,14 @@ Os valores `glob` podem incluir caracteres curingas e caracteres alfanuméricos 
 |--- |--- |--- |
 | `*` | Corresponde a zero ou mais instâncias contíguas de qualquer caractere na cadeia de caracteres. Qualquer uma das seguintes situações determina o caractere final da correspondência: <br/>um caractere na string corresponde ao próximo caractere no padrão, e o caractere padrão tem as seguintes características:<br/><ul><li>Não é um `*`</li><li>Não é um `?`</li><li>Um caractere literal (incluindo um espaço) ou uma classe de caractere.</li><li>O final do padrão é alcançado.</li></ul>Dentro de uma classe de caracteres, o caractere é interpretado literalmente. | `*/geo*` Corresponde a qualquer página abaixo do nó `/content/geometrixx` e do nó `/content/geometrixx-outdoors`. As seguintes solicitações HTTP correspondem ao padrão glob: <br/><ul><li>`"GET /content/geometrixx/en.html"`</li><li>`"GET /content/geometrixx-outdoors/en.html"` </li></ul><br/> `*outdoors/*` <br/>Corresponde a qualquer página abaixo do nó `/content/geometrixx-outdoors`. Por exemplo, a seguinte solicitação HTTP corresponde ao padrão glob: <br/><ul><li>`"GET /content/geometrixx-outdoors/en.html"`</li></ul> |
 | `?` | Corresponde a qualquer caractere único. Use classes de caracteres externos. Dentro de uma classe de caracteres, esse caractere é interpretado literalmente. | `*outdoors/??/*`<br/> Corresponde às páginas de qualquer idioma no site geometrixx-outdoors. Por exemplo, a seguinte solicitação HTTP corresponde ao padrão glob: <br/><ul><li>`"GET /content/geometrixx-outdoors/en/men.html"`</li></ul><br/>A seguinte solicitação não corresponde ao padrão glob: <br/><ul><li>&quot;GET /content/geometrixx-outdoors/en.html&quot;</li></ul> |
-| `[ and ]` | Demarca o início e o fim de uma classe de caracteres. As classes de caracteres podem incluir um ou mais intervalos de caracteres e caracteres únicos.<br/>Uma correspondência ocorre se o caractere de destino corresponde a qualquer um dos caracteres na classe de caracteres ou dentro de um intervalo definido.<br/>Se o colchete não estiver incluído, o padrão não produzirá correspondências. | `*[o]men.html*`<br/> Corresponde à seguinte solicitação HTTP:<br/><ul><li>`"GET /content/geometrixx-outdoors/en/women.html"`</li></ul><br/>Não corresponde à seguinte solicitação HTTP:<br/><ul><li>`"GET /content/geometrixx-outdoors/en/men.html"`</li></ul><br/> `*[o/]men.html*` <br/>Corresponde às seguintes solicitações HTTP: <br/><ul><li>`"GET /content/geometrixx-outdoors/en/women.html"`</li><li>`"GET /content/geometrixx-outdoors/en/men.html"`</li></ul> |
+| `[ and ]` | Demarca o início e o fim de uma classe de caracteres. As classes de caracteres podem incluir um ou mais intervalos de caracteres e caracteres únicos.<br/>Uma correspondência ocorre se o caractere de destino corresponder a qualquer um dos caracteres na classe de caracteres ou dentro de um intervalo definido.<br/>Se o colchete não estiver incluído, o padrão não produzirá correspondências. | `*[o]men.html*`<br/> Corresponde à seguinte solicitação HTTP:<br/><ul><li>`"GET /content/geometrixx-outdoors/en/women.html"`</li></ul><br/>Não corresponde à seguinte solicitação HTTP:<br/><ul><li>`"GET /content/geometrixx-outdoors/en/men.html"`</li></ul><br/> `*[o/]men.html*` <br/>Corresponde às seguintes solicitações HTTP: <br/><ul><li>`"GET /content/geometrixx-outdoors/en/women.html"`</li><li>`"GET /content/geometrixx-outdoors/en/men.html"`</li></ul> |
 | `-` | Indica um intervalo de caracteres. Para uso em classes de caracteres. Fora de uma classe de caracteres, esse caractere é interpretado literalmente. | `*[m-p]men.html*` Corresponde à seguinte solicitação HTTP: <br/><ul><li>`"GET /content/geometrixx-outdoors/en/women.html"`</li></ul>Não corresponde à seguinte solicitação HTTP:<br/><ul><li>`"GET /content/geometrixx-outdoors/en/men.html"`</li></ul> |
 | `!` | Nega o caractere ou a classe de caracteres que se segue. Use apenas para negar caracteres e intervalos de caracteres dentro de classes de caracteres. Equivalente ao `^ wildcard`. <br/>Fora de uma classe de caracteres, esse caractere é interpretado literalmente. | `*[!o]men.html*`<br/> Corresponde à seguinte solicitação HTTP: <br/><ul><li>`"GET /content/geometrixx-outdoors/en/men.html"`</li></ul><br/>Não corresponde à seguinte solicitação HTTP: <br/><ul><li>`"GET /content/geometrixx-outdoors/en/women.html"`</li></ul><br/>`*[!o!/]men.html*`<br/> Não corresponde à seguinte solicitação HTTP:<br/><ul><li>`"GET /content/geometrixx-outdoors/en/women.html"` ou `"GET /content/geometrixx-outdoors/en/men. html"`</li></ul> |
 | `^` | Nega o caractere ou o intervalo de caracteres a seguir. Use para negar somente caracteres e intervalos de caracteres dentro de classes de caracteres. Equivalente ao caractere curinga `!`. <br/>Fora de uma classe de caracteres, esse caractere é interpretado literalmente. | Os exemplos para o caractere curinga `!` se aplicam substituindo os caracteres `!` nos padrões de exemplo por caracteres `^`. |
 
 
-<!--- need to troubleshoot table
+<!--
+need to troubleshoot table
 
 The following table describes the wildcard characters.
 
@@ -1777,9 +1779,9 @@ Esse é um nível superior ao Registro de depuração que mostra informações a
 * Os valores dos cabeçalhos encaminhados;
 * A regra aplicada para uma determinada ação.
 
-Você pode ativar o Registro de rastreamento definindo o nível de log como `4` em seu servidor Web.
+Você pode habilitar o Registro de rastreamento definindo o nível de log como `4` em seu servidor Web.
 
-Veja abaixo um exemplo de logs com rastreamento ativado:
+Veja abaixo um exemplo de logs com rastreamento habilitado:
 
 ```xml
 [Thu Mar 03 16:05:38 2016] [T] [17183] request.headers[Host] = "localhost:8443"

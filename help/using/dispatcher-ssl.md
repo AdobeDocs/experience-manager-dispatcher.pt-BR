@@ -5,14 +5,14 @@ contentOwner: User
 products: SG_EXPERIENCEMANAGER/DISPATCHER
 topic-tags: dispatcher
 content-type: reference
-index: y
+index: true
 internal: n
 snippet: y
 exl-id: ec378409-ddb7-4917-981d-dbf2198aca98
-source-git-commit: c41b4026a64f9c90318e12de5397eb4c116056d9
-workflow-type: ht
-source-wordcount: '1305'
-ht-degree: 100%
+source-git-commit: 53781f068db078045ae366d3494cd7d1b78c4a7e
+workflow-type: tm+mt
+source-wordcount: '1390'
+ht-degree: 98%
 
 ---
 
@@ -34,7 +34,7 @@ Configure o Dispatcher para se comunicar com a instância de renderização do A
 Antes de configurar o Dispatcher, configure o AEM ou o CQ para usar o SSL. Para obter mais informações, consulte:
 
 * [SSL/TLS por padrão](https://experienceleague.adobe.com/pt-br/docs/experience-manager-65/content/security/ssl-by-default)
-* [Usar o Assistente de SSL no AEM](https://experienceleague.adobe.com/pt-br/docs/experience-manager-learn/foundation/security/use-the-ssl-wizard)
+* [Usar o assistente de SSL no AEM](https://experienceleague.adobe.com/pt-br/docs/experience-manager-learn/foundation/security/use-the-ssl-wizard)
 
 ### Cabeçalhos de solicitação relacionados ao SSL {#ssl-related-request-headers}
 
@@ -139,7 +139,7 @@ Crie ou obtenha os certificados assinados pela CA que autenticam a instância de
 
 #### Criar a sua CA {#creating-your-ca}
 
-Se você estiver agindo como a autoridade de certificação, use o [OpenSSL](https://www.openssl.org/) para criar a Autoridade de Certificação que assina os certificados do servidor e do cliente. (Você precisa contar com as bibliotecas OpenSSL instaladas.) Se você estiver usando uma CA externa, não realize este procedimento.
+Se você estiver agindo como a autoridade de certificação, use o [OpenSSL](https://www.openssl.org/) para criar a Autoridade de Certificação que assina os certificados do servidor e do cliente. (Você deve ter as bibliotecas OpenSSL instaladas.) Se você estiver usando uma CA de terceiros, não execute este procedimento.
 
 1. Abra um terminal e altere o diretório atual para o diretório que contém o arquivo `CA.sh`, como `/usr/local/ssl/misc`.
 1. Para criar a CA, insira o seguinte comando e forneça valores quando solicitado:
@@ -248,8 +248,8 @@ Last Modified Date: 2014-08-12T13:11:21.401-0400
 
 Para configurar o serviço HTTP da instância de renderização para usar SSL, use o certificado de renderização com as instruções da seção *`Enable SSL on the Publish Instance`*:
 
-* AEM 6.2: [Ativar HTTP por SSL](https://experienceleague.adobe.com/pt-br/docs/experience-manager-release-information/aem-release-updates/previous-updates/aem-previous-versions)
-* AEM 6.1: [Ativar HTTP por SSL](https://experienceleague.adobe.com/pt-br/docs/experience-manager-release-information/aem-release-updates/previous-updates/aem-previous-versions)
+* AEM 6.2: [Habilitar HTTP por SSL](https://experienceleague.adobe.com/pt-br/docs/experience-manager-release-information/aem-release-updates/previous-updates/aem-previous-versions)
+* AEM 6.1: [Habilitar HTTP por SSL](https://experienceleague.adobe.com/pt-br/docs/experience-manager-release-information/aem-release-updates/previous-updates/aem-previous-versions)
 * Versões anteriores do AEM: consulte [esta página.](https://experienceleague.adobe.com/pt-br/docs/experience-manager-release-information/aem-release-updates/previous-updates/aem-previous-versions)
 
 ### Configurar o SSL para o módulo do Dispatcher {#configuring-ssl-for-the-dispatcher-module}
@@ -286,7 +286,7 @@ Adicione as seguintes propriedades à [Configuração do módulo Dispatcher](dis
 
 * `DispatcherCertificateFile`: O caminho para o arquivo de certificado unificado do Dispatcher, contendo o certificado público e a chave privada não criptografada. Esse arquivo é usado quando o servidor SSL solicita o certificado de cliente do Dispatcher.
 * `DispatcherCACertificateFile`: o caminho para o arquivo de certificado da CA. Usado se o servidor SSL apresentar uma CA em que uma autoridade raiz não confia.
-* `DispatcherCheckPeerCN`: Opção de ativar ( `On`) ou desativar ( `Off`) a verificação do nome do host para certificados de servidor remoto.
+* `DispatcherCheckPeerCN`: Opção de habilitar ( `On`) ou desabilitar ( `Off`) a verificação do nome do host para certificados de servidor remoto.
 
 O código a seguir é um exemplo de configuração:
 

@@ -5,9 +5,9 @@ pageversionid: 1193211344162
 topic-tags: dispatcher
 content-type: reference
 exl-id: c9266683-6890-4359-96db-054b7e856dd0
-source-git-commit: b7ab59ad2da1b73ebbf7819670f056a68162796d
+source-git-commit: 53781f068db078045ae366d3494cd7d1b78c4a7e
 workflow-type: tm+mt
-source-wordcount: '3065'
+source-wordcount: '3227'
 ht-degree: 98%
 
 ---
@@ -38,7 +38,7 @@ O processo de implantação do Dispatcher é independente do servidor Web e da p
 
 Use as seguintes informações conforme necessário:
 
-* [Lista de verificação de segurança do Dispatcher &#x200B;](security-checklist.md)
+* [Lista de verificação de segurança do Dispatcher](security-checklist.md)
 <!-- URL is 404! * [The Dispatcher Knowledge Base](https://helpx.adobe.com/experience-manager/kb/index/dispatcher.html) -->
 * [Otimização de um site para desempenho de cache](https://experienceleague.adobe.com/pt-br/docs/experience-manager-65/content/implementing/deploying/configuring/configuring-performance)
 * [Uso do Dispatcher com vários domínios](dispatcher-domains.md)
@@ -281,7 +281,7 @@ Para obter um controle mais preciso, a invalidação com base em API permite inv
 
 >[!NOTE]
 >
->Consulte também [Segurança do AEM (CQ) Dispatcher e Armazenamento em cache de CDN+Navegador](https://www.slideshare.net/slideshow/dispatcher-caching-aemgemspart2jan2015/44053023) e uma apresentação gravada sobre [Armazenamento em cache do Dispatcher](https://experienceleague.adobe.com/pt-br/docs/events/experience-manager-gems-recordings/overview#).
+>Consulte também [Segurança do AEM (CQ) Dispatcher e Armazenamento em cache de CDN+Navegador](https://www.slideshare.net/slideshow/dispatcher-caching-aemgemspart2jan2015/44053023) e uma apresentação gravada sobre [Armazenamento em cache do Dispatcher](https://experienceleague.adobe.com/en/docs/events/experience-manager-gems-recordings/overview#).
 
 ## Usar um Dispatcher com um servidor de criação {#using-a-dispatcher-with-an-author-server}
 
@@ -312,13 +312,13 @@ Um Dispatcher pode ser usado na frente de uma instância de criação para melho
 1. Exclua todos os arquivos existentes no diretório `/cache` > `/docroot` que você configurou acima.
 1. Reinicie o servidor Web.
 
->[!NOTE]
->
->Com a configuração `author_dispatcher.any` fornecida, ao instalar um pacote de recursos, hotfix ou pacote de código do aplicativo do CQ5 que afete qualquer conteúdo no `/libs` ou `/apps`, é necessário excluir os arquivos armazenados em cache. Os arquivos estão nesses diretórios no cache do Dispatcher. Isso garante que, na próxima vez em que forem solicitados, os arquivos recém-atualizados sejam buscados, e não os arquivos antigos armazenados em cache.
+   >[!NOTE]
+   >
+   >Com a configuração `author_dispatcher.any` fornecida, ao instalar um pacote de recursos, hotfix ou pacote de código do aplicativo do CQ5 que afete qualquer conteúdo no `/libs` ou `/apps`, é necessário excluir os arquivos armazenados em cache. Os arquivos estão nesses diretórios no cache do Dispatcher. Isso garante que, na próxima vez em que forem solicitados, os arquivos recém-atualizados sejam buscados, e não os arquivos antigos armazenados em cache.
 
->[!CAUTION]
->
->Se você tiver usado o Dispatcher do autor configurado anteriormente e ativado um *agente de limpeza do Dispatcher*, faça o seguinte:
+   >[!CAUTION]
+   >
+   >Se você tiver usado o Dispatcher do autor configurado anteriormente e ativado um *agente de limpeza do Dispatcher*, faça o seguinte:
 
 1. Exclua ou desative o agente de limpeza do **Dispatcher do autor** na instância de criação do AEM.
 1. Refaça a configuração do Dispatcher do autor seguindo as novas instruções acima.
@@ -326,7 +326,9 @@ Um Dispatcher pode ser usado na frente de uma instância de criação para melho
 <!--
 [Author Dispatcher configuration file (Dispatcher 4.1.2 or later)](assets/author_dispatchernew.any)
 -->
-<!--[!NOTE]
+
+<!--
+>[!NOTE]
 >
 >A related knowledge base article can be found here:  
 >[How to configure the dispatcher in front of an authoring environment](https://helpx.adobe.com/cq/kb/HowToConfigureDispatcherForAuthoringEnvironment.html)

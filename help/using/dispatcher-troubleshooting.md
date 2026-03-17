@@ -9,9 +9,9 @@ products: SG_EXPERIENCEMANAGER/DISPATCHER
 topic-tags: dispatcher
 content-type: reference
 exl-id: 29f338ab-5d25-48a4-9309-058e0cc94cff
-source-git-commit: c41b4026a64f9c90318e12de5397eb4c116056d9
-workflow-type: ht
-source-wordcount: '472'
+source-git-commit: 53781f068db078045ae366d3494cd7d1b78c4a7e
+workflow-type: tm+mt
+source-wordcount: '488'
 ht-degree: 100%
 
 ---
@@ -54,7 +54,8 @@ O IIS fornece várias ferramentas de rastreamento, dependendo da versão real:
 
 Essas ferramentas podem ajudar você a monitorar a atividade.
 
-<!-- Both URLs in this topic 404! >
+<!-- 
+Both URLs in this topic 404! >
 ## IIS and 404 Not Found {#iis-and-not-found}
 
 When using IIS, you might experience `404 Not Found` being returned in various scenarios. If so, see the following Knowledge Base articles.
@@ -62,17 +63,18 @@ When using IIS, you might experience `404 Not Found` being returned in various s
 * [IIS 6/7: POST method returns 404](https://helpx.adobe.com/experience-manager/kb/IIS6IsapiFilters.html)
 * [IIS 6: Requests to URLs that contain the base path `/bin` return a `404 Not Found`](https://helpx.adobe.com/experience-manager/kb/RequestsToBinDirectoryFailInIIS6.html)
 
-Also check that the Dispatcher cache root and the IIS document root are set to the same directory. -->
+Also check that the Dispatcher cache root and the IIS document root are set to the same directory. 
+-->
 
 ## Problemas ao excluir modelos de fluxo de trabalho {#problems-deleting-workflow-models}
 
 **Sintomas**
 
-Problemas ao tentar excluir modelos de fluxos de trabalho ao acessar uma instância de autor do AEM por meio do Dispatcher.
+Problemas ao tentar excluir modelos de fluxos de trabalho ao acessar uma instância de criação do AEM por meio do Dispatcher.
 
 **Etapas a serem reproduzidas:**
 
-1. Faça logon na sua instância do autor (confirme se as solicitações estão sendo roteadas pelo Dispatcher).
+1. Faça logon na sua instância de criação (confirme se as solicitações estão sendo roteadas pelo Dispatcher).
 1. Crie um fluxo de trabalho; por exemplo, com o título definido como workflowToDelete.
 1. Confirme se o fluxo de trabalho foi criado com êxito.
 1. Selecione e clique com o botão direito do mouse no fluxo de trabalho e clique em **Excluir**.
@@ -112,7 +114,7 @@ Ele irá:
 * redirecionar a solicitação para um arquivo `index.html` existente
 * gerar uma listagem de diretórios
 
-Quando o Dispatcher estiver ativado, ele processará essas solicitações se registrando como um manipulador para o tipo de conteúdo `httpd/unix-directory`.
+Quando o Dispatcher está habilitado, ele processa essas solicitações se registrando como um manipulador para o tipo de conteúdo `httpd/unix-directory`.
 
 ### Apache 2.x {#apache-x}
 
