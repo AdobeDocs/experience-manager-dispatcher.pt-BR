@@ -1,16 +1,10 @@
 ---
-source-git-commit: 9be9f5935c21ebbf211b5da52280a31772993c2e
-workflow-type: ht
-source-wordcount: '70'
-ht-degree: 100%
+source-git-commit: d889ccdf4b8ea169a21658e8a2251e70dfa5596c
+workflow-type: tm+mt
+source-wordcount: '7'
+ht-degree: 0%
 
 ---
-# Detecção de padrão do Adobe Experience Manager
+# ARQUIVADO
 
-Este é o repositório da Detecção de padrão do Adobe Experience Manager.
-
-Suas contribuições para a documentação são bem-vindas. Consulte os seguintes recursos:
-
-* [contributing.md](contributing.md) Para obter uma visão geral de como contribuir para a documentação.
-* [guidelines.md](guidelines.md) Para obter uma visão geral sobre o que é esperado das contribuições e como compor suas contribuições de documentação.
-* [code-of-conduct.md](code-of-conduct.md) Para obter uma visão geral dos padrões de comportamento que a Adobe espera das contribuições com este projeto de documentação.
+Este repositório foi migrado para <https://github.com/Adobe-Enterprise-Docs/experience-manager-dispatcher.en>
