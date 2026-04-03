@@ -2,10 +2,10 @@
 title: Configurar o AEM Dispatcher
 description: Saiba como configurar o Dispatcher. Saiba mais sobre o suporte para IPv4 e IPv6, arquivos de configuração, variáveis de ambiente e nomeação da instância. Leia sobre definição de farms, identificação de hosts virtuais e muito mais.
 exl-id: 91159de3-4ccb-43d3-899f-9806265ff132
-source-git-commit: 53781f068db078045ae366d3494cd7d1b78c4a7e
+source-git-commit: 97c7cec0b89dd20532e35e026281c19a55aa61f9
 workflow-type: tm+mt
 source-wordcount: '9194'
-ht-degree: 99%
+ht-degree: 97%
 
 ---
 
@@ -127,7 +127,7 @@ Por exemplo, se os arquivos `farm_1.any` até `farm_5.any` contiverem a configur
 
 Você pode usar variáveis de ambiente em propriedades com valores de cadeias de caracteres no arquivo dispatcher.any, em vez de codificar os valores. Para incluir o valor de uma variável de ambiente, use o formato `${variable_name}`.
 
-Por exemplo, se o arquivo dispatcher.any estiver localizado no mesmo diretório do cache, o seguinte valor poderá ser usado para a propriedade [docroot](#specifying-the-cache-directory):
+Por exemplo, se o arquivo `dispatcher.any` estiver no mesmo diretório do cache, o seguinte valor para a propriedade [docroot](#specifying-the-cache-directory) poderá ser usado:
 
 ```xml
 /docroot "${PWD}/cache"
@@ -1643,9 +1643,9 @@ Os valores `glob` podem incluir caracteres curingas e caracteres alfanuméricos 
 |--- |--- |--- |
 | `*` | Corresponde a zero ou mais instâncias contíguas de qualquer caractere na cadeia de caracteres. Qualquer uma das seguintes situações determina o caractere final da correspondência: <br/>um caractere na string corresponde ao próximo caractere no padrão, e o caractere padrão tem as seguintes características:<br/><ul><li>Não é um `*`</li><li>Não é um `?`</li><li>Um caractere literal (incluindo um espaço) ou uma classe de caractere.</li><li>O final do padrão é alcançado.</li></ul>Dentro de uma classe de caracteres, o caractere é interpretado literalmente. | `*/geo*` Corresponde a qualquer página abaixo do nó `/content/geometrixx` e do nó `/content/geometrixx-outdoors`. As seguintes solicitações HTTP correspondem ao padrão glob: <br/><ul><li>`"GET /content/geometrixx/en.html"`</li><li>`"GET /content/geometrixx-outdoors/en.html"` </li></ul><br/> `*outdoors/*` <br/>Corresponde a qualquer página abaixo do nó `/content/geometrixx-outdoors`. Por exemplo, a seguinte solicitação HTTP corresponde ao padrão glob: <br/><ul><li>`"GET /content/geometrixx-outdoors/en.html"`</li></ul> |
 | `?` | Corresponde a qualquer caractere único. Use classes de caracteres externos. Dentro de uma classe de caracteres, esse caractere é interpretado literalmente. | `*outdoors/??/*`<br/> Corresponde às páginas de qualquer idioma no site geometrixx-outdoors. Por exemplo, a seguinte solicitação HTTP corresponde ao padrão glob: <br/><ul><li>`"GET /content/geometrixx-outdoors/en/men.html"`</li></ul><br/>A seguinte solicitação não corresponde ao padrão glob: <br/><ul><li>&quot;GET /content/geometrixx-outdoors/en.html&quot;</li></ul> |
-| `[ and ]` | Demarca o início e o fim de uma classe de caracteres. As classes de caracteres podem incluir um ou mais intervalos de caracteres e caracteres únicos.<br/>Uma correspondência ocorre se o caractere de destino corresponder a qualquer um dos caracteres na classe de caracteres ou dentro de um intervalo definido.<br/>Se o colchete não estiver incluído, o padrão não produzirá correspondências. | `*[o]men.html*`<br/> Corresponde à seguinte solicitação HTTP:<br/><ul><li>`"GET /content/geometrixx-outdoors/en/women.html"`</li></ul><br/>Não corresponde à seguinte solicitação HTTP:<br/><ul><li>`"GET /content/geometrixx-outdoors/en/men.html"`</li></ul><br/> `*[o/]men.html*` <br/>Corresponde às seguintes solicitações HTTP: <br/><ul><li>`"GET /content/geometrixx-outdoors/en/women.html"`</li><li>`"GET /content/geometrixx-outdoors/en/men.html"`</li></ul> |
+| `[ and ]` | Demarca o início e o fim de uma classe de caracteres. As classes de caracteres podem incluir um ou mais intervalos de caracteres e caracteres únicos.<br/>Ocorre uma correspondência se o caractere de destino corresponder a qualquer um dos caracteres na classe de caracteres ou dentro de um intervalo definido.<br/>Se o colchete não estiver incluído, o padrão não produzirá correspondências. | `*[o]men.html*`<br/> Corresponde à seguinte solicitação HTTP:<br/><ul><li>`"GET /content/geometrixx-outdoors/en/women.html"`</li></ul><br/>Não corresponde à seguinte solicitação HTTP:<br/><ul><li>`"GET /content/geometrixx-outdoors/en/men.html"`</li></ul><br/> `*[o/]men.html*` <br/>Corresponde às seguintes solicitações HTTP: <br/><ul><li>`"GET /content/geometrixx-outdoors/en/women.html"`</li><li>`"GET /content/geometrixx-outdoors/en/men.html"`</li></ul> |
 | `-` | Indica um intervalo de caracteres. Para uso em classes de caracteres. Fora de uma classe de caracteres, esse caractere é interpretado literalmente. | `*[m-p]men.html*` Corresponde à seguinte solicitação HTTP: <br/><ul><li>`"GET /content/geometrixx-outdoors/en/women.html"`</li></ul>Não corresponde à seguinte solicitação HTTP:<br/><ul><li>`"GET /content/geometrixx-outdoors/en/men.html"`</li></ul> |
-| `!` | Nega o caractere ou a classe de caracteres que se segue. Use apenas para negar caracteres e intervalos de caracteres dentro de classes de caracteres. Equivalente ao `^ wildcard`. <br/>Fora de uma classe de caracteres, esse caractere é interpretado literalmente. | `*[ !o]men.html*`<br/> Corresponde à seguinte solicitação HTTP: <br/><ul><li>`"GET /content/geometrixx-outdoors/en/men.html"`</li></ul><br/>Não corresponde à seguinte solicitação HTTP: <br/><ul><li>`"GET /content/geometrixx-outdoors/en/women.html"`</li></ul><br/>`*[ !o!/]men.html*`<br/> Não corresponde à seguinte solicitação HTTP:<br/><ul><li>`"GET /content/geometrixx-outdoors/en/women.html"` ou `"GET /content/geometrixx-outdoors/en/men. html"`</li></ul> |
+| `!` | Nega o caractere ou a classe de caracteres que se segue. Use apenas para negar caracteres e intervalos de caracteres dentro de classes de caracteres. Equivalente ao `^ wildcard`. <br/>Fora de uma classe de caracteres, esse caractere é interpretado literalmente. | `*[!o]men.html*`<br/> Corresponde à seguinte solicitação HTTP: <br/><ul><li>`"GET /content/geometrixx-outdoors/en/men.html"`</li></ul><br/>Não corresponde à seguinte solicitação HTTP: <br/><ul><li>`"GET /content/geometrixx-outdoors/en/women.html"`</li></ul><br/>`*[!o!/]men.html*`<br/> Não corresponde à seguinte solicitação HTTP:<br/><ul><li>`"GET /content/geometrixx-outdoors/en/women.html"` ou `"GET /content/geometrixx-outdoors/en/men. html"`</li></ul> |
 | `^` | Nega o caractere ou o intervalo de caracteres a seguir. Use para negar somente caracteres e intervalos de caracteres dentro de classes de caracteres. Equivalente ao caractere curinga `!`. <br/>Fora de uma classe de caracteres, esse caractere é interpretado literalmente. | Os exemplos para o caractere curinga `!` se aplicam substituindo os caracteres `!` nos padrões de exemplo por caracteres `^`. |
 
 
@@ -1870,18 +1870,18 @@ Veja abaixo uma lista contendo os cabeçalhos de resposta que o `X-Dispatcher-In
   O arquivo de destino está contido no cache e o Dispatcher determinou que é válido entregá-lo.
 * **armazenamento em cache**\
   O arquivo de destino não está contido no cache e o Dispatcher determinou que é válido armazenar a saída em cache e entregá-la.
-* **armazenamento em cache: o arquivo de estatística é mais recente**
+* **armazenamento em cache: o arquivo stat é mais recente**
 O arquivo de destino está contido no cache. No entanto, um arquivo de estatística mais recente pode invalidá-lo. O Dispatcher exclui o arquivo de destino, recria o arquivo a partir da saída e o entrega.
-* **não armazenável em cache: raiz do documento inexistente**
-A configuração do farm não contém uma raiz do documento (elemento de configuração `cache.docroot`).
+* **não armazenável em cache: raiz do documento não existente**
+A configuração do farm não contém uma raiz do documento (elemento de configuração `cache.docroot`).
 * **não armazenável em cache: caminho do arquivo de cache muito longo**\
   O arquivo de destino - a concatenação da raiz do documento e do arquivo de URL - excede o maior nome de arquivo possível no sistema.
 * **não armazenável em cache: caminho de arquivo temporário muito longo**\
   O modelo de nome de arquivo temporário excede o nome de arquivo mais longo possível no sistema. O Dispatcher cria um arquivo temporário primeiro, antes de realmente criar ou substituir o arquivo em cache. O nome de arquivo temporário é o nome de arquivo de destino com os caracteres `_YYYYXXXXXX` anexados a ele, onde `Y` e `X` serão substituídos para criar um nome exclusivo.
 * **não armazenável em cache: falta a extensão no URL da solicitação**\
   O URL da solicitação não tem extensão ou há um caminho após a extensão de arquivo, por exemplo: `/test.html/a/path`.
-* **não armazenável em cache: a solicitação precisava ser GET ou HEAD**
-O método HTTP não é GET nem HEAD. O Dispatcher presume que a saída contenha dados dinâmicos que não devem ser armazenados em cache.
+* **não armazenável em cache: a solicitação precisava ser um GET ou HEAD**
+O método HTTP não é um GET ou um HEAD. O Dispatcher presume que a saída contenha dados dinâmicos que não devem ser armazenados em cache.
 * **não armazenável em cache: a solicitação continha uma cadeia de caracteres de consulta**\
   A solicitação continha uma cadeia de caracteres de consulta. O Dispatcher presume que a saída depende da sequência de consulta fornecida e, portanto, não a armazena em cache.
 * **não armazenável em cache: o gerenciador de sessão precisa ser autenticado**\
@@ -1899,7 +1899,7 @@ O método HTTP não é GET nem HEAD. O Dispatcher presume que a saída contenha 
 * **não armazenável em cache: sessão inválida**
 Um gerenciador de sessão (a configuração contém um nó `sessionmanagement`) controla o cache do farm e a sessão do usuário não é válida ou não é mais válida.
 * **não armazenável em cache: a resposta contém`no_cache`**
-O servidor remoto retornou um cabeçalho `Dispatcher: no_cache`, proibindo o Dispatcher de armazenar a saída em cache.
+O servidor remoto retornou um cabeçalho `Dispatcher: no_cache`, proibindo o Dispatcher de armazenar a saída em cache.
 * **não armazenável em cache: o comprimento do conteúdo da resposta é zero**
-O comprimento do conteúdo da resposta é zero. O Dispatcher não pode criar um arquivo de comprimento zero.
+O comprimento do conteúdo da resposta é zero; o Dispatcher não cria um arquivo de comprimento zero.
 
