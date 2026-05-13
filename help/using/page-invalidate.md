@@ -9,10 +9,18 @@ products: SG_EXPERIENCEMANAGER/DISPATCHER
 topic-tags: dispatcher
 content-type: reference
 exl-id: 90eb6a78-e867-456d-b1cf-f62f49c91851
-source-git-commit: c41b4026a64f9c90318e12de5397eb4c116056d9
-workflow-type: ht
-source-wordcount: '1407'
-ht-degree: 100%
+TQID: https://experienceleague.adobe.com/yeMU0lrfxz38PkwRYZ6tcXVBp4obt9qxJAiGi0GGsX4
+product_v2:
+  - id: fd1f54a9-f50c-467d-8956-cebbaf4f3eb8
+role_v2:
+  - id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
+topic_v2:
+  - id: d095671a-1355-40aa-8b5f-06c33c68080b
+  - id: eddd9b14-83bd-4ff4-9072-54a4a484abb7
+source-git-commit: b68483fc6956bc0e6c2b1939d2203311da62987e
+workflow-type: tm+mt
+source-wordcount: 1447
+ht-degree: 98%
 
 ---
 
@@ -30,7 +38,7 @@ Para mais informações, consulte a seção [Configurar usuários de replicaçã
 
 ## Invalidar o cache do Dispatcher no ambiente de criação {#invalidating-dispatcher-cache-from-the-authoring-environment}
 
-Um agente de replicação na instância do autor do AEM envia uma solicitação de invalidação de cache para o Dispatcher quando uma página é publicada. O Dispatcher atualiza o arquivo no cache conforme o novo conteúdo é publicado.
+Um agente de replicação na instância de criação do AEM envia uma solicitação de invalidação de cache para o Dispatcher quando uma página é publicada. O Dispatcher atualiza o arquivo no cache conforme o novo conteúdo é publicado.
 
 <!-- 
 
@@ -54,9 +62,9 @@ Use o procedimento a seguir para configurar um agente de replicação na instân
 
 1. Abra o console Ferramentas do AEM. (`https://localhost:4502/miscadmin#/etc`)
 1. Abra o agente de replicação necessário abaixo de Ferramentas/Replicação/Agentes no autor. Você pode usar o agente de limpeza do Dispatcher instalado por padrão.
-1. Clique em Editar e, na guia Configurações, certifique-se de que **Ativado** esteja selecionado.
+1. Clique em Editar e, na guia Configurações, certifique-se de que **Habilitado** esteja selecionado.
 
-1. (Opcional) Para ativar solicitações de invalidação de alias ou caminho personalizado, selecione a opção **Atualização de alias**.
+1. (Opcional) Para habilitar solicitações de invalidação de alias ou caminho personalizado, selecione a opção **Atualização de alias**.
 1. Na guia Transporte, acesse o Dispatcher inserindo o URI.
 
    Se estiver usando o agente de liberação padrão do Dispatcher, atualize o nome do host e a porta, por exemplo: https://&lt;*dispatcherHost*>:&lt;*portApache*>/dispatcher/invalidate.cache
@@ -105,15 +113,15 @@ Um agente de replicação que opera na instância de publicação controla a lim
 
 1. Abra o console Ferramentas do AEM.
 1. Abra o agente de replicação necessário abaixo de Ferramentas/Replicação/Agentes na publicação. Você pode usar o agente de limpeza do Dispatcher instalado por padrão.
-1. Clique em Editar e, na guia Configurações, certifique-se de que **Ativado** esteja selecionado.
-1. (Opcional) Para ativar solicitações de invalidação de alias ou caminho personalizado, selecione a opção **Atualização de alias**.
+1. Clique em Editar e, na guia Configurações, certifique-se de que **Habilitado** esteja selecionado.
+1. (Opcional) Para habilitar solicitações de invalidação de alias ou caminho personalizado, selecione a opção **Atualização de alias**.
 1. Na guia Transporte, acesse o Dispatcher inserindo o URI necessário.\
    Se você estiver usando o agente de limpeza do Dispatcher padrão, atualize o nome do host e a porta; por exemplo, `http://<dispatcherHost>:<portApache>/dispatcher/invalidate.cache`
 
    **Observação:** para agentes de liberação do Dispatcher, a propriedade URI será usada somente se você usar entradas de host virtual baseadas em caminho para diferenciar farms. Use esse campo para direcionar o farm a ser invalidado. Por exemplo, o farm nº 1 tem um host virtual de `www.mysite.com/path1/*`, e o farm nº 2 tem um host virtual de `www.mysite.com/path2/*`. Você pode usar um URL de `/path1/invalidate.cache` para direcionar o primeiro farm, e `/path2/invalidate.cache` para direcionar o segundo farm. Para obter mais informações, consulte [Uso do Dispatcher com vários domínios](dispatcher-domains.md).
 
 1. Configure outros parâmetros conforme necessário.
-1. Faça logon na instância de publicação e valide a configuração do agente de liberação. Além disso, verifique se ele está ativado.
+1. Faça logon na instância de publicação e valide a configuração do agente de liberação. Além disso, verifique se ele está habilitado.
 1. Repita o procedimento para cada instância de publicação afetada.
 
 Após a configuração, ao ativar uma página do autor para publicar, esse agente inicia uma replicação padrão. O log inclui mensagens indicando solicitações provenientes do seu servidor de publicação, semelhantes ao seguinte exemplo:
@@ -153,7 +161,7 @@ A invalidação (ou seja, tocar em arquivos .stat) pode ser evitada por enviar u
 
 Emita uma solicitação HTTP que faça com que o Dispatcher exclua arquivos em cache e, imediatamente, recupere e armazene o arquivo em cache novamente. Exclua e imediatamente armazene arquivos em cache novamente quando houver probabilidade de os sites receberem solicitações simultâneas do cliente para a mesma página. O rearmazenamento em cache imediato garante que o Dispatcher recupere e armazene em cache a página apenas uma vez, e não uma vez para cada uma das solicitações simultâneas do cliente.
 
-**Observação:** a exclusão e o rearmazenamento em cache de arquivos devem ser executados somente na instância de publicação. Quando executados da instância do autor, as condições de corrida ocorrem mediante tentativas de recuperar recursos antes de serem publicadas.
+**Observação:** a exclusão e o rearmazenamento em cache de arquivos devem ser executados somente na instância de publicação. Quando executados da instância de criação, as condições de corrida ocorrem mediante tentativas de recuperar recursos antes de serem publicadas.
 
 A solicitação HTTP tem o seguinte formato:
 
@@ -169,7 +177,7 @@ page_path1
 page_pathn
 ```
 
-Os caminhos das páginas para armazenar novamente em cache imediatamente são listados em linhas separadas no corpo da mensagem. O valor de `CQ-Handle` é o caminho de uma página que invalida as páginas para o rearmazenamento em cache. (Consulte o parâmetro `/statfileslevel` do item de configuração [Cache](dispatcher-configuration.md#main-pars_146_44_0010).) O exemplo de mensagem de solicitação HTTP a seguir exclui e torna a armazenar em cache o `/content/geometrixx-outdoors/en.html page`:
+Os caminhos das páginas para armazenar novamente em cache imediatamente são listados em linhas separadas no corpo da mensagem. O valor de `CQ-Handle` é o caminho de uma página que invalida as páginas para o rearmazenamento em cache. (Consulte o parâmetro `/statfileslevel` do item de configuração [Cache](dispatcher-configuration.md#main-pars_146_44_0010).) O exemplo de mensagem de solicitação HTTP a seguir exclui e rearmazena em cache o `/content/geometrixx-outdoors/en.html page`:
 
 ```xml
 POST /dispatcher/invalidate.cache HTTP/1.1  
