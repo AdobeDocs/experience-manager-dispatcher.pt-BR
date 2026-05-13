@@ -5,10 +5,15 @@ pageversionid: 1193211344162
 topic-tags: dispatcher
 content-type: reference
 exl-id: c9266683-6890-4359-96db-054b7e856dd0
-source-git-commit: 53781f068db078045ae366d3494cd7d1b78c4a7e
+TQID: https://experienceleague.adobe.com/Ir-slXay90FcQsvKGLioMgFhmhsaTfkYxIQJzfjDsfY
+product_v2: id: fd1f54a9-f50c-467d-8956-cebbaf4f3eb8
+feature_v2: id: b1210526-416b-4ef6-bcc0-1692e99f30e9
+role_v2: id: c66ffd68-0f65-42bb-aa23-b4020f12e0bd
+topic_v2: id: c1579802-ddd4-4214-8a91-97b2066abe11id: d095671a-1355-40aa-8b5f-06c33c68080bid: eddd9b14-83bd-4ff4-9072-54a4a484abb7
+source-git-commit: b68483fc6956bc0e6c2b1939d2203311da62987e
 workflow-type: tm+mt
-source-wordcount: '3227'
-ht-degree: 98%
+source-wordcount: 3227
+ht-degree: 96%
 
 ---
 
@@ -192,10 +197,10 @@ Balanceamento de carga é a prática de distribuir a carga computacional do site
 Você ganha:
 
 * **maior poder de processamento**
-Na prática, isso significa que o Dispatcher compartilha solicitações de documento entre várias instâncias do AEM. Como cada instância agora tem menos documentos para processar, você tem tempos de resposta mais rápidos. O Dispatcher mantém estatísticas internas para cada categoria de documento, de modo que ele possa estimar o carregamento e distribuir as consultas com eficiência.
+Na prática, o aumento do poder de processamento significa que o Dispatcher compartilha solicitações de documento entre várias instâncias do AEM. Como cada instância agora tem menos documentos para processar, você tem tempos de resposta mais rápidos. O Dispatcher mantém estatísticas internas para cada categoria de documento, de modo que ele possa estimar o carregamento e distribuir as consultas com eficiência.
 
 * **maior cobertura à prova de falhas**
-Se o Dispatcher não receber respostas de uma instância, ele transmitirá automaticamente as solicitações para uma das outras instâncias. Se uma instância se tornar indisponível, o único efeito será uma lentidão no site, proporcional à potência computacional perdida. No entanto, todos os serviços continuarão funcionando.
+Se a Dispatcher não receber respostas de uma instância, ela retornará automaticamente solicitações para uma das outras instâncias. Se uma instância se tornar indisponível, o único efeito será uma lentidão no site, proporcional à potência computacional perdida. No entanto, todos os serviços continuarão funcionando.
 
 * Você também pode gerenciar sites diferentes no mesmo servidor web estático.
 
@@ -281,7 +286,7 @@ Para obter um controle mais preciso, a invalidação com base em API permite inv
 
 >[!NOTE]
 >
->Consulte também [Segurança do AEM (CQ) Dispatcher e Armazenamento em cache de CDN+Navegador](https://www.slideshare.net/slideshow/dispatcher-caching-aemgemspart2jan2015/44053023) e uma apresentação gravada sobre [Armazenamento em cache do Dispatcher](https://experienceleague.adobe.com/pt-br/docs/events/experience-manager-gems-recordings/overview#).
+>Consulte também [Segurança do AEM (CQ) Dispatcher e Armazenamento em cache de CDN+Navegador](https://www.slideshare.net/slideshow/dispatcher-caching-aemgemspart2jan2015/44053023) e uma apresentação gravada sobre [Armazenamento em cache do Dispatcher](https://experienceleague.adobe.com/en/docs/events/experience-manager-gems-recordings/overview#).
 
 ## Usar um Dispatcher com um servidor de criação {#using-a-dispatcher-with-an-author-server}
 
