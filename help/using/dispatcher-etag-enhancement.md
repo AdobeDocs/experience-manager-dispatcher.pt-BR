@@ -1,13 +1,12 @@
 ---
 title: Aprimoramento do Dispatcher ETag para revalidação de CDN
 description: Disponibilidade, status de suporte e comportamento de INTERNAL_AEM_DISPATCHER_ETAG_ENHANCEMENT no AEM as a Cloud Service.
-source-git-commit: ac0fafd060643903735ff565072ef2c5bee970be
+exl-id: 4409d0f0-05db-42f3-ace9-1516f1970891
+source-git-commit: cddffe2194beea628f71b6631faada5df4555267
 workflow-type: tm+mt
 source-wordcount: '308'
 ht-degree: 0%
-
 ---
-
 # Aprimoramento do Dispatcher ETag para revalidação de CDN
 
 ## Visão geral
@@ -67,6 +66,6 @@ Depois de habilitar a variável de ambiente e implantar alterações de configur
 
 Para obter orientação de linha de base voltada para o cliente sobre o armazenamento em cache do cabeçalho e manuseio de `ETag` no Dispatcher, consulte:
 
-- [Configurar o Dispatcher - Armazenamento em cache de cabeçalhos de resposta HTTP](https://experienceleague.adobe.com/pt-br/docs/experience-manager-dispatcher/using/configuring/dispatcher-configuration#caching-http-response-headers)
+- [Configurar o Dispatcher - Armazenamento em cache de cabeçalhos de resposta HTTP](https://experienceleague.adobe.com/en/docs/experience-manager-dispatcher/using/configuring/dispatcher-configuration#caching-http-response-headers)
 
 &quot;Este recurso está disponível no Dispatcher `2.0.264` (AEM SDK `2026.2.24464`). Quando habilitado, o Dispatcher pode validar `If-None-Match` em relação aos valores de `ETag` armazenados em cache e retornar `304 Not Modified` em ocorrências de cache. No AEM as a Cloud Service, isso é suportado e pode ser ativado por meio da configuração do ambiente Cloud Manager.&quot;
